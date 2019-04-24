@@ -1,10 +1,11 @@
+/*Este CSS es para lo más importante, que se repite en todos lados. Serian header, footer y algunas cosas más.*/
+
 * {
   font-family: 'Open Sans', sans-serif;
   color: white;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* overflow: hidden; */
 }
 
 h1 {
@@ -104,98 +105,7 @@ nav h3 {
 }
 
 
-/*MAIN*/
-.main-container{
-  margin-top: 8vh;
-}
 
-.main-photo {
-    background: #C4AAD7; /*Violet*/
-
-}
-
-.banner img {
-  width: 100%;
-}
-
-.Bestsellers h2 {
-  font-size: 1.8em;
-}
-
-.main-container .text {
-  padding: 8vw;
-  text-align: center;
-}
-
-/*PRODUCTS*/
-
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.products .Bestsellers h2 {
-    text-align: center;
-  font-family: 'Bree Serif', serif;
-  color: black;
-  background: white;
-  padding: 10vw;
-  width: 100vw;
-}
-
-/*PRODUCT*/
-.product {
-  background: white;
-  width: 100vw:
-  padding: 5vw;
-
-}
-
-.product .images img {
-  width: 50vw;
-  max-height:
-  border: solid, lightgrey, 1vw;
-}
-
-.product .text h3 {
-  font-family: 'Bree Serif', serif;
-  color: black;
-}
-
-.product .text p {
-  color: black;
-}
-
-.add-bag {
-  padding: 2vw;
-  margin-top: 2vh;
-  background: #8CD0E3; /*Lightblue*/
-  border: none;
-  text-transform: uppercase;
-  font-family: 'Bree Serif', serif;
-  text-align: center;
-}
-
-/*Shop More*/
-.more {
-  width: 100vw;
-  margin: 5vh auto;
-  display: flex;
-  align-self: center;
-
-}
-
-.shop-more {
-  padding: 2vw;
-  margin-top: 2vh;
-  background: #F7EB61; /*Yellow*/
-  border: none;
-  text-transform: uppercase;
-  font-family: 'Bree Serif', serif;
-  margin: auto;
-  color: black;
-}
 
 @media (min-width: 768px) { /*TABLET*/
   /*MENU MOBILE*/

@@ -50,16 +50,16 @@ nav h3 {
 
 #bars {
   font-size: 1.5rem;
-
 }
 
 #bag-icon {
   padding-left: 3vw;
+  padding-right: 3vw;
   font-size: 1.5rem;
 }
 
 #user-icon {
-  padding-left: 1vw;
+  padding-left: 2vw;
   font-size: 1.5rem;
 }
 
@@ -181,6 +181,7 @@ nav h3 {
 .more {
   width: 100vw;
   margin: 5vh auto;
+  display: flex;
   align-self: center;
 
 }
@@ -196,11 +197,27 @@ nav h3 {
   color: black;
 }
 
+@media (min-width: 768px) { /*TABLET*/
+  /*MENU MOBILE*/
+  .menu-mobile {
+    position: fixed;
+    width: 100vw;
+    height: 10vw;
+    background: #8CD0E3; /*Lightblue*/
+    padding: 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    color: white;
+  }
+
+}
 
 @media (min-width: 1024px) { /*DESKTOP*/
   /*DESKTOP MENU*/
   * {
-    font-size: 30px;
+    font-size: 20px;
     box-sizing: border-box;
     /* overflow: hidden; */
   }
@@ -212,36 +229,61 @@ nav h3 {
   .menu-desktop {
     position: fixed;
     top: 0;
-    width: 100vw;
-    height: 7vw;
+    width: 100%;
+    height: 160px;
     color: white;
     background: #8CD0E3; /*Lightblue*/
-    padding: 2vw;
-    padding-bottom: 2vw;
+    padding: 2%;
+    padding-bottom: 2%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
+
 
   .search-button {
     display: inline;
     border: none;
     background: #8CD0E3; /*Lightblue*/
+    height: 30px;
   }
+
+  .menu-title {
+    margin-left: 200px;
+    font-size: 2.5em;
+  }
+
+  .menu-top {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-bottom {
+    width: 100%;
+    font-size: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-button {
+    border: none;
+    color: white;
+    background: #8CD0E3; /*Lightblue*/
+    /* padding: 2vh; */
+    margin-left: 5%;
+  }
+
+
+  /*FOOTER*/
 
   .links-mobile {
     display: none;
   }
 
   .links-desktop {
-    display: block;
-  }
-
-
-  /*FOOTER*/
-
-  .links-desktop {
-    padding: 5vh 5vw;
+    padding: 5% 5%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -258,9 +300,77 @@ nav h3 {
 
 
   /*MAIN CONTENT*/
-  /* .body-container {
-    padding: 0 5vh;
-    margin: 0;
-    background: #F7EB61; /*Yellow*/
-  }*/
+  .main-photo {
+    margin-top:  160px;
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-photo img {
+    width: 90vw;
+  }
+
+  /*PRODUCTS*/
+  .products {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+    justify-content: center;
+  }
+
+  .Bestsellers h2 {
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Bree Serif', serif;
+    color: black;
+    background: white;
+    /* padding: 50px; */
+    width: 100%;
+  }
+  .product-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+  }
+  /*PRODUCT*/
+  .product {
+    border: solid 10px black;
+    background: white;
+    width: 30%:
+    padding: 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .product .images img {
+    width: 20vw;
+    margin: auto;
+    border: solid, lightgrey, 1vw;
+  }
+
+  .product .text h3 {
+    font-family: 'Bree Serif', serif;
+    color: black;
+  }
+
+  .product .text p {
+    color: black;
+  }
+
+  .add-bag {
+    padding: 2vw;
+    margin-top: 2vh;
+    background: #8CD0E3; /*Lightblue*/
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+  }
+
+
 }

@@ -30,7 +30,7 @@
           <div class="banner">
             <img src="img/banner-example.jpg" alt="Banner de Make Up">
           </div>
-          <div class="text">
+          <div class="main-text">
             <h1>Lorem ipsum dolor sit amet</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
           </div>
@@ -40,51 +40,27 @@
         <section class="products">
           <!--Titulo Best-sellers-->
           <div class="Bestsellers">
-            <h2>Best-sellers</h2>
+            <h2>Nuestros productos más populares</h2>
           </div>
 
-          <!--Producto 1-->
+          <!--DIV de Productos-->
           <div class="products-list">
-            <article class="product">
-              <div class="images">
-                <img src="img/producto-2-sombras.jpg" alt="Sombras">
-              </div>
-              <div class="text">
-                <h3>Producto</h3>
-                <p>Mini Descripción</p>
-                <br>
-                <p>Precio</p>
-                <button class="add-bag" type="button" name="button">Comprar</button>
-              </div>
-            </article>
+            <!--Prodycto 1 incluido usando php-->
+            <?php include("includes/product.php") ?>
 
             <!--Producto 2-->
-            <article class="product">
-              <div class="images">
-                <img src="img/producto-3-blush.jpg" alt="Blush">
-              </div>
-              <div class="text">
-                <h3>Producto</h3>
-                <p>Mini Descripción</p>
-                <br>
-                <p>Precio</p>
-                <button class="add-bag" type="button" name="button">Comprar</button>
-              </div>
-            </article>
+            <?php include("includes/product.php") ?>
 
             <!--Producto 3-->
-            <article class="product">
-              <div class="images">
-                <img src="img/producto-4.jpg" alt="Algo">
-              </div>
-              <div class="text">
-                <h3>Producto</h3>
-                <p>Mini Descripción</p>
-                <br>
-                <p>Precio</p>
-                <button class="add-bag" type="button" name="button">Comprar</button>
-              </div>
-            </article>
+            <?php include("includes/product.php") ?>
+
+            <!--Producto 4-->
+            <?php include("includes/product.php") ?>
+
+            <!--Producto 5-->
+            <?php include("includes/product.php") ?>
+
+
           </div>
 
           <!--VER MÁS-->

@@ -64,6 +64,10 @@ nav h3 {
   font-size: 1.5rem;
 }
 
+/*Main Container*/
+.main-container{
+  margin-top: 10vh;
+}
 
 /*FOOTER GENERAL*/
 .footer-info {
@@ -209,7 +213,7 @@ nav h3 {
 
   /*MAIN-CONTAINER*/
   .main-container {
-    margin-top: 100px;
+    margin-top: 120px;
   }
 
   /*FOOTER*/

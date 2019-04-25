@@ -1,10 +1,6 @@
 /* Este CSS es para el contenido dentro del index. No incluye Header y Footer.*/
 
 /*MAIN*/
-.main-container{
-  margin-top: 10vh;
-}
-
 .main-photo {
     background: #C4AAD7; /*Violet*/
 }
@@ -17,7 +13,7 @@
   font-size: 1.8em;
 }
 
-.main-container .text {
+.main-text {
   padding: 8vw;
   text-align: center;
 }
@@ -31,7 +27,7 @@
 }
 
 .products .Bestsellers h2 {
-    text-align: center;
+  text-align: center;
   font-family: 'Bree Serif', serif;
   color: black;
   background: white;
@@ -49,18 +45,21 @@
 
 .product .images img {
   width: 50vw;
-  max-height:
+  /* max-height: */
   border: solid, lightgrey, 1vw;
 }
 
-.product .text h3 {
+
+.product-text h3 {
   font-family: 'Bree Serif', serif;
   color: black;
 }
 
-.product .text p {
+.product-text p {
   color: black;
 }
+
+
 
 .add-bag {
   padding: 2vw;
@@ -101,76 +100,107 @@
 @media (min-width: 1025px) { /*DESKTOP*/
   /*MAIN CONTENT*/
   .main-photo {
-    /* margin-top:  100px; */
-    padding-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .main-photo img {
-    width: 90vw;
+  .main-photo .banner img {
+    width: 100%;
   }
 
-  /*PRODUCTS*/
-  .products {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* flex-direction: row; */
-    justify-content: center;
+  .banner {
+    margin-top: 50px;
   }
 
-  .Bestsellers h2 {
+  .main-text {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  /*Seccionuib Best-sellers*/
+  .products .Bestsellers h2 {
+    display: block;
     text-align: center;
     font-size: 2em;
     font-family: 'Bree Serif', serif;
     color: black;
     background: white;
-    /* padding: 50px; */
-    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    /* padding: 10%; */
+    /* width: 100%; */
   }
-  .product-list {
+
+  /*Contenedor de productos*/
+  .products-list {
     width: 100%;
+    padding: 0 5%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-
+    justify-content: space-around;
   }
-  /*PRODUCT*/
+
+  /*PRODUCT: cada producto*/
   .product {
-    border: solid 10px black;
+    /* border: solid 5px black; */
     background: white;
-    width: 30%:
-    padding: 5vw;
+    /* padding: 50px; */
+    margin: 20px 50px;
+    width: 10%;
+    /* padding: 10px; */
+    /* overflow: hidden; */
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    /* flex-direction: column; */
+  }
+
+  .product .images {
+    margin: 0;
+    padding: 0;
   }
 
   .product .images img {
-    width: 20vw;
+    width: 100%;
+    margin: 0;
+  }
+
+  .product-text {
+    color: black;
+    text-align: center;
     margin: auto;
-    border: solid, lightgrey, 1vw;
   }
 
-  .product .text h3 {
+  .product-text h3 {
     font-family: 'Bree Serif', serif;
-    color: black;
-  }
-
-  .product .text p {
-    color: black;
   }
 
   .add-bag {
-    padding: 2vw;
-    margin-top: 2vh;
+    padding: 20px;
+    margin-top: 10px;
     background: #8CD0E3; /*Lightblue*/
     border: none;
     text-transform: uppercase;
     font-family: 'Bree Serif', serif;
     text-align: center;
   }
+
+  /*Shop More*/
+  .shop-more {
+    padding: 25px;
+    margin-top: 50px;
+    background: #F7EB61; /*Yellow*/
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    margin: auto;
+    color: black;
 
 
 }

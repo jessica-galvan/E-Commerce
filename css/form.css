@@ -1,0 +1,172 @@
+.main-container {
+  background: rgba(196,170,215, 0.5);
+  padding: 5vw;
+}
+
+.form-container {
+  background: white;
+  padding: 5vw;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-form {
+  margin: auto;
+  background: white;
+  padding: 5vw;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.login-text h2 {
+  color:black;
+  font-family: 'Bree Serif', serif;
+  font-size: 2em;
+}
+
+
+/*FORMLUARIO*/
+
+.form {
+  font-family: 'Open Sans', sans-serif;
+  margin: 5vw;
+  /* margin-top: 6vh; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.form input {
+  border: 1px solid #CCCCCC !important;
+  height: 5vh;
+  color: black;
+  padding: 2vw;
+}
+
+label {
+  color: black;
+}
+
+/*OLVIDO CONTRASEÑA*/
+
+.form-links {
+  margin: 2vw;
+  /* background: grey; */
+
+}
+
+.form-links a {
+  color: black;
+  font-size: 0.8em;
+}
+
+/*BOTON DE LOGEO*/
+.login-button {
+  margin: 5vw;
+}
+
+.login-button button {
+  padding: 2vw;
+  margin-top: 2vh;
+  background: #F7EB61; /*Yellow*/
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  margin: auto;
+  color: black;
+}
+
+/*REGISTRARSE*/
+.register-container {
+  margin-top: 5vh;
+  background: white;
+  padding: 5vw;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-text p {
+  margin-top: 2vh;
+}
+
+
+@media (min-width: 768px) { /*TABLET*/
+  .login-text h2  {
+    font-size: 2em;
+  }
+}
+
+
+
+@media (min-width: 1025px) { /*DESKTOP*/
+  .main-container {
+    padding: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /*LOGIN*/
+  .form-container {
+    width: 40%;
+    padding: 10px;
+    padding-top: 20px;
+    height: 700px;
+    /* text-align: center; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .form {
+    margin: 30px;
+  }
+
+  .form input {
+    margin: auto;
+    padding: 10px;
+    width: 700px;
+  }
+
+  .login-text {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /*REGISTRO*/
+  .register-container {
+    margin-top: 0;
+    width: 40%;
+    height: 700px;
+  }
+
+  .login-text p {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+
+
+  /*BOTON*/
+  .login-button {
+    margin: 20px;
+  }
+  .login-button button {
+    padding: 20px;
+  }
+
+
+}

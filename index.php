@@ -12,6 +12,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product.css">
 
 
     <title>Beauty</title>

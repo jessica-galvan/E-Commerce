@@ -2,16 +2,12 @@
 
 * {
   font-family: 'Open Sans', sans-serif;
-  color: white;
+  color: black;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-h1 {
-  font-family: 'Bree Serif', serif;
-  font-size: 2em;
-}
 
 /*MENU*/
 nav a {
@@ -22,6 +18,7 @@ nav a {
 nav h3 {
   font-family: 'Handlee', cursive;
   font-size: 1.8em;
+  color: white;
 }
 
 /*MENU DESKTOP*/
@@ -47,21 +44,29 @@ nav h3 {
 
 .menu-mobile h3 {
   display: inline-block;
+  color: white;
+}
+
+.icons a i {
+  color: white;
 }
 
 #bars {
   font-size: 1.5rem;
+  color: white;
 }
 
 #bag-icon {
   padding-left: 3vw;
   padding-right: 3vw;
   font-size: 1.5rem;
+  color: white;
 }
 
 #user-icon {
   padding-left: 2vw;
   font-size: 1.5rem;
+  color: white;
 }
 
 /*Main Container*/
@@ -103,12 +108,51 @@ nav h3 {
   justify-content: space-between;
 }
 
+.footer-info-mobile h3 {
+  color: white;
+}
+
+/*FORMULARIO SUSCRIBE*/
+.suscribe {
+  display: inline-block;
+  width: 95vw;
+}
+
+.suscribe h3 {
+  font-family: 'Bree Serif', serif;
+  margin-top: 1.5vh;
+  color: white;
+}
+
+.suscribe-form {
+  margin-top: 1vh;
+}
+
+.suscribe-form input {
+  color: black;
+  border: none;
+  padding: 10px;
+  width: 70vw;
+}
+
+#suscribe-button {
+  border: none;
+  padding: 10px;
+  color: white;
+  background: #C4AAD7; /*Violet*/
+}
+
+/*COPYRIGHT*/
 .copyright {
   padding: 5vw;
   padding-bottom: 1vh;
   text-align: center;
   font-family: serif;
   font-style: italic;
+  }
+
+  .copyright p {
+    color: white;
   }
 
 @media (min-width: 768px) { /*TABLET*/
@@ -196,6 +240,7 @@ nav h3 {
   .menu-bottom ul li {
     display: inline-block;
     margin-left: 5px;
+    color: white;
   }
 
   .menu-bottom ul li a {
@@ -246,8 +291,13 @@ nav h3 {
     text-align: center;
   }
 
+  .social-media h3 {
+    color: white;
+  }
+
   .social-links-desktop i {
     font-size: 2em;
+    color: white;
     padding: 5px;
   }
 
@@ -259,6 +309,7 @@ nav h3 {
 
   .cuenta h3 {
     padding: 15px 0;
+    color: white;
   }
 
 
@@ -281,6 +332,7 @@ nav h3 {
     color: black;
     border: none;
     padding: 10px;
+    width: 300px;
   }
 
   #suscribe-button {

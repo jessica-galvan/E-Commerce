@@ -15,8 +15,16 @@
     </article>
 
     <article class="footer-info-mobile">
-      <h3>AYUDA</h3>
+      <a href="ayuda.php"><h3>AYUDA</h3></a>
     </article>
+
+    <div class="suscribe">
+      <h3>SUSCRIBITE</h3>
+      <form class="suscribe-form" action="#suscribe-button" method="post">
+        <input class="email-suscribe" type="email" name="email" value="">
+        <button id="suscribe-button" type="submit" name="button">ENVIAR</button>
+      </form>
+    </div>
 
     <div class="copyright">
       <p>Copyright 2019</p>
@@ -29,7 +37,7 @@
     <article class="cuenta">
       <a href="#"><h3>MI CUENTA</h3></a>
       <a href="#"><h3>VER CARRITO</h3></a>
-      <a href="#"><h3>AYUDA</h3></a>
+      <a href="ayuda.php"><h3>AYUDA</h3></a>
     </article>
 
     <article class="social-media">
@@ -52,7 +60,6 @@
         <input class="email-suscribe" type="email" name="email" value="">
         <button id="suscribe-button" type="submit" name="button">ENVIAR</button>
       </form>
-
     </div>
 
     <div class="copyright">

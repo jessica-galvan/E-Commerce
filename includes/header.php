@@ -6,7 +6,7 @@
     <h3>Beauty</h3>
 
     <div class="icons">
-      <a href="#"><i id="user-icon" class="fas fa-user"></i></a>
+      <a href="login.php"><i id="user-icon" class="fas fa-user"></i></a>
       <a href="#"><i id="bag-icon"class="fas fa-shopping-bag"></i></a>
     </div>
   </nav>
@@ -24,7 +24,7 @@
 
         <!--iconos a la izquierda-->
         <div class="icons">
-          <a href="#"><i class="fas fa-user"></i></a>
+          <a href="login.php"><i class="fas fa-user"></i></a>
           <a href="#"><i class="fas fa-shopping-bag"></i></a>
         </div>
       </div>
@@ -32,7 +32,7 @@
       <!--segunda linea del menu-->
       <div class="menu-bottom">
         <ul>
-          <li><a href="#">BOTON</a></li>
+          <li><a href="index.php">INICIO</a></li>
           <li>|</li>
           <li><a href="#">BOTON</a></li>
           <li>|</li>

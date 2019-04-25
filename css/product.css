@@ -1,0 +1,92 @@
+/*PRODUCT*/
+.product {
+  background: white;
+  width: 100vw:
+  padding: 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product .images img {
+  width: 50vw;
+  /* max-height: */
+  border: solid, lightgrey, 1vw;
+}
+
+.product-text {
+  text-align: center;
+}
+
+.product-text h3 {
+  font-family: 'Bree Serif', serif;
+  color: black;
+}
+
+.product-text p {
+  color: black;
+}
+
+
+
+.add-bag {
+  padding: 2vw;
+  margin-top: 2vh;
+  background: #8CD0E3; /*Lightblue*/
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+}
+
+@media (min-width: 768px) { /*TABLET*/
+  /* .main-container {
+    margin-top: 9vh;
+  }
+}*/
+
+@media (min-width: 1025px) { /*DESKTOP*/
+  /*PRODUCT: cada producto*/
+  .product {
+    /* border: solid 5px black; */
+    background: white;
+    /* padding: 50px; */
+    margin: 20px 50px;
+    width: 10%;
+    /* padding: 10px; */
+    /* overflow: hidden; */
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+  }
+
+  .product .images {
+    margin: 0;
+    padding: 0;
+  }
+
+  .product .images img {
+    width: 100%;
+    margin: 0;
+  }
+
+  .product-text {
+    color: black;
+    text-align: center;
+    margin: auto;
+  }
+
+  .product-text h3 {
+    font-family: 'Bree Serif', serif;
+  }
+
+  .add-bag {
+    padding: 20px;
+    margin-top: 10px;
+    background: #8CD0E3; /*Lightblue*/
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+  }

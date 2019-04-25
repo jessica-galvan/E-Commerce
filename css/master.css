@@ -35,9 +35,9 @@ nav h3 {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 15vw;
+  height: 10vh;
   background: #8CD0E3; /*Lightblue*/
-  padding: 3vw;
+  padding: 3vw 3vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -84,6 +84,7 @@ nav h3 {
 /*FOOTER MOBILE*/
 .links-mobile {
   padding: 5vh 5vw;
+  padding-bottom: 3vw;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -100,14 +101,17 @@ nav h3 {
 
 .copyright {
   padding: 5vw;
+  padding-bottom: 1vh;
   text-align: center;
   font-family: serif;
-}
-
-
-
+  font-style: italic;
+  }
 
 @media (min-width: 768px) { /*TABLET*/
+  * {
+    font-size: 26px;
+  }
+
   /*MENU MOBILE*/
   .menu-mobile {
     position: fixed;
@@ -115,6 +119,7 @@ nav h3 {
     height: 10vw;
     background: #8CD0E3; /*Lightblue*/
     padding: 3vw;
+    padding-bottom: 7vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -122,10 +127,17 @@ nav h3 {
     color: white;
   }
 
+  /*MAIN COINTAINER*/
+  .main-container {
+    margin-top: 9vh;
+  }
+
+  /*FOOTER MOBILE*/
+
 }
 
-@media (min-width: 1024px) { /*DESKTOP*/
-  /*DESKTOP MENU*/
+@media (min-width: 1025px) { /*DESKTOP*/
+  /*MENU*/
   * {
     font-size: 20px;
     box-sizing: border-box;
@@ -140,147 +152,146 @@ nav h3 {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 160px;
+    height: 120px;
     color: white;
     background: #8CD0E3; /*Lightblue*/
-    padding: 2%;
-    padding-bottom: 2%;
+    padding: 10px;
+    /* padding-bottom: 2%; */
     display: flex;
     flex-wrap: wrap;
-  }
-
-
-  .search-button {
-    display: inline;
-    border: none;
-    background: #8CD0E3; /*Lightblue*/
-    height: 30px;
-  }
-
-  .menu-title {
-    margin-left: 200px;
-    font-size: 2.5em;
   }
 
   .menu-top {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
   }
 
-  .menu-bottom {
+  .menu-title {
+    display: inline;
+    /* text-transform: uppercase; */
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 1.8em;
+  }
+
+  .menu-bottom{
+    /* font-size: 1em; */
     width: 100%;
-    font-size: 1.5em;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    text-align: center;
+    }
+
+  .menu-bottom ul {
+    list-style: none;
+    /* padding-top: 10px; */
+    /* padding-bottom: px; */
   }
 
-  .menu-button {
-    border: none;
-    color: white;
-    background: #8CD0E3; /*Lightblue*/
-    /* padding: 2vh; */
-    margin-left: 5%;
+  .menu-bottom ul li {
+    display: inline-block;
+    margin-left: 5px;
   }
 
+  .menu-bottom ul li a {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .icons i {
+    font-size: 2rem;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+  }
+
+  /*MAIN-CONTAINER*/
+  .main-container {
+    margin-top: 100px;
+  }
 
   /*FOOTER*/
-
-  .links-mobile {
+  .links-mobile { /*Ocultamos el footer para version mobil*/
     display: none;
   }
 
   .links-desktop {
-    padding: 5% 5%;
+    padding: 3% 2%;
+    padding-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
     }
 
-  .footer-info-desktop {
+  /* .footer-info-desktop {
     width: 90vw;
     padding: 2vw 0;
     border-bottom: solid white 0.1vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
+  } */
 
-
-  /*MAIN CONTENT*/
-  .main-photo {
-    margin-top:  160px;
-    padding-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .main-photo img {
-    width: 90vw;
-  }
-
-  /*PRODUCTS*/
-  .products {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* flex-direction: row; */
-    justify-content: center;
-  }
-
-  .Bestsellers h2 {
+  .social-media {
+    display: inline-block;
+    width: 30%;
     text-align: center;
+  }
+
+  .social-links-desktop i {
     font-size: 2em;
+    padding: 5px;
+  }
+
+  /* CUENTA*/
+  .cuenta {
+    display: inline-block;
+    width: 30%;
+  }
+
+  .cuenta h3 {
+    padding: 15px 0;
+  }
+
+
+  /*FORMULARIO SUSCRIBE*/
+  .suscribe {
+    display: inline-block;
+    width: 30%;
+    /* background:  */
+  }
+
+  .suscribe h3 {
     font-family: 'Bree Serif', serif;
+  }
+
+  .suscribe-form {
+    margin-top: 10px;
+  }
+
+  .suscribe-form input {
     color: black;
-    background: white;
-    /* padding: 50px; */
-    width: 100%;
-  }
-  .product-list {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-
-  }
-  /*PRODUCT*/
-  .product {
-    border: solid 10px black;
-    background: white;
-    width: 30%:
-    padding: 5vw;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .product .images img {
-    width: 20vw;
-    margin: auto;
-    border: solid, lightgrey, 1vw;
-  }
-
-  .product .text h3 {
-    font-family: 'Bree Serif', serif;
-    color: black;
-  }
-
-  .product .text p {
-    color: black;
-  }
-
-  .add-bag {
-    padding: 2vw;
-    margin-top: 2vh;
-    background: #8CD0E3; /*Lightblue*/
     border: none;
-    text-transform: uppercase;
-    font-family: 'Bree Serif', serif;
-    text-align: center;
+    padding: 10px;
   }
 
+  #suscribe-button {
+    border: none;
+    padding: 10px;
+    color: white;
+    background: #C4AAD7; /*Violet*/
+    /*No se si usar blaco y violeta o amarillo y negro para el boton*/
+    /* color: black; */
+    /* background: #F7EB61; /*Yellow*/ */
+  }
+
+  /*COPYRIGHT*/
+  .copyright {
+    width: 100%;
+  }
 
 }

@@ -12,6 +12,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ayuda.css">
 
 
     <title>Beauty</title>
@@ -26,9 +27,100 @@
 
        <!--Main Cointainer-->
        <main class="main-container">
-         <!--FAQ-->
-         <div class="preguntas">
-           
+       <!--FAQ-->
+       <h1>Preguntas frecuentes</h1>
+         <div class="AYUDA">
+
+              <section class="cajaDePregunta">
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+                  </section>
+
+              <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+              </section>
+               <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+                    </section>
+         <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+                </section>
+
+          <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+              </section>
+             <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+             </section>
+         <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+      </section>
+          <section class="cajaDePregunta">
+
+                    <div class="preguntas">
+                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+
+                    </div>
+
+                    <div class="respuestas">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    </div>
+
+         </section>
 
 
 

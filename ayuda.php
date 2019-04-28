@@ -56,47 +56,47 @@
                  <h2>¿Sus productos son libres de gluten?</h2>
                </div>
                <div class="respuestas">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                 <p>Sí, es importante para nosotros cuidar de la salud de nuestras clientas y sabemos que muchas tienen alergias relacionadas a este por lo que todos nuestros productos son libres de gluten. </p>
                </div>
              </section>
            <section class="cajaDePregunta">
                <div class="preguntas">
-                 <h2>Pregunta</h2>
+                 <h2>¿Hacen envíos internacionales?</h2>
                </div>
                <div class="respuestas">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                 <p>No, por el momento hacemos envíos dentro de Argentina. </p>
                </div>
              </section>
            <section class="cajaDePregunta">
                <div class="preguntas">
-                 <h2>Pregunta</h2>
+                 <h2>¿Dónde fabrican y crean sus productos?</h2>
                </div>
                <div class="respuestas">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                 <p>Se diseñan y fabrican dentro de Argentina. </p>
                </div>
              </section>
            <section class="cajaDePregunta">
                <div class="preguntas">
-                 <h2>Pregunta</h2>
+                 <h2>¿Cómo hago para hacer el seguimiento de mi orden de compras? </h2>
                </div>
                <div class="respuestas">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                 <p>En la página oficial de Correo Argentino vas a poder hacer el seguimiento con tu orden de compra. </p>
                </div>
              </section>
            <section class="cajaDePregunta">
                <div class="preguntas">
-                 <h2>Pregunta</h2>
+                 <h2>¿Qué hago si mi orden llega con productos rotos?</h2>
                </div>
                <div class="respuestas">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                 <p> Escribinos a nuestro mail y te daremos una solucion! </p>
                </div>
              </section>
            <section class="cajaDePregunta">
                <div class="preguntas">
-                 <h2>Pregunta</h2>
+                 <h2>¿Puedo comprar sombras individuales específicas que vengan en sus paletas de ojos?</h2>
                </div>
                <div class="respuestas">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                 <p>No, por el momento las sombras que se encuentran dentro de las paletas de ojos no se venden de forma individual. </p>
                </div>
              </section>
          </div>

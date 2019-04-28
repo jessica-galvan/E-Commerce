@@ -33,30 +33,30 @@
 
               <section class="cajaDePregunta">
                     <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+                        <h2>¿Dónde puedo encontrar sus productos?</h2>
 
                     </div>
 
                     <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                          <p>Actualmente nuestros productos se consiguen solo de forma online en nuestra página oficial.</p>
                     </div>
                   </section>
 
               <section class="cajaDePregunta">
 
                     <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+                        <h2>¿Su marca testea en animales?</h2>
 
                     </div>
 
                     <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                          <p>No, estamos orgullosos de decir que desde el inicio nunca testeamos  ninguno de nuestros productos en animales. </p>
                     </div>
               </section>
                <section class="cajaDePregunta">
 
                     <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
+                        <h2>¿Sus productos son libres de gluten?</h2>
 
                     </div>
 

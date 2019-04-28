@@ -11,7 +11,6 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/ayuda.css">
 
 
@@ -25,109 +24,84 @@
         include_once("includes/header.php");
        ?>
 
-       <!--Main Cointainer-->
-       <main class="main-container">
-       <!--FAQ-->
-       <h1>Preguntas frecuentes</h1>
-         <div class="AYUDA">
+      <!--Main Cointainer-->
+      <main class="main-container">
 
-              <section class="cajaDePregunta">
-                    <div class="preguntas">
-                        <h2>¿Dónde puedo encontrar sus productos?</h2>
+        <!--Contenedor de Preguntas-->
+        <div class="ayuda-body">
+          <!--Titulo-->
+          <h1 class="faq-title">Preguntas Frecuentes</h1>
 
-                    </div>
+          <!--Seccion de Preguntas-->
+          <div class="ayuda">
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>¿Dónde puedo encontrar sus productos?</h2>
+               </div>
 
-                    <div class="respuestas">
-                          <p>Actualmente nuestros productos se consiguen solo de forma online en nuestra página oficial.</p>
-                    </div>
-                  </section>
-
-              <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>¿Su marca testea en animales?</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>No, estamos orgullosos de decir que desde el inicio nunca testeamos  ninguno de nuestros productos en animales. </p>
-                    </div>
-              </section>
-               <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>¿Sus productos son libres de gluten?</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
-                    </div>
-                    </section>
-         <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
-                    </div>
-                </section>
-
-          <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
-                    </div>
-              </section>
-             <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
-                    </div>
+               <div class="respuestas">
+                 <p>Actualmente nuestros productos se consiguen solo de forma online en nuestra página oficial.</p>
+               </div>
              </section>
-         <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
-                    </div>
-      </section>
-          <section class="cajaDePregunta">
-
-                    <div class="preguntas">
-                        <h2>PREGUNTAAAAAAAAAAAA</h2>
-
-                    </div>
-
-                    <div class="respuestas">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
-                    </div>
-
-         </section>
-
-
-
-
-
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>¿Su marca testea en animales?</h2>
+               </div>
+               <div class="respuestas">
+                 <p>No, estamos orgullosos de decir que desde el inicio nunca testeamos  ninguno de nuestros productos en animales. </p>
+               </div>
+             </section>
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>¿Sus productos son libres de gluten?</h2>
+               </div>
+               <div class="respuestas">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+               </div>
+             </section>
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>Pregunta</h2>
+               </div>
+               <div class="respuestas">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+               </div>
+             </section>
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>Pregunta</h2>
+               </div>
+               <div class="respuestas">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+               </div>
+             </section>
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>Pregunta</h2>
+               </div>
+               <div class="respuestas">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+               </div>
+             </section>
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>Pregunta</h2>
+               </div>
+               <div class="respuestas">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+               </div>
+             </section>
+           <section class="cajaDePregunta">
+               <div class="preguntas">
+                 <h2>Pregunta</h2>
+               </div>
+               <div class="respuestas">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+               </div>
+             </section>
          </div>
-       </main>
+        </div>
+      </main>
 
        <!--FOOTER-->
        <?php

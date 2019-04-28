@@ -1,23 +1,36 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-body{
+.body-container {
   background-color: pink;
 }
-.AYUDA {
-  margin: 20px;
+
+.main-container {
+  /* margin: 20px; */
+  padding: 5vw;
+
 }
-h1{
-  width: 100%;
-  display: flex;
-  justify-content: center;
+
+.ayuda-body {
+  background: white;
+  padding: 5vw;
+}
+
+.faq-title {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.8em;
+  text-align: center;
+  /* width: 100%; */
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 .cajaDePregunta{
-  margin: 20px;
+  margin-top: 3vh;
 }
 
 .preguntas{
+  font-size: 1em;
   margin-bottom: 10px;
+}
+
+.respuestas {
+  font-size: 1em;
 }

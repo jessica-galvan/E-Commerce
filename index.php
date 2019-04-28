@@ -37,7 +37,7 @@
           </div>
         </section>
 
-        <!--PRODUCTOS-->
+        <!--PRODUCTOS MÁS VENDIDOS-->
         <section class="products">
           <!--Titulo Best-sellers-->
           <div class="Bestsellers">
@@ -60,8 +60,37 @@
 
             <!--Producto 5-->
             <?php include("includes/product.php") ?>
+          </div>
 
+          <!--VER MÁS-->
+          <div class="more">
+            <button class="shop-more" type="button" name="button">Ver más</button>
+          </div>
+        </section>
 
+        <!--PRODUCTOS NUEVOS-->
+        <section class="products">
+          <!--Titulo Best-sellers-->
+          <div class="Bestsellers">
+            <h2>Lo más nuevo</h2>
+          </div>
+
+          <!--DIV de Productos-->
+          <div class="products-list">
+            <!--Prodycto 1 incluido usando php-->
+            <?php include("includes/product.php") ?>
+
+            <!--Producto 2-->
+            <?php include("includes/product.php") ?>
+
+            <!--Producto 3-->
+            <?php include("includes/product.php") ?>
+
+            <!--Producto 4-->
+            <?php include("includes/product.php") ?>
+
+            <!--Producto 5-->
+            <?php include("includes/product.php") ?>
           </div>
 
           <!--VER MÁS-->

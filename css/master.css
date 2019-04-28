@@ -51,6 +51,11 @@ nav h3 {
   color: white;
 }
 
+/* .icon-text p {
+  font-size: 0.5em;
+  color: white;
+} */
+
 #bars {
   font-size: 1.5rem;
   color: white;
@@ -114,6 +119,7 @@ nav h3 {
 
 /*FORMULARIO SUSCRIBE*/
 .suscribe {
+  margin-top: 2vh;
   display: inline-block;
   width: 95vw;
 }
@@ -316,6 +322,7 @@ nav h3 {
   /*FORMULARIO SUSCRIBE*/
   .suscribe {
     display: inline-block;
+    margin-top: 0;
     width: 30%;
     /* background:  */
   }
@@ -332,7 +339,8 @@ nav h3 {
     color: black;
     border: none;
     padding: 10px;
-    width: 300px;
+    width: 60%;
+    max-width: 300px;
   }
 
   #suscribe-button {
@@ -347,6 +355,7 @@ nav h3 {
 
   /*COPYRIGHT*/
   .copyright {
+    padding: 1%;
     width: 100%;
   }
 

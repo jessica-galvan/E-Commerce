@@ -12,7 +12,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/index-backup.css">
-    <link rel="stylesheet" href="css/product-backup.css">
+    <link rel="stylesheet" href="css/product.css">
 
 
     <title>Beauty</title>
@@ -45,22 +45,32 @@
           </div>
 
           <!--DIV de Productos-->
-          <div class="products-list">
-            <!--Prodycto 1 incluido usando php-->
-            <?php include("includes/product.php") ?>
+          <?php
+          include("includes/lista-productos.php");
 
-            <!--Producto 2-->
-            <?php include("includes/product.php") ?>
+          $totalProductos = count($productos);
 
-            <!--Producto 3-->
-            <?php include("includes/product.php") ?>
+          for ($i=0; $i < $totalProductos ; $i++) {
+            if ($productos[$i]["estado"] === "Best-seller") {
+              echo '<article class="product">
+                      <!--imagen-->
+                      <div class="images">
+                        <img src="img/productos/'.$productos[$i]["foto"].'" alt="'.$productos[$i]["nombre"].'">
+                      </div>
 
-            <!--Producto 4-->
-            <?php include("includes/product.php") ?>
+                      <!--texto-->
+                      <div class="product-text">
+                        <h3>'.$productos[$i]["nombre"].'</h3>
+                        <p>$'.$productos[$i]["precio"].'</p>
+                        <br>
+                      <!--boton para comprar-->
+                      <button class="add-bag" type="button" name="button">Comprar</button>
+                      </div>
+                    </article>';
+                  };
+            };
 
-            <!--Producto 5-->
-            <?php include("includes/product.php") ?>
-          </div>
+           ?>
 
           <!--VER MÁS-->
           <div class="more">
@@ -68,7 +78,7 @@
           </div>
         </section>
 
-        <!--PRODUCTOS NUEVOS-->
+        <!--PRODUCTOS MÁS VENDIDOS-->
         <section class="products">
           <!--Titulo Best-sellers-->
           <div class="Bestsellers">
@@ -76,28 +86,40 @@
           </div>
 
           <!--DIV de Productos-->
-          <div class="products-list">
-            <!--Prodycto 1 incluido usando php-->
-            <?php include("includes/product.php") ?>
+          <?php
+          include("includes/lista-productos.php");
 
-            <!--Producto 2-->
-            <?php include("includes/product.php") ?>
+          $totalProductos = count($productos);
 
-            <!--Producto 3-->
-            <?php include("includes/product.php") ?>
+          for ($i=0; $i < $totalProductos ; $i++) {
+            if ($productos[$i]["estado"] === "Nuevo") {
+              echo '<article class="product">
+                      <!--imagen-->
+                      <div class="images">
+                        <img src="img/productos/'.$productos[$i]["foto"].'" alt="'.$productos[$i]["nombre"].'">
+                      </div>
 
-            <!--Producto 4-->
-            <?php include("includes/product.php") ?>
+                      <!--texto-->
+                      <div class="product-text">
+                        <h3>'.$productos[$i]["nombre"].'</h3>
+                        <p>$'.$productos[$i]["precio"].'</p>
+                        <br>
+                      <!--boton para comprar-->
+                      <button class="add-bag" type="button" name="button">Comprar</button>
+                      </div>
+                    </article>';
+                  };
+            };
 
-            <!--Producto 5-->
-            <?php include("includes/product.php") ?>
-          </div>
+           ?>
 
           <!--VER MÁS-->
           <div class="more">
             <button class="shop-more" type="button" name="button">Ver más</button>
           </div>
         </section>
+
+
       </main>
 
       <!--FOOTER-->

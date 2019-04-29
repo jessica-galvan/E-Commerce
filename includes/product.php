@@ -1,5 +1,5 @@
 <article class="product">
-  <!--imagen-->
+  <!-- imagen -->
   <div class="images">
     <img src="img/producto-2-sombras.jpg" alt="Sombras">
   </div>

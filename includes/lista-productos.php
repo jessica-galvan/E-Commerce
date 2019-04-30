@@ -35,7 +35,7 @@
     [
       "foto" => "ruborEnCrema.jpg",
       "categoria" => "Rubor",
-      "nombre" => "Gloss Rosa",
+      "nombre" => "Rubor cremoso Rosa",
       "precio" => "1300",
       "estado" => "Nuevo",
       "descripcion" => ""

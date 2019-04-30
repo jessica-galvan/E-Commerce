@@ -1,5 +1,5 @@
 .main-container {
-  background: rgba(196,170,215, 0.5);
+  background: rgba(196,170,215, 0.8);
   padding: 5vw;
 }
 
@@ -110,7 +110,7 @@ label {
 
 
 
-@media (min-width: 1025px) { /*DESKTOP*/
+@media (min-width: 992px) { /*DESKTOP*/
   .main-container {
     padding: 80px;
     display: flex;

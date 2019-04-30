@@ -8,6 +8,15 @@
   box-sizing: border-box;
 }
 
+.xl-screen {
+  padding: 0;
+  margin: 0;
+}
+
+.main-container {
+  background: white;
+}
+
 
 /*MENU*/
 nav a {
@@ -190,7 +199,7 @@ nav h3 {
 
 }
 
-@media (min-width: 1025px) { /*DESKTOP*/
+@media (min-width: 992px) { /*DESKTOP*/
   /*MENU*/
   * {
     font-size: 20px;
@@ -381,5 +390,26 @@ nav h3 {
     padding: 1%;
     width: 100%;
   }
+}
+
+@media (min-width: 1600px) { /*BIG SCREEN*/
+ .xl-screen {
+   /* background: yellow; */
+   background: url("../img/bg-body.jpg");
+   background-position: top left;
+   background-size: 10%;
+   background-repeat: repeat;
+ }
+
+ .body-container {
+   max-width: 1600px;
+   margin: auto;
+   overflow: hidden;
+ }
+
+ .menu-desktop {
+   max-width: 1600px;
+   margin: auto;
+ }
 
 }

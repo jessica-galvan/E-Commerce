@@ -4,7 +4,7 @@
     <!--Busqueda-->
     <a href="#"><i id="bars" class="fas fa-bars"></i></a>
 
-    <a href="index.php"><h3>Feunty Beauty</h3></a>
+    <a href="index.php"><h3>Fenty Beauty</h3></a>
 
     <div class="icons">
       <!--User-->
@@ -30,7 +30,7 @@
           </a>
         </div>
 
-        <a href="index.php"><h3 class="menu-title">Feunty Beauty</h3></a>
+        <a href="index.php"><h3 class="menu-title">Fenty Beauty</h3></a>
 
 
         <!--iconos a la izquierda-->

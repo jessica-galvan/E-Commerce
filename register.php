@@ -18,61 +18,63 @@
   </head>
 
   <body>
-    <div class="body-container">
-      <!--HEADER-->
-      <?php
-        include_once("includes/header.php");
-       ?>
+    <div class="xl-screen">
+      <div class="body-container">
+        <!--HEADER-->
+        <?php
+          include_once("includes/header.php");
+         ?>
 
-       <!--REGISTER-->
-       <main class="main-container">
+         <!--REGISTER-->
+         <main class="main-container">
 
-         <!--Contenedor del Form-->
-         <div class="register-form">
-           <!--TITULO-->
-           <div class="login-text">
-             <h2>Registrate</h2>
+           <!--Contenedor del Form-->
+           <div class="register-form">
+             <!--TITULO-->
+             <div class="login-text">
+               <h2>Registrate</h2>
+             </div>
+
+             <form class="" action="index.html" method="post">
+               <div class="form">
+                 <label for="nombre">Nombre</label>
+                 <input id="nombre" type="text" name="nombre" value="" required>
+               </div>
+
+               <div class="form">
+                 <label for="apellido">Apellido</label>
+                 <input id="apellido" type="text" name="apellido" value="" required>
+               </div>
+
+               <div class="form">
+                 <label for="email">Email</label>
+                 <input id="email" type="email" name="email" value="" required>
+               </div>
+
+               <div class="form">
+                 <label for="password">Contraseña</label>
+                 <input id="password" type="password" name="password" value="" required>
+               </div>
+
+               <div class="form">
+                 <label for="confirm">Confirmar Contraseña</label>
+                 <input id="confirm" type="password" name="password" value="" required>
+               </div>
+
+               <div class="login-button">
+                 <button type="submit" name="login">ENVIAR</button>
+               </div>
+
+             </form>
+
            </div>
+         </main>
 
-           <form class="" action="index.html" method="post">
-             <div class="form">
-               <label for="nombre">Nombre</label>
-               <input id="nombre" type="text" name="nombre" value="" required>
-             </div>
-
-             <div class="form">
-               <label for="apellido">Apellido</label>
-               <input id="apellido" type="text" name="apellido" value="" required>
-             </div>
-
-             <div class="form">
-               <label for="email">Email</label>
-               <input id="email" type="email" name="email" value="" required>
-             </div>
-
-             <div class="form">
-               <label for="password">Contraseña</label>
-               <input id="password" type="password" name="password" value="" required>
-             </div>
-
-             <div class="form">
-               <label for="confirm">Confirmar Contraseña</label>
-               <input id="confirm" type="password" name="password" value="" required>
-             </div>
-
-             <div class="login-button">
-               <button type="submit" name="login">ENVIAR</button>
-             </div>
-
-           </form>
-
-         </div>
-       </main>
-
-       <!--FOOTER-->
-       <?php
-       include_once("includes/footer.php");
-       ?>
-     </div>
+         <!--FOOTER-->
+         <?php
+         include_once("includes/footer.php");
+         ?>
+       </div>  <!--FIN BODY-CONTAINER-->
+      </div> <!--FIN XL-SCREEN-->
   </body>
 </html>

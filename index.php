@@ -11,11 +11,11 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/index-backup.css">
-    <link rel="stylesheet" href="css/product-backup.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product.css">
 
 
-    <title>Beauty</title>
+    <title>Feunty Beauty</title>
   </head>
 
   <body>
@@ -32,35 +32,53 @@
             <img src="img/banner-example.jpg" alt="Banner de Make Up">
           </div>
           <div class="main-text">
-            <h1>Lorem ipsum dolor sit amet</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+            <h1>Para todas</h1>
+            <p>Fenty Beauty  fue creada para que las mujeres del mundo se sientan incluidas, enfocándonos  en la variedad y cantidad de tonos de piel y creando fórmulas que funcionen de la mejor forma para todos los tipos de pieles. Nuestros productos fueron creados para que te inspires, para que te diviertas, para que crees algo nuevo y diferente. </p>
           </div>
         </section>
 
         <!--PRODUCTOS MÁS VENDIDOS-->
         <section class="products">
           <!--Titulo Best-sellers-->
-          <div class="Bestsellers">
+          <div class="titulo-seccion">
             <h2>Nuestros productos más populares</h2>
           </div>
 
           <!--DIV de Productos-->
-          <div class="products-list">
-            <!--Prodycto 1 incluido usando php-->
-            <?php include("includes/product.php") ?>
+          <?php
+          include("includes/lista-productos.php");
 
-            <!--Producto 2-->
-            <?php include("includes/product.php") ?>
+          //Para que los productos en la pagina Index no pasen de cierta cantidad, hice un while que frene cuando tenga 5 productos más vendidos. Se puede cambiar el maximo de productos sin problemas.
 
-            <!--Producto 3-->
-            <?php include("includes/product.php") ?>
+          $totalProductos = count($productos);
+          $maxProductsBestSeller = 0;
+          $nBestSeller = 0;
 
-            <!--Producto 4-->
-            <?php include("includes/product.php") ?>
+          while($maxProductsBestSeller < 5) {
+            if ($productos[$nBestSeller]["estado"] === "Best-seller"):?>
+              <article class="product">
+                <!--imagen-->
+                <div class="images">
+                  <img src="img/productos/<?=$productos[$nBestSeller]["foto"]?>" alt="<?=$productos[$nBestSeller]["nombre"]?>">
+                </div>
 
-            <!--Producto 5-->
-            <?php include("includes/product.php") ?>
-          </div>
+                <!--texto-->
+                <div class="product-text">
+                  <h3><?=$productos[$nBestSeller]["nombre"]?></h3>
+                  <p class="price">$<?=$productos[$nBestSeller]["precio"]?></p>
+                  <br>
+                </div>
+                <!--boton para comprar-->
+                <div class="product-button">
+                  <button class="add-bag" type="button" name="button">Comprar</button>
+                </div>
+              </article>
+
+          <?php
+            $maxProductsBestSeller++;
+          endif;
+            $nBestSeller++;
+          };?>
 
           <!--VER MÁS-->
           <div class="more">
@@ -71,33 +89,50 @@
         <!--PRODUCTOS NUEVOS-->
         <section class="products">
           <!--Titulo Best-sellers-->
-          <div class="Bestsellers">
+          <div class="titulo-seccion">
             <h2>Lo más nuevo</h2>
           </div>
 
           <!--DIV de Productos-->
-          <div class="products-list">
-            <!--Prodycto 1 incluido usando php-->
-            <?php include("includes/product.php") ?>
+          <?php
+          //Para que los productos en la pagina Index no pasen de cierta cantidad, hice un while que frene cuando tenga 5 productos Nuevos. Se puede cambiar el maximo de productos sin problemas.
 
-            <!--Producto 2-->
-            <?php include("includes/product.php") ?>
+          $maxProductsNuevo = 0;
+          $nNuevo = 0;
 
-            <!--Producto 3-->
-            <?php include("includes/product.php") ?>
+          while($maxProductsNuevo < 5) {
+            if ($productos[$nNuevo]["estado"] === "Nuevo"):?>
+              <article class="product">
+                <!--imagen-->
+                <div class="images">
+                  <img src="img/productos/<?=$productos[$nNuevo]["foto"]?>" alt="<?=$productos[$nNuevo]["nombre"]?>">
+                </div>
 
-            <!--Producto 4-->
-            <?php include("includes/product.php") ?>
+                <!--texto-->
+                <div class="product-text">
+                  <h3><?=$productos[$nNuevo]["nombre"]?></h3>
+                  <p class="price">$<?=$productos[$nNuevo]["precio"]?></p>
+                  <br>
+                </div>
+                <!--boton para comprar-->
+                <div class="product-button">
+                  <button class="add-bag" type="button" name="button">Comprar</button>
+                </div>
+              </article>
 
-            <!--Producto 5-->
-            <?php include("includes/product.php") ?>
-          </div>
+          <?php
+            $maxProductsNuevo++;
+          endif;
+            $nNuevo++;
+          };?>
 
           <!--VER MÁS-->
           <div class="more">
             <button class="shop-more" type="button" name="button">Ver más</button>
           </div>
         </section>
+
+
       </main>
 
       <!--FOOTER-->

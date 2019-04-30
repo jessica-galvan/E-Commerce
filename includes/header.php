@@ -4,7 +4,7 @@
     <!--Busqueda-->
     <a href="#"><i id="bars" class="fas fa-bars"></i></a>
 
-    <a href="index.php"><h3>Beauty</h3></a>
+    <a href="index.php"><h3>Feunty Beauty</h3></a>
 
     <div class="icons">
       <!--User-->
@@ -22,16 +22,34 @@
         <!--logo y marca a la izquierda-->
         <div class="icons">
           <!--Busqueda-->
-          <a href="#"><i class="fas fa-search"></i></a>
+          <a href="#">
+            <div class="icon-box">
+              <i class="fas fa-search"></i>
+              <p>Buscar</p>
+            </div>
+          </a>
         </div>
 
-        <a href="index.php"><h3 class="menu-title">Beauty</h3></a>
+        <a href="index.php"><h3 class="menu-title">Feunty Beauty</h3></a>
 
 
         <!--iconos a la izquierda-->
         <div class="icons">
-          <a href="login.php"><i class="fas fa-user"></i></a>
-          <a href="#"><i class="fas fa-shopping-bag"></i></a>
+          <!--User Login-->
+          <a href="login.php">
+            <div class="icon-box">
+                <i class="fas fa-user"></i>
+                <p>Entrar</p>
+            </div>
+          </a>
+
+          <!--Carrito-->
+          <a href="#">
+            <div class="icon-box">
+              <i class="fas fa-shopping-bag"></i>
+              <p>Carrito</p>
+            </div>
+          </a>
         </div>
       </div>
 
@@ -47,6 +65,8 @@
           <li><a href="#">OFERTAS</a></li>
           <li>|</li>
           <li><a href="#">VER TODO</a></li>
+          <li>|</li>
+          <li><a href="faq.php">PREGUNTAS FRECUENTES</a></li>
         </ul>
       </div>
   </nav>

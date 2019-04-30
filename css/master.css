@@ -235,7 +235,7 @@ nav h3 {
     /* font-size: 1em; */
     width: 100%;
     text-align: center;
-    }
+  }
 
   .menu-bottom ul {
     list-style: none;
@@ -255,11 +255,34 @@ nav h3 {
     font-weight: bold;
   }
 
+  .icons {
+    margin-right: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .icons:first-child {
+    margin-left: 2%;
+    margin-right: 0;
+  }
+
   .icons i {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
+  }
+
+  .icons p {
+    color: white;
+  }
+
+  .icon-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
   }
 
   /*MAIN-CONTAINER*/

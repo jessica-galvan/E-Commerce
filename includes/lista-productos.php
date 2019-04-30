@@ -11,7 +11,7 @@
     [
       "foto" => "polvo.jpg",
       "categoria" => "",
-      "nombre" => "Polvo translucido",
+      "nombre" => "Polvo Translucido",
       "precio" => "1400",
       "estado" => "Nuevo",
       "descripcion" => ""

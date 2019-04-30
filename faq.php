@@ -11,10 +11,10 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/ayuda.css">
+    <link rel="stylesheet" href="css/faq.css">
 
 
-    <title>Beauty</title>
+    <title>Fenty Beauty</title>
   </head>
 
   <body>
@@ -28,7 +28,7 @@
       <main class="main-container">
 
         <!--Contenedor de Preguntas-->
-        <div class="ayuda-body">
+        <div class="faq-body">
           <!--Titulo-->
           <h1 class="faq-title">Preguntas Frecuentes</h1>
 

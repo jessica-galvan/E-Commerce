@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/form.css">
 
 
-    <title>Beauty</title>
+    <title>Fenty Beauty</title>
   </head>
 
   <body>

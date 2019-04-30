@@ -1,0 +1,44 @@
+
+.main-container {
+  /* margin: 20px; */
+  padding: 5vw;
+
+}
+
+.faq-body {
+  background: white;
+  padding: 5vw;
+}
+
+.faq-title {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.8em;
+  text-align: center;
+  /* width: 100%; */
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+.cajaDePregunta{
+  margin-top: 3vh;
+}
+
+.preguntas{
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.respuestas {
+  font-size: 1em;
+}
+
+@media (min-width: 1025px) { /*DESKTOP*/
+  .main-container {
+    padding: 3% 5%;
+  }
+
+  .faq-body {
+    padding: 0 5%;
+  }
+
+}

@@ -88,7 +88,7 @@
                  <h2>¿Qué hago si mi orden llega con productos rotos?</h2>
                </div>
                <div class="respuestas">
-                 <p> Escribinos a nuestro mail y te daremos una solucion! </p>
+                 <p> ¡Escribinos a nuestro mail y te daremos una solucion! </p>
                </div>
              </section>
            <section class="cajaDePregunta">

@@ -65,6 +65,8 @@
           <li><a href="#">OFERTAS</a></li>
           <li>|</li>
           <li><a href="#">VER TODO</a></li>
+          <li>|</li>
+          <li><a href="faq.php">PREGUNTAS FRECUENTES</a></li>
         </ul>
       </div>
   </nav>

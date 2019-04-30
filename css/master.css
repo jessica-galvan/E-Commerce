@@ -235,7 +235,7 @@ nav h3 {
     /* font-size: 1em; */
     width: 100%;
     text-align: center;
-    }
+  }
 
   .menu-bottom ul {
     list-style: none;
@@ -260,7 +260,11 @@ nav h3 {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+  }
 
+  .icons:first-child {
+    margin-left: 2%;
+    margin-right: 0;
   }
 
   .icons i {

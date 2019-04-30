@@ -48,20 +48,24 @@
           <?php
           include("includes/lista-productos.php");
 
-          $totalProductos = count($productos);
+          //Para que los productos en la pagina Index no pasen de cierta cantidad, hice un while que frene cuando tenga 5 productos más vendidos. Se puede cambiar el maximo de productos sin problemas.
 
-          for ($i=0; $i < $totalProductos ; $i++):
-            if ($productos[$i]["estado"] === "Best-seller"):?>
+          $totalProductos = count($productos);
+          $maxProductsBestSeller = 0;
+          $nBestSeller = 0;
+
+          while($maxProductsBestSeller < 5) {
+            if ($productos[$nBestSeller]["estado"] === "Best-seller"):?>
               <article class="product">
                 <!--imagen-->
                 <div class="images">
-                  <img src="img/productos/<?=$productos[$i]["foto"]?>" alt="<?=$productos[$i]["nombre"]?>">
+                  <img src="img/productos/<?=$productos[$nBestSeller]["foto"]?>" alt="<?=$productos[$nBestSeller]["nombre"]?>">
                 </div>
 
                 <!--texto-->
                 <div class="product-text">
-                  <h3><?=$productos[$i]["nombre"]?></h3>
-                  <p class="price">$<?=$productos[$i]["precio"]?></p>
+                  <h3><?=$productos[$nBestSeller]["nombre"]?></h3>
+                  <p class="price">$<?=$productos[$nBestSeller]["precio"]?></p>
                   <br>
                 </div>
                 <!--boton para comprar-->
@@ -69,10 +73,12 @@
                   <button class="add-bag" type="button" name="button">Comprar</button>
                 </div>
               </article>
-            <?php  endif;?>
-          <?php  endfor;?>
 
-
+          <?php
+            $maxProductsBestSeller++;
+          endif;
+            $nBestSeller++;
+          };?>
 
           <!--VER MÁS-->
           <div class="more">
@@ -89,27 +95,36 @@
 
           <!--DIV de Productos-->
           <?php
-          for ($i=0; $i < $totalProductos ; $i++):
-            if ($productos[$i]["estado"] === "Nuevo"):?>
+          //Para que los productos en la pagina Index no pasen de cierta cantidad, hice un while que frene cuando tenga 5 productos Nuevos. Se puede cambiar el maximo de productos sin problemas.
+
+          $maxProductsNuevo = 0;
+          $nNuevo = 0;
+
+          while($maxProductsNuevo < 5) {
+            if ($productos[$nNuevo]["estado"] === "Nuevo"):?>
               <article class="product">
                 <!--imagen-->
                 <div class="images">
-                  <img src="img/productos/<?=$productos[$i]["foto"]?>" alt="<?=$productos[$i]["nombre"]?>">
+                  <img src="img/productos/<?=$productos[$nNuevo]["foto"]?>" alt="<?=$productos[$nNuevo]["nombre"]?>">
                 </div>
 
                 <!--texto-->
                 <div class="product-text">
-                  <h3><?=$productos[$i]["nombre"]?></h3>
-                    <p class="price">$<?=$productos[$i]["precio"]?></p>
+                  <h3><?=$productos[$nNuevo]["nombre"]?></h3>
+                  <p class="price">$<?=$productos[$nNuevo]["precio"]?></p>
+                  <br>
                 </div>
-                <br>
                 <!--boton para comprar-->
                 <div class="product-button">
                   <button class="add-bag" type="button" name="button">Comprar</button>
                 </div>
               </article>
-            <?php endif;?>
-          <?php endfor;?>
+
+          <?php
+            $maxProductsNuevo++;
+          endif;
+            $nNuevo++;
+          };?>
 
           <!--VER MÁS-->
           <div class="more">

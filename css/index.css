@@ -5,10 +5,12 @@
   color: white;
   font-family: 'Bree Serif', serif;
   font-size: 2em;
+  margin-bottom: 1vh;
 }
 
 .main-text p {
   color: white;
+  text-align: justify;
 }
 
 .main-photo {
@@ -19,7 +21,7 @@
   width: 100%;
 }
 
-.Bestsellers h2 {
+.titulo-seccion h2 {
   font-size: 1.8em;
 }
 
@@ -36,7 +38,7 @@
   justify-content: center;
 }
 
-.products .Bestsellers h2 {
+.products .titulo-seccion h2 {
   text-align: center;
   font-family: 'Bree Serif', serif;
   color: black;
@@ -45,6 +47,9 @@
   width: 100vw;
 }
 
+button {
+  cursor: pointer;
+}
 
 /*Shop More*/
 .more {
@@ -98,29 +103,39 @@
     text-align: center;
   }
 
-  /*Seccionuib Best-sellers*/
-  .products .Bestsellers h2 {
+  .main-text h1 {
+    margin-bottom: 20px;
+  }
+
+  .main-text p {
+    margin: 0 30%;
+
+    font-size: 1.2em;
+  }
+
+  /*Titulo Seccion*/
+  .products .titulo-seccion h2 {
     display: block;
     text-align: center;
     font-size: 2em;
     font-family: 'Bree Serif', serif;
     color: black;
     background: white;
-    padding-top: 100px;
-    padding-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 25px;
     /* padding: 10%; */
     /* width: 100%; */
   }
 
   /*Contenedor de productos*/
-  .products-list {
+  /* .products-list {
     width: 100%;
     padding: 0 5%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
-  }
+  } */
 
   /*Shop More*/
   .shop-more {

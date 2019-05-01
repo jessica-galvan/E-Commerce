@@ -6,12 +6,12 @@
       <i id="bars" class="fas fa-bars"></i>
     </a>
 
-    <a href="index.php"><h3>Fenty Beauty</h3></a>
+    <a href="index.php"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
 
     <div class="icons">
       <!--User-->
       <a href="login.php">
-        <img class="icon-img" src="img/icons/logInRegister.png" alt="User">
+        <img id="icon-img" class="icon-img" src="img/icons/logInRegister.png" alt="User">
       </a>
 
       <!--Carrito-->
@@ -36,7 +36,9 @@
           </a>
         </div>
 
-        <a href="index.php"><h3 class="menu-title">Fenty Beauty</h3></a>
+        <a href="index.php">
+          <img class="logo" src="img/icons/LogoComputadora.png" alt="Logo">
+        </a>
 
 
         <!--iconos a la izquierda-->

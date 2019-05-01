@@ -65,6 +65,9 @@ nav h3 {
   color: white;
 }
 
+.logo {
+  height: 7vh;
+}
 
 
 /*Main Container*/
@@ -221,13 +224,17 @@ nav h3 {
     justify-content: space-between;
   }
 
-  .menu-title {
-    display: inline;
-    /* text-transform: uppercase; */
-    margin-left: 20px;
-    margin-top: 5px;
-    font-size: 1.8em;
+  .logo {
+    height: 70px;
   }
+
+  /* .menu-title {
+    display: inline; */
+    /* text-transform: uppercase; */
+    /* margin-left: 20px;
+    margin-top: 5px;
+    font-size: 1.8em; */
+  /* }  */
 
   .icons {
     margin-right: 1%;
@@ -259,6 +266,11 @@ nav h3 {
     margin: auto;
     margin-bottom: 5px;
   }
+
+  #user {
+    margin-bottom: 6.5px;
+  }
+
 
   .icons p {
     color: white;

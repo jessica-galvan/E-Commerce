@@ -49,7 +49,7 @@
                </div>
 
                <div class="remember">
-                 <label for="remember">Recordar</label>
+                 <label for="remember">Recordarme</label>
                  <input id="remember" type="checkbox" name="remember" value="">
                </div>
 
@@ -65,7 +65,7 @@
 
           <div class="register-container">
             <div class="login-text">
-              <h2>¿No tenes una cuenta?</h2>
+              <h2>¿No tenés una cuenta?</h2>
               <p>Completa este formulario y crea tu cuenta para obtener varios beneficios.</p>
             </div>
 

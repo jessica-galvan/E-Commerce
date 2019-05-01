@@ -39,7 +39,7 @@
           <a href="login.php">
             <div class="icon-box">
                 <i class="fas fa-user"></i>
-                <p>Entrar</p>
+                <p>Ingresar</p>
             </div>
           </a>
 

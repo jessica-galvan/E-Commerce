@@ -37,7 +37,7 @@
              </div>
 
              <!--FORMULARIO-->
-             <form class="login-form" action="index.html" method="post">
+             <form class="login-form" action="index.php" method="post">
                <div class="form">
                  <!-- <label for="email">Email</label> -->
                  <input type="email" id="email" name="email" value="" placeholder="Email" required>

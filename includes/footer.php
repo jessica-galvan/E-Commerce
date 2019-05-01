@@ -62,7 +62,7 @@
 
     <div class="suscribe">
       <h3>SUSCRIBITE</h3>
-      <form class="suscribe-form" action="#suscribe-button" method="post">
+      <form class="suscribe-form" action="#" method="post">
         <input class="email-suscribe" type="email" name="email" value="">
         <button id="suscribe-button" type="submit" name="button">ENVIAR</button>
       </form>

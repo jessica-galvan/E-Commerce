@@ -35,7 +35,7 @@
                <h2>Registrate</h2>
              </div>
 
-             <form class="" action="index.html" method="post">
+             <form class="" action="index.php" method="post">
                <div class="form">
                  <label for="nombre">Nombre</label>
                  <input id="nombre" type="text" name="nombre" value="" required>

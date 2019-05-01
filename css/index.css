@@ -77,7 +77,7 @@ button {
   }
 } */
 
-@media (min-width: 1025px) { /*DESKTOP*/
+@media (min-width: 992px) { /*DESKTOP*/
   /*MAIN CONTENT*/
   .main-photo {
     padding-top: 20px;
@@ -108,7 +108,7 @@ button {
   }
 
   .main-text p {
-    margin: 0 30%;
+    margin: 0 15%;
 
     font-size: 1.2em;
   }

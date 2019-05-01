@@ -57,7 +57,7 @@
 
 @media (min-width: 768px) { /*TABLET*/}
 
-@media (min-width: 1025px) { /*DESKTOP*/
+@media (min-width: 992px) { /*DESKTOP*/
   .products {
     margin: 0 20%;
   }
@@ -93,6 +93,7 @@
     color: black;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .product-text h3 {
@@ -102,6 +103,10 @@
 
   .product-button {
     margin-top: auto;
+  }
+
+  .price {
+    margin-bottom: 5px;
   }
 
   .add-bag {

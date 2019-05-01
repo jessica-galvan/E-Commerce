@@ -43,6 +43,7 @@
       <a href="#"><h3>VER CARRITO</h3></a>
       <a href="faq.php"><h3>PREGUNTAS FRECUENTES</h3></a>
       <a href="#"><h3>SOBRE NOSOTROS</h3> </a>
+      <a href="#"><h3>CONTACTO</h3> </a>
     </article>
 
     <article class="social-media">

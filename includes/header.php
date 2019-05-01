@@ -2,16 +2,22 @@
   <!--Menu Mobile-->
   <nav class="menu-mobile">
     <!--Busqueda-->
-    <a href="#"><i id="bars" class="fas fa-bars"></i></a>
+    <a href="#">
+      <i id="bars" class="fas fa-bars"></i>
+    </a>
 
     <a href="index.php"><h3>Fenty Beauty</h3></a>
 
     <div class="icons">
       <!--User-->
-      <a href="login.php"><i id="user-icon" class="fas fa-user"></i></a>
+      <a href="login.php">
+        <img class="icon-img" src="img/icons/logInRegister.png" alt="User">
+      </a>
 
       <!--Carrito-->
-      <a href="#"><i id="bag-icon"class="fas fa-shopping-bag"></i></a>
+      <a href="#">
+        <img class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
+      </a>
     </div>
   </nav>
 
@@ -24,7 +30,7 @@
           <!--Busqueda-->
           <a href="#">
             <div class="icon-box">
-              <i class="fas fa-search"></i>
+              <img id="lupa" class="icon-img" src="img/icons/LupaDeBusqueda.png" alt="Busqueda">
               <p>Buscar</p>
             </div>
           </a>
@@ -37,8 +43,8 @@
         <div class="icons">
           <!--User Login-->
           <a href="login.php">
-            <div class="icon-box">
-                <i class="fas fa-user"></i>
+            <div id="user-box" class="icon-box">
+                <img id="user" class="icon-img" src="img/icons/logInRegister.png" alt="User">
                 <p>Ingresar</p>
             </div>
           </a>
@@ -46,7 +52,7 @@
           <!--Carrito-->
           <a href="#">
             <div class="icon-box">
-              <i class="fas fa-shopping-bag"></i>
+              <img id="bag" class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
               <p>Carrito</p>
             </div>
           </a>
@@ -56,15 +62,13 @@
       <!--segunda linea del menu-->
       <div class="menu-bottom">
         <ul>
-          <li><a href="index.php">MÁS VENDIDO</a></li>
-          <li>|</li>
-          <li><a href="#">NUEVO</a></li>
+          <!-- <li><a href="index.php">MÁS VENDIDO</a></li>
+          <li>|</li> -->
+          <li><a href="index.php">INICIO</a></li>
           <li>|</li>
           <li><a href="#">CATEGORIAS</a></li>
           <li>|</li>
-          <li><a href="#">OFERTAS</a></li>
-          <li>|</li>
-          <li><a href="#">VER TODO</a></li>
+          <li><a href="#">CONTACTO</a></li>
           <li>|</li>
           <li><a href="faq.php">PREGUNTAS FRECUENTES</a></li>
         </ul>

@@ -35,7 +35,6 @@ nav h3 {
   display: none; /*FOR MOBILE FIRST*/
 }
 
-
 /*MENU MOBILE*/
 .menu-mobile {
   position: fixed;
@@ -56,32 +55,17 @@ nav h3 {
   color: white;
 }
 
-.icons a i {
-  color: white;
+.icon-img {
+  width: 7vw;
+  margin-right: 1vw;
 }
-
-/* .icon-text p {
-  font-size: 0.5em;
-  color: white;
-} */
 
 #bars {
   font-size: 1.5rem;
   color: white;
 }
 
-#bag-icon {
-  padding-left: 3vw;
-  padding-right: 3vw;
-  font-size: 1.5rem;
-  color: white;
-}
 
-#user-icon {
-  padding-left: 2vw;
-  font-size: 1.5rem;
-  color: white;
-}
 
 /*Main Container*/
 .main-container{
@@ -170,7 +154,7 @@ nav h3 {
     color: white;
   }
 
-@media (min-width: 768px) { /*TABLET*/
+@media (min-width: 700px) { /*TABLET*/
   * {
     font-size: 26px;
   }
@@ -186,8 +170,12 @@ nav h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
     color: white;
+  }
+
+  .icon-img {
+    width: 5vw;
+    margin-right: 1vw;
   }
 
   /*MAIN COINTAINER*/
@@ -224,6 +212,7 @@ nav h3 {
     flex-wrap: wrap;
   }
 
+/*MENU TOP*/
   .menu-top {
     width: 100%;
     display: flex;
@@ -239,6 +228,53 @@ nav h3 {
     margin-top: 5px;
     font-size: 1.8em;
   }
+
+  .icons {
+    margin-right: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  #user-box {
+    margin-right: 10px;
+  }
+
+  .icons a {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 15px;
+  }
+
+  .icons:first-child {
+    margin-left: 2%;
+    margin-right: 0;
+  }
+
+  .icon-img {
+    width: 35px;
+    margin-right: 0;
+    margin: auto;
+    margin-bottom: 5px;
+  }
+
+  .icons p {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    font-family: 'Bree Serif', serif;
+  }
+
+  .icon-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+  }
+
+/*MENU BOTTOM*/
 
   .menu-bottom{
     /* font-size: 1em; */
@@ -262,36 +298,6 @@ nav h3 {
     font-size: 1rem;
     text-align: center;
     font-weight: bold;
-  }
-
-  .icons {
-    margin-right: 2%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-
-  .icons:first-child {
-    margin-left: 2%;
-    margin-right: 0;
-  }
-
-  .icons i {
-    font-size: 1.8rem;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
-  }
-
-  .icons p {
-    color: white;
-  }
-
-  .icon-box {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    text-align: center;
   }
 
   /*MAIN-CONTAINER*/

@@ -27,7 +27,7 @@
           include_once("includes/header.php");
          ?>
 
-        <!--Main Cointainer-->
+        <!--Main Cointainer: acá tendria que ir todo lo que vayamos a agregar.-->
         <main class="main-container">
 
           <!--SECCION INTRODUCCION/BANNER-->
@@ -40,6 +40,8 @@
               <p>Fenty Beauty  fue creada para que las mujeres del mundo se sientan incluidas, enfocándonos  en la variedad y cantidad de tonos de piel y creando fórmulas que funcionen de la mejor forma para todos los tipos de pieles. Nuestros productos fueron creados para que te inspires, para que te diviertas, para que crees algo nuevo y diferente. </p>
             </div>
           </section>
+          <!--FIN SECCION BANNER-->
+
 
           <!--PRODUCTOS MÁS VENDIDOS-->
           <section class="products">
@@ -90,6 +92,7 @@
               <button class="shop-more" type="button" name="button">Ver más</button>
             </div>
           </section>
+          <!--FIN PRODUCTOS MÁS VENDIDOS-->
 
           <!--PRODUCTOS NUEVOS-->
           <section class="products">
@@ -136,10 +139,10 @@
               <button class="shop-more" type="button" name="button">Ver más</button>
             </div>
           </section>
-
+          <!--FIN PRODUCTOS NUEVOS-->
 
         </main>
-
+        <!-- FIN Main Cointainer-->
         <!--FOOTER-->
         <?php
         include_once("includes/footer.php");

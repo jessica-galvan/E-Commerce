@@ -22,6 +22,7 @@
       <a href="#"><h3>SOBRE NOSOTROS</h3></a>
     </article>
 
+    <!--SUSCRIBE-->
     <div class="suscribe">
       <h3>SUSCRIBITE</h3>
       <form class="suscribe-form" action="#suscribe-button" method="post">
@@ -60,6 +61,7 @@
       </div>
     </article>
 
+    <!--SUSCRIBE-->
     <div class="suscribe">
       <h3>SUSCRIBITE</h3>
       <form class="suscribe-form" action="#" method="post">
@@ -67,7 +69,7 @@
         <button id="suscribe-button" type="submit" name="button">ENVIAR</button>
       </form>
     </div>
-
+    
     <div class="copyright">
       <p>Copyright 2019</p>
     </div>

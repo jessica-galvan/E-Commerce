@@ -1,5 +1,6 @@
 /*Este CSS es para lo más importante, que se repite en todos lados. Serian header, footer y algunas cosas más.*/
 
+/*GENERAL A TODAS LAS PAGINAS*/
 * {
   font-family: 'Open Sans', sans-serif;
   color: black;
@@ -13,27 +14,23 @@
   margin: 0;
 }
 
+/*MAIN CONTAINER*/
 .main-container {
+  margin-top: 10vh;
   background: white;
 }
 
-
-/*MENU*/
-nav a {
-  text-decoration: none;
-  color: white;
-}
-
-nav h3 {
-  font-family: 'Handlee', cursive;
-  font-size: 1.8em;
-  color: white;
-}
-
+  /*------------HEADER--------------------*/
 /*MENU DESKTOP*/
 .menu-desktop {
   display: none; /*FOR MOBILE FIRST*/
 }
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+/*FIN MENU DESKTOP*/
 
 /*MENU MOBILE*/
 .menu-mobile {
@@ -68,13 +65,11 @@ nav h3 {
 .logo {
   height: 7vh;
 }
+/*FIN MENU MOBILE*/
+  /*------------FIN HEADER----------------*/
 
 
-/*Main Container*/
-.main-container{
-  margin-top: 10vh;
-}
-
+  /*------------FOOTER--------------------*/
 /*FOOTER GENERAL*/
 .footer-info {
   background: #8CD0E3; /*Lightblue*/
@@ -86,10 +81,10 @@ nav h3 {
   text-decoration: none;
 }
 
+/*FOOTER DESKTOP*/
 .links-desktop {
   display: none;
 }
-
 
 /*FOOTER MOBILE*/
 .links-mobile {
@@ -156,6 +151,8 @@ nav h3 {
   .copyright p {
     color: white;
   }
+    /*------------FIN FOOTER----------------*/
+
 
 @media (min-width: 700px) { /*TABLET*/
   * {
@@ -185,23 +182,28 @@ nav h3 {
   .main-container {
     margin-top: 9vh;
   }
-
-  /*FOOTER MOBILE*/
-
 }
 
 @media (min-width: 992px) { /*DESKTOP*/
-  /*MENU*/
+  /*GENERAL*/
   * {
     font-size: 20px;
     box-sizing: border-box;
     /* overflow: hidden; */
   }
 
+  /*MAIN-CONTAINER*/
+  .main-container {
+    margin-top: 120px;
+  }
+
+    /*------------HEADER--------------------*/
+    /*MENU MOBILE*/
   .menu-mobile {
     display: none;
   }
 
+  /*MENU DESKTOP*/
   .menu-desktop {
     position: fixed;
     top: 0;
@@ -215,7 +217,7 @@ nav h3 {
     flex-wrap: wrap;
   }
 
-/*MENU TOP*/
+/*MENU PRIMERA LINEA*/
   .menu-top {
     width: 100%;
     display: flex;
@@ -227,14 +229,6 @@ nav h3 {
   .logo {
     height: 70px;
   }
-
-  /* .menu-title {
-    display: inline; */
-    /* text-transform: uppercase; */
-    /* margin-left: 20px;
-    margin-top: 5px;
-    font-size: 1.8em; */
-  /* }  */
 
   .icons {
     margin-right: 1%;
@@ -285,9 +279,9 @@ nav h3 {
     flex-direction: column;
     text-align: center;
   }
+  /*FIN PRIMERA LINEA*/
 
-/*MENU BOTTOM*/
-
+  /*SEGUNDA LINEA*/
   .menu-bottom{
     /* font-size: 1em; */
     width: 100%;
@@ -311,12 +305,10 @@ nav h3 {
     text-align: center;
     font-weight: bold;
   }
+  /*FIN SEGUNDA LINEA*/
+  /*------------FIN HEADER---------------*/
 
-  /*MAIN-CONTAINER*/
-  .main-container {
-    margin-top: 120px;
-  }
-
+  /*------------FOOTER--------------------*/
   /*FOOTER*/
   .links-mobile { /*Ocultamos el footer para version mobil*/
     display: none;
@@ -331,15 +323,6 @@ nav h3 {
     justify-content: space-between;
     text-align: center;
     }
-
-  /* .footer-info-desktop {
-    width: 90vw;
-    padding: 2vw 0;
-    border-bottom: solid white 0.1vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  } */
 
   .social-media {
     display: inline-block;
@@ -367,7 +350,6 @@ nav h3 {
     padding: 15px 0;
     color: white;
   }
-
 
   /*FORMULARIO SUSCRIBE*/
   .suscribe {
@@ -398,9 +380,6 @@ nav h3 {
     padding: 10px;
     color: white;
     background: #C4AAD7; /*Violet*/
-    /*No se si usar blaco y violeta o amarillo y negro para el boton*/
-    /* color: black; */
-    /* background: #F7EB61; /*Yellow*/ */
   }
 
   /*COPYRIGHT*/
@@ -409,6 +388,7 @@ nav h3 {
     width: 100%;
   }
 }
+/*------------FIN FOOTER---------------*/
 
 @media (min-width: 1600px) { /*BIG SCREEN*/
  .xl-screen {

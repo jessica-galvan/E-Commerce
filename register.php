@@ -64,9 +64,8 @@
                <div class="login-button">
                  <button type="submit" name="login">ENVIAR</button>
                </div>
-
              </form>
-
+             <!--FIN FORMULARIO-->
            </div>
          </main>
 

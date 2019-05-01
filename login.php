@@ -27,52 +27,54 @@
 
         <!--CONTENIDO PRINCIPAL-->
          <!--LOGIN-->
-       <main class="main-container"> <!--Esto es un contenedor general-->
-
-           <!--Contenedor del Form-->
-           <div class="form-container">
-             <!--TEXTO DE BIENVENIDA-->
-             <div class="login-text">
-               <h2>Ingresá a tu cuenta</h2>
-             </div>
-
-             <!--FORMULARIO-->
-             <form class="login-form" action="index.php" method="post">
-               <div class="form">
-                 <!-- <label for="email">Email</label> -->
-                 <input type="email" id="email" name="email" value="" placeholder="Email" required>
+         <main class="main-container"> <!--Esto es un contenedor general-->
+            <!--CONTENEDOR FORMULARIO LOGIN-->
+            <div class="form-container">
+               <!--TEXTO DE BIENVENIDA-->
+               <div class="login-text">
+                 <h2>Ingresá a tu cuenta</h2>
                </div>
 
-               <div class="form">
-                 <!-- <label for="password">Constraseña</label> -->
-                 <input type="password" id="password" name="password" value="" placeholder="Contraseña" required>
-               </div>
+               <!--FORMULARIO LOGIN-->
+               <form class="login-form" action="index.php" method="post">
+                 <div class="form">
+                   <!-- <label for="email">Email</label> -->
+                   <input type="email" id="email" name="email" value="" placeholder="Email" required>
+                 </div>
 
-               <div class="remember">
-                 <label for="remember">Recordarme</label>
-                 <input id="remember" type="checkbox" name="remember" value="">
-               </div>
+                 <div class="form">
+                   <!-- <label for="password">Constraseña</label> -->
+                   <input type="password" id="password" name="password" value="" placeholder="Contraseña" required>
+                 </div>
 
-               <div class="login-button">
-                 <button type="submit" name="login">Ingresar</button>
-               </div>
-             </form>
+                 <div class="remember">
+                   <label for="remember">Recordarme</label>
+                   <input id="remember" type="checkbox" name="remember" value="">
+                 </div>
 
-             <div class="form-links">
-               <a href="#">¿Olvidó su contraseña?</a>
-             </div>
+                 <div class="login-button">
+                   <button type="submit" name="login">Ingresar</button>
+                 </div>
+               </form>
+
+               <div class="form-links">
+                 <a href="#">¿Olvidó su contraseña?</a>
+               </div>
+              </div>
+              <!--FIN FORMULARIO LOGIN-->
+            <!--FIN CONTENEDOR LOGIN-->
+            <!-- SECCION REGISTRO-->
+            <div class="register-container">
+              <div class="login-text">
+                <h2>¿No tenés una cuenta?</h2>
+                <p>Completa este formulario y crea tu cuenta para obtener varios beneficios.</p>
+              </div>
+
+              <form class="login-button" action="register.php" method="post">
+                <button type="submit" name="button">Registrarse</button>
+              </form>
             </div>
-
-          <div class="register-container">
-            <div class="login-text">
-              <h2>¿No tenés una cuenta?</h2>
-              <p>Completa este formulario y crea tu cuenta para obtener varios beneficios.</p>
-            </div>
-
-            <form class="login-button" action="register.php" method="post">
-              <button type="submit" name="button">Registrarse</button>
-            </form>
-          </div>
+            <!-- FIN SECCION REGISTRO-->
          </main>
 
          <!--FOOTER-->

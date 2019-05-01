@@ -31,7 +31,6 @@
 }
 
 /*PRODUCTS*/
-
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -70,6 +69,8 @@ button {
   margin: auto;
   color: black;
 }
+
+/*el resto de los estilos de las cajas de productos estan en  product.css*/
 
 @media (min-width: 768px) { /*TABLET*/
   /* .main-container {
@@ -126,16 +127,6 @@ button {
     /* padding: 10%; */
     /* width: 100%; */
   }
-
-  /*Contenedor de productos*/
-  /* .products-list {
-    width: 100%;
-    padding: 0 5%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-  } */
 
   /*Shop More*/
   .shop-more {

@@ -1,13 +1,15 @@
 <header>
-  <!--Menu Mobile-->
+  <!--MENU MOBILE-->
   <nav class="menu-mobile">
-    <!--Busqueda-->
+    <!--BUSQUEDA-->
     <a href="#">
       <i id="bars" class="fas fa-bars"></i>
     </a>
 
+    <!--LOGO PAGINA MOBILE--->
     <a href="index.php"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
 
+    <!--USER Y CARRITO-->
     <div class="icons">
       <!--User-->
       <a href="login.php">
@@ -20,14 +22,14 @@
       </a>
     </div>
   </nav>
+  <!--FIN MENU MOBILE-->
 
-  <!--Menu Desktop-->
+  <!--MENU DESKTOP-->
   <nav class="menu-desktop">
-    <!--primera linea del menu-->
+      <!--PRIMERA LINEA MENU-->
       <div class="menu-top">
-        <!--logo y marca a la izquierda-->
+        <!--BUSQUEDA-->
         <div class="icons">
-          <!--Busqueda-->
           <a href="#">
             <div class="icon-box">
               <img id="lupa" class="icon-img" src="img/icons/LupaDeBusqueda.png" alt="Busqueda">
@@ -36,12 +38,13 @@
           </a>
         </div>
 
+        <!--LOGO PAGINA DESKTOP-->
         <a href="index.php">
           <img class="logo" src="img/icons/LogoComputadora.png" alt="Logo">
         </a>
 
 
-        <!--iconos a la izquierda-->
+        <!--USER Y CARRITO-->
         <div class="icons">
           <!--User Login-->
           <a href="login.php">
@@ -60,8 +63,9 @@
           </a>
         </div>
       </div>
+      <!--FIN PRIMERA LINEA MENU-->
 
-      <!--segunda linea del menu-->
+      <!--SEGUNDA LINEA MENU-->
       <div class="menu-bottom">
         <ul>
           <!-- <li><a href="index.php">MÁS VENDIDO</a></li>
@@ -75,5 +79,7 @@
           <li><a href="faq.php">PREGUNTAS FRECUENTES</a></li>
         </ul>
       </div>
+      <!--FIN SEGUNDA LINEA MENU-->
   </nav>
+  <!--FIN MENU DESKTOP-->
 </header>

@@ -29,6 +29,8 @@
 
         <!--Main Cointainer-->
         <main class="main-container">
+
+          <!--SECCION INTRODUCCION/BANNER-->
           <section class="main-photo">
             <div class="banner">
               <img src="img/banner-example.jpg" alt="Banner de Make Up">

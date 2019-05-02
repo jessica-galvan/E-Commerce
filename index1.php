@@ -31,29 +31,24 @@
         <main class="main-container">
 
           <!--SECCION INTRODUCCION/BANNER-->
-          <section class="intro">
-            <div class="intro-imagen">
-              <img src="img/swatches-height.jpg" alt="Swatches">
-              <!-- <img src="img/imagenBannerUno.png" alt="Grupo Chicas"> -->
+          <section class="main-photo">
+            <div class="banner">
+              <img src="banner/BannerUno.png" alt="Banner de Make Up">
             </div>
-            <div class="intro-texto">
+            <div class="main-text">
               <h1>Para todas</h1>
               <p>Fancy Beauty  fue creada para que las mujeres del mundo se sientan incluidas, enfocándonos  en la variedad y cantidad de tonos de piel y creando fórmulas que funcionen de la mejor forma para todos los tipos de pieles. Nuestros productos fueron creados para que te inspires, para que te diviertas, para que crees algo nuevo y diferente. </p>
             </div>
           </section>
+          <!--FIN SECCION BANNER-->
 
-          <!--OFERTAS MOBILE-->
-          <section class="ofertas-mobile">
-            <img class="foto" src="img/ofertaUno.png" alt="oferta">
-          </section>
-          <!--OFERTAS MOBILE-->
 
-          <!--SECCION OFERTAS DESKTOP-->
+          <!--SECCION OFERTAS-->
           <section class="ofertas">
-            <img class="foto" src="img/ofertaUno.png" alt="oferta">
-            <img class="foto" src="img/ofertaDos.png" alt="Oferta">
-            <img class="foto" src="img/ofertaTres.png" alt="Oferta">
-            <img class="foto" src="img/ofertaCuatro.png" alt="Oferta">
+              <img class="foto" src="img/ofertaUno.png" alt="oferta">
+              <img class="foto" src="img/ofertaDos.png" alt="Oferta">
+              <img class="foto" src="img/ofertaTres.png" alt="Oferta">
+              <img class="foto" src="img/ofertaCuatro.png" alt="Oferta">
           </section>
           <!--FIN SECCION OFERTAS-->
 

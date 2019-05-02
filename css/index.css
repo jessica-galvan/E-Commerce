@@ -1,48 +1,63 @@
 /* Este CSS es para el contenido dentro del index. No incluye Header y Footer.*/
 
-/*MAIN*/
-.main-text h1 {
-  color: white;
-  font-family: 'Bree Serif', serif;
-  font-size: 2em;
-  margin-bottom: 1vh;
+/*INTRO*/
+.intro {
+  width: 100vw;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.main-text p {
-  color: white;
-  text-align: justify;
+.intro-imagen {
+  width: 100vw;
 }
 
-.main-photo {
-    background: #C4AAD7; /*Violet*/
-}
-
-.banner img {
+.intro-imagen img {
   width: 100%;
 }
 
-.titulo-seccion h2 {
-  font-size: 1.8em;
+.intro-texto {
+  width: 100vw;
+  text-align: justify;
+  padding: 1vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 
-.main-text {
-  padding: 8vw;
+.intro-texto h1 {
+  font-family: 'Bree Serif', serif;
+  font-size: 2em;
+  margin-bottom: 3vh;
+  color: black;
   text-align: center;
 }
 
+.intro-texto p {
+  margin: 0 15%;
+  color: black;
+  font-size: 1.2em;
+}
+
+
+/*OFERTAS*/
+
+.ofertas-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .foto {
-  width: 70%;
+  width: 100%;
   height: 15%;
   margin-top: 15px;
 }
 
 .ofertas{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-
+  display: none;
 }
+
 
 
 /*PRODUCTS*/
@@ -94,12 +109,65 @@ button {
 } */
 
 @media (min-width: 992px) { /*DESKTOP*/
-  /*MAIN CONTENT*/
-  .main-photo {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  /*INTRO*/
+  .intro {
+    width: 100%;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .intro-imagen {
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .intro-imagen img {
+    width: 100%;
+  }
+
+  .intro-texto {
+    margin: 0;
+    width: 55%;
+    text-align: center;
+    padding: 7%;
+  }
+
+  .intro-texto h1 {
+    font-family: 'Bree Serif', serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  .intro-texto p {
+    margin: 0 15%;
+    color: black;
+    font-size: 1.2em;
+  }
+
+  /*PUBLICIDAD*/
+  .publicidad {
+    margin-top:50px;
+    width: 100%;
+  }
+  .publicidad img {
+    width: 100%;
+  }
+
+
+  /*MAIN CONTENT*/
+  .main-photo {
+    background: white;
+    padding: 0;
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
   }
 
@@ -108,38 +176,48 @@ button {
   }
 
   .banner {
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    width: 50%;
   }
 
   .main-text {
-    width: 100%;
+    display: inline-block;
+    background: white;
+    width: 40%;
     padding: 10px;
+    padding-top: 20px;
     padding-bottom: 30px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     text-align: center;
   }
 
-
-  .foto {
-    width: 20%;
-    height: 15%;
+  .main-text h1 {
+    margin-bottom: 20px;
+    color: black;
   }
 
-  .ofertas{
+  .main-text p {
+    margin: 0 15%;
+    color: black;
+    font-size: 1.2em;
+  }
+
+
+  /*OFERTAS*/
+  .ofertas-mobile {
+    display: none;
+  }
+
+  .ofertas {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   }
 
-  .main-text h1 {
-    margin-bottom: 20px;
-  }
-
-  .main-text p {
-    margin: 0 15%;
-
-    font-size: 1.2em;
+  .foto {
+    width: 20%;
+    height: 15%;
   }
 
   /*Titulo Seccion*/

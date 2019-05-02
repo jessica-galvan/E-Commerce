@@ -7,6 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  background-image: url(../img/Fondos/FondoSeccionesUno.png);
 }
 
 .intro-imagen {
@@ -76,15 +77,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-image: url(../img/Fondos/FondoSeccionesUno.png);
 }
 
 .products .titulo-seccion h2 {
   text-align: center;
   font-family: 'Bree Serif', serif;
   color: black;
-  background: white;
+  /*background: white;*/
   padding: 10vw;
   width: 100vw;
+
 }
 
 button {
@@ -127,7 +130,8 @@ button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-  }
+    background-image: url(../img/Fondos/FondoSeccionesTres.png);
+    }
 
   .intro-imagen {
     width: 45%;

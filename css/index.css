@@ -39,9 +39,20 @@
   font-size: 1.2em;
 }
 
+/*PUBLICIDAD*/
+.publicidad-mobile {
+  margin-top:50px;
+  width: 100%;
+}
+.publicidad-mobile  img {
+  width: 100%;
+}
+
+.publicidad-desktop {
+  display: none;
+}
 
 /*OFERTAS*/
-
 .ofertas-mobile {
   display: flex;
   flex-wrap: wrap;
@@ -150,56 +161,17 @@ button {
   }
 
   /*PUBLICIDAD*/
-  .publicidad {
+  .publicidad-mobile {
+    display: none;
+  }
+
+  .publicidad-desktop {
+    display: block;
     margin-top:50px;
     width: 100%;
   }
-  .publicidad img {
+  .publicidad-desktop img {
     width: 100%;
-  }
-
-
-  /*MAIN CONTENT*/
-  .main-photo {
-    background: white;
-    padding: 0;
-    /* padding-top: 20px; */
-    /* padding-bottom: 20px; */
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .main-photo .banner img {
-    width: 100%;
-  }
-
-  .banner {
-    /* margin-top: 50px; */
-    width: 50%;
-  }
-
-  .main-text {
-    display: inline-block;
-    background: white;
-    width: 40%;
-    padding: 10px;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    /* margin-top: 30px; */
-    text-align: center;
-  }
-
-  .main-text h1 {
-    margin-bottom: 20px;
-    color: black;
-  }
-
-  .main-text p {
-    margin: 0 15%;
-    color: black;
-    font-size: 1.2em;
   }
 
 
@@ -219,6 +191,7 @@ button {
     width: 20%;
     height: 15%;
   }
+
 
   /*Titulo Seccion*/
   .products .titulo-seccion h2 {

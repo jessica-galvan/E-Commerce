@@ -42,20 +42,17 @@
             </div>
           </section>
 
-          <!--OFERTAS MOBILE-->
-          <section class="ofertas-mobile">
-            <img class="foto" src="img/ofertaUno.png" alt="oferta">
+          <!--PUBLICIDAD MOBILE-->
+          <section class="publicidad-mobile">
+            <img src="img/publicidad/PublicidadUno.png" alt="Publicidad">
           </section>
-          <!--OFERTAS MOBILE-->
+          <!--FIN PUBLICIDAD-->
 
-          <!--SECCION OFERTAS DESKTOP-->
-          <section class="ofertas">
-            <img class="foto" src="img/ofertaUno.png" alt="oferta">
-            <img class="foto" src="img/ofertaDos.png" alt="Oferta">
-            <img class="foto" src="img/ofertaTres.png" alt="Oferta">
-            <img class="foto" src="img/ofertaCuatro.png" alt="Oferta">
+          <!--PUBLICIDAD DESKTOP-->
+          <section class="publicidad-desktop">
+            <img src="img/publicidad/BannerUno.png" alt="Publicidad">
           </section>
-          <!--FIN SECCION OFERTAS-->
+          <!--FIN PUBLICIDAD-->
 
           <!--PRODUCTOS MÁS VENDIDOS-->
           <section class="products">
@@ -108,11 +105,20 @@
           </section>
           <!--FIN PRODUCTOS MÁS VENDIDOS-->
 
-          <!--PUBLICIDAD-->
-          <section>
-
+          <!--OFERTAS MOBILE-->
+          <section class="ofertas-mobile">
+            <img class="foto" src="img/ofertaUno.png" alt="oferta">
           </section>
-          <!--FIN PUBLICIDAD-->
+          <!--OFERTAS MOBILE-->
+
+          <!--SECCION OFERTAS DESKTOP-->
+          <section class="ofertas">
+            <img class="foto" src="img/ofertaUno.png" alt="oferta">
+            <img class="foto" src="img/ofertaDos.png" alt="Oferta">
+            <img class="foto" src="img/ofertaTres.png" alt="Oferta">
+            <img class="foto" src="img/ofertaCuatro.png" alt="Oferta">
+          </section>
+          <!--FIN SECCION OFERTAS-->
 
           <!--PRODUCTOS NUEVOS-->
           <section class="products">

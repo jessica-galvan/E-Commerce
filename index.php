@@ -16,7 +16,7 @@
 
 
 
-    <title>Fenty Beauty</title>
+    <title>Fancy Beauty</title>
   </head>
 
   <body>
@@ -33,12 +33,19 @@
           <!--SECCION INTRODUCCION/BANNER-->
           <section class="main-photo">
             <div class="banner">
-              <img src="img/banner-example.jpg" alt="Banner de Make Up">
+              <img src="banner/BannerUno.png" alt="Banner de Make Up">
             </div>
             <div class="main-text">
               <h1>Para todas</h1>
-              <p>Fenty Beauty  fue creada para que las mujeres del mundo se sientan incluidas, enfocándonos  en la variedad y cantidad de tonos de piel y creando fórmulas que funcionen de la mejor forma para todos los tipos de pieles. Nuestros productos fueron creados para que te inspires, para que te diviertas, para que crees algo nuevo y diferente. </p>
+              <p>Fancy Beauty  fue creada para que las mujeres del mundo se sientan incluidas, enfocándonos  en la variedad y cantidad de tonos de piel y creando fórmulas que funcionen de la mejor forma para todos los tipos de pieles. Nuestros productos fueron creados para que te inspires, para que te diviertas, para que crees algo nuevo y diferente. </p>
             </div>
+          </section>
+
+          <section class="ofertas">
+              <img class="foto" src="img/ofertaUno.png" alt="">
+              <img class="foto" src="img/ofertaDos.png" alt="">
+              <img class="foto" src="img/ofertaTres.png" alt="">
+              <img class="foto" src="img/ofertaCuatro.png" alt="">
           </section>
           <!--FIN SECCION BANNER-->
 

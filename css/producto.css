@@ -9,6 +9,14 @@
   justify-content: center;
 }
 
+.etiqueta-nuevo {
+  width: 20vw;
+  position: relative;
+  top: 7vh;
+  left: 15vw;
+  z-index: 10;
+}
+
 .p-imagen {
   align-self: center;
   margin-bottom: 3vh;
@@ -62,11 +70,20 @@
     background: white;
     margin: 20px 50px;
     width: 10%;
+    max-width: 100px;
     padding: 2%;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     flex: 1;
+  }
+
+  .etiqueta-nuevo {
+    width: 100%;
+    position: relative;
+    top: 10px;
+    left: 0;
+    z-index: 10;
   }
 
   .p-imagen {

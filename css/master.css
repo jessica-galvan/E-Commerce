@@ -33,6 +33,7 @@ nav a {
 .menu-mobile {
   position: fixed;
   top: 0;
+  z-index: 100;
   width: 100vw;
   height: 10vh;
   background: #8CD0E3; /*Lightblue*/
@@ -197,6 +198,7 @@ nav a {
   .menu-desktop {
     position: fixed;
     top: 0;
+    z-index: 100;
     width: 100%;
     height: 120px;
     color: white;

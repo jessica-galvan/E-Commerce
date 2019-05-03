@@ -8,6 +8,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   background-image: url(../img/Fondos/FondoSeccionesUno.png);
+  background-size: cover;
 }
 
 .intro-imagen {
@@ -77,7 +78,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-image: url(../img/Fondos/FondoSeccionesUno.png);
+
 }
 
 .products .titulo-seccion h2 {
@@ -131,6 +132,7 @@ button {
     flex-wrap: wrap;
     flex-direction: row;
     background-image: url(../img/Fondos/FondoSeccionesTres.png);
+    background-size: auto;
     }
 
   .intro-imagen {

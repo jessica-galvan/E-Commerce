@@ -1,5 +1,5 @@
 <footer class="footer-info">
-  <!--MOBILE-TABLET VERSION-->
+  <!--MOBILE VERSION-->
   <section class="links-mobile">
     <article class="footer-info-mobile">
       <h3>SOCIAL MEDIA</h3>
@@ -22,7 +22,6 @@
       <a href="#"><h3>SOBRE NOSOTROS</h3></a>
     </article>
 
-    <!--SUSCRIBE-->
     <div class="suscribe">
       <h3>SUSCRIBITE</h3>
       <form class="suscribe-form" action="#suscribe-button" method="post">
@@ -35,7 +34,6 @@
       <p>Copyright 2019</p>
     </div>
   </section>
-  <!--END MOBILE-TABLET VERSION-->
 
   <!--DESKTOP VERSION-->
   <section class="links-desktop">
@@ -50,18 +48,13 @@
     <article class="social-media">
       <h3>SOCIAL MEDIA</h3>
       <div class="social-links-desktop">
-        <!--Facebook-->
         <a href="http://facebook.com"><i class="fab fa-facebook-f"></i></a>
-        <!--Instagram-->
         <a href="http://instagram.com"><i class="fab fa-instagram"></i></a>
-        <!--Youtube-->
         <a href="http://youtube.com"><i class="fab fa-youtube"></i></a>
-        <!--Twitter-->
         <a href="http://twitter.com"><i class="fab fa-twitter"></i></a>
       </div>
     </article>
 
-    <!--SUSCRIBE-->
     <div class="suscribe">
       <h3>SUSCRIBITE</h3>
       <form class="suscribe-form" action="#" method="post">
@@ -69,10 +62,9 @@
         <button id="suscribe-button" type="submit" name="button">ENVIAR</button>
       </form>
     </div>
-    
+
     <div class="copyright">
       <p>Copyright 2019</p>
     </div>
   </section>
-  <!--END DESKTOP VERSION-->
 </footer>

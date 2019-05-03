@@ -1,5 +1,3 @@
-/*Este CSS es para lo más importante, que se repite en todos lados. Serian header, footer y algunas cosas más.*/
-
 /*GENERAL A TODAS LAS PAGINAS*/
 * {
   font-family: 'Open Sans', sans-serif;
@@ -9,12 +7,12 @@
   box-sizing: border-box;
 }
 
+/*MAIN CONTAINER*/
 .xl-screen {
   padding: 0;
   margin: 0;
 }
 
-/*MAIN CONTAINER*/
 .main-container {
   margin-top: 10vh;
   background: white;
@@ -23,14 +21,13 @@
   /*------------HEADER--------------------*/
 /*MENU DESKTOP*/
 .menu-desktop {
-  display: none; /*FOR MOBILE FIRST*/
+  display: none;
 }
 
 nav a {
   text-decoration: none;
   color: white;
 }
-/*FIN MENU DESKTOP*/
 
 /*MENU MOBILE*/
 .menu-mobile {
@@ -65,12 +62,8 @@ nav a {
 .logo {
   height: 7vh;
 }
-/*FIN MENU MOBILE*/
-  /*------------FIN HEADER----------------*/
-
 
   /*------------FOOTER--------------------*/
-/*FOOTER GENERAL*/
 .footer-info {
   background: #8CD0E3; /*Lightblue*/
   color: white;
@@ -151,12 +144,15 @@ nav a {
   .copyright p {
     color: white;
   }
-    /*------------FIN FOOTER----------------*/
-
 
 @media (min-width: 700px) { /*TABLET*/
   * {
     font-size: 26px;
+  }
+
+  /*MAIN CONTAINER*/
+  .main-container {
+    margin-top: 9vh;
   }
 
   /*MENU MOBILE*/
@@ -177,11 +173,6 @@ nav a {
     width: 5vw;
     margin-right: 1vw;
   }
-
-  /*MAIN COINTAINER*/
-  .main-container {
-    margin-top: 9vh;
-  }
 }
 
 @media (min-width: 992px) { /*DESKTOP*/
@@ -189,7 +180,6 @@ nav a {
   * {
     font-size: 20px;
     box-sizing: border-box;
-    /* overflow: hidden; */
   }
 
   /*MAIN-CONTAINER*/
@@ -197,8 +187,8 @@ nav a {
     margin-top: 120px;
   }
 
-    /*------------HEADER--------------------*/
-    /*MENU MOBILE*/
+  /*------------HEADER--------------------*/
+  /*MENU MOBILE*/
   .menu-mobile {
     display: none;
   }
@@ -217,7 +207,7 @@ nav a {
     flex-wrap: wrap;
   }
 
-/*MENU PRIMERA LINEA*/
+  /*MENU PRIMERA LINEA*/
   .menu-top {
     width: 100%;
     display: flex;
@@ -265,7 +255,6 @@ nav a {
     margin-bottom: 6.5px;
   }
 
-
   .icons p {
     color: white;
     text-align: center;
@@ -290,8 +279,6 @@ nav a {
 
   .menu-bottom ul {
     list-style: none;
-    /* padding-top: 10px; */
-    /* padding-bottom: px; */
   }
 
   .menu-bottom ul li {
@@ -305,11 +292,8 @@ nav a {
     text-align: center;
     font-weight: bold;
   }
-  /*FIN SEGUNDA LINEA*/
-  /*------------FIN HEADER---------------*/
 
   /*------------FOOTER--------------------*/
-  /*FOOTER*/
   .links-mobile { /*Ocultamos el footer para version mobil*/
     display: none;
   }
@@ -356,7 +340,6 @@ nav a {
     display: inline-block;
     margin-top: 0;
     width: 30%;
-    /* background:  */
   }
 
   .suscribe h3 {
@@ -388,7 +371,6 @@ nav a {
     width: 100%;
   }
 }
-/*------------FIN FOOTER---------------*/
 
 @media (min-width: 1600px) { /*BIG SCREEN*/
  .xl-screen {

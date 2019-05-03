@@ -1,8 +1,6 @@
 
 .main-container {
-  /* margin: 20px; */
   padding: 5vw;
-
 }
 
 .faq-body {
@@ -14,9 +12,6 @@
   font-family: 'Bree Serif', serif;
   font-size: 1.8em;
   text-align: center;
-  /* width: 100%; */
-  /* display: flex; */
-  /* justify-content: center; */
 }
 
 .cajaDePregunta{
@@ -40,5 +35,4 @@
   .faq-body {
     padding: 0 5%;
   }
-
 }

@@ -31,9 +31,7 @@
   font-size: 2em;
 }
 
-
 /*FORMLUARIO*/
-
 .form {
   font-family: 'Open Sans', sans-serif;
   margin: 5vw;
@@ -57,11 +55,8 @@ label {
 }
 
 /*OLVIDO CONTRASEÑA*/
-
 .form-links {
   margin: 2vw;
-  /* background: grey; */
-
 }
 
 .form-links a {
@@ -101,14 +96,11 @@ label {
   margin-top: 2vh;
 }
 
-
 @media (min-width: 768px) { /*TABLET*/
   .login-text h2  {
     font-size: 2em;
   }
 }
-
-
 
 @media (min-width: 992px) { /*DESKTOP*/
   .main-container {
@@ -125,7 +117,6 @@ label {
     padding: 10px;
     padding-top: 20px;
     height: 700px;
-    /* text-align: center; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -170,9 +161,8 @@ label {
   .login-button {
     margin: 20px;
   }
+
   .login-button button {
     padding: 20px;
   }
-
-
 }

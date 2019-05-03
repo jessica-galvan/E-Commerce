@@ -1,5 +1,5 @@
 /*PRODUCT*/
-.product {
+.producto {
   background: white;
   width: 100vw;
   padding: 5vw;
@@ -9,42 +9,39 @@
   justify-content: center;
 }
 
-.product .images {
+.p-imagen {
   align-self: center;
   margin-bottom: 3vh;
 }
 
-.product .images img {
+.p-imagen img {
   max-width: 50vw;
   border: solid, lightgrey, 1vw;
   text-align: center;
 }
 
-.product-text {
+.producto-texto {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
-.product-text h3 {
+.producto-texto h3 {
   font-family: 'Bree Serif', serif;
   color: black;
   text-transform: capitalize;
-  /* margin-bottom: auto; */
 }
 
-.product-text .price {
+.producto-texto .precio {
   color: black;
-  /* margin-top: auto; */
 }
 
-.product-button {
+.producto-boton {
   text-align: center;
 }
 
-.add-bag {
+.comprar {
   padding: 2vw;
   margin-top: 2vh;
   background: #8CD0E3; /*Lightblue*/
@@ -57,58 +54,51 @@
 @media (min-width: 768px) { /*TABLET*/}
 
 @media (min-width: 992px) { /*DESKTOP*/
-  .products {
+  .productos {
     margin: 0 10%;
   }
 
-  /*PRODUCT: cada producto*/
-  .product {
-    /* border: solid 1px black; */
+  .producto {
     background: white;
-    /* padding: 50px; */
     margin: 20px 50px;
     width: 10%;
     padding: 2%;
-    /* overflow: hidden; */
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     flex: 1;
-    /* flex-direction: column; */
   }
 
-  .product .images {
+  .p-imagen {
     margin: 0;
     padding: 0;
   }
 
-  .product .images img {
-    /* width: 100%; */
+  .p-imagen img {
     height: 135px;
     margin: 0;
   }
 
-  .product-text {
+  .producto-texto {
     color: black;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
-  .product-text h3 {
+  .producto-texto h3 {
     font-family: 'Bree Serif', serif;
-    /* margin-bottom: auto; */
   }
 
-  .product-button {
+  .producto-boton {
     margin-top: auto;
   }
 
-  .price {
+  .precio {
     margin-bottom: 5px;
   }
 
-  .add-bag {
+  .comprar {
     padding: 20px;
     margin-top: 10px;
     cursor: pointer;

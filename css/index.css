@@ -1,5 +1,3 @@
-/* Este CSS es para el contenido dentro del index. No incluye Header y Footer.*/
-
 /*INTRO*/
 .intro {
   width: 100vw;
@@ -7,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  background-image: url(../img/Fondos/FondoSeccionesUno.png);
+  background: url("../img/Fondos/FondoSeccionesUno.png");
   background-size: cover;
 }
 
@@ -71,40 +69,36 @@
   display: none;
 }
 
-
-
 /*PRODUCTS*/
-.products {
+.productos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
+  background: white;
 }
 
-.products .titulo-seccion h2 {
+.productos .titulo-seccion h2 {
   text-align: center;
   font-family: 'Bree Serif', serif;
   color: black;
-  /*background: white;*/
+  background: white;
   padding: 10vw;
   width: 100vw;
-
 }
 
 button {
   cursor: pointer;
 }
 
-/*Shop More*/
-.more {
+/*VER MAS*/
+.mas {
   width: 100vw;
   margin: 5vh auto;
   display: flex;
   align-self: center;
-
 }
 
-.shop-more {
+.ver-mas {
   padding: 2vw;
   margin-top: 2vh;
   background: #F7EB61; /*Yellow*/
@@ -115,14 +109,6 @@ button {
   color: black;
 }
 
-/*el resto de los estilos de las cajas de productos estan en  product.css*/
-
-@media (min-width: 768px) { /*TABLET*/
-  /* .main-container {
-    margin-top: 9vh;
-  }
-} */
-
 @media (min-width: 992px) { /*DESKTOP*/
   /*INTRO*/
   .intro {
@@ -131,9 +117,9 @@ button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-image: url(../img/Fondos/FondoSeccionesTres.png);
+    background-image: url("../img/Fondos/FondoSeccionesTres.png");
     background-size: auto;
-    }
+  }
 
   .intro-imagen {
     width: 45%;
@@ -173,13 +159,12 @@ button {
 
   .publicidad-desktop {
     display: block;
-    margin-top:50px;
     width: 100%;
+    margin-top: 5px;
   }
   .publicidad-desktop img {
     width: 100%;
   }
-
 
   /*OFERTAS*/
   .ofertas-mobile {
@@ -198,9 +183,7 @@ button {
     height: 15%;
   }
 
-
-  /*Titulo Seccion*/
-  .products .titulo-seccion h2 {
+  .productos .titulo-seccion h2 {
     display: block;
     text-align: center;
     font-size: 2em;
@@ -209,12 +192,9 @@ button {
     background: white;
     padding-top: 50px;
     padding-bottom: 25px;
-    /* padding: 10%; */
-    /* width: 100%; */
   }
 
-  /*Shop More*/
-  .shop-more {
+  .ver-mas {
     padding: 25px;
     margin-top: 50px;
     background: #F7EB61; /*Yellow*/
@@ -223,6 +203,4 @@ button {
     font-family: 'Bree Serif', serif;
     margin: auto;
     color: black;
-
-
 }

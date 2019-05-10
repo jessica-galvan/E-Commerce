@@ -1,11 +1,21 @@
 
 .main-container {
   padding: 5vw;
+  background-image: url(../img/Fondos/FondoSeccionesDos.png);
+
 }
 
+
 .faq-body {
-  background: white;
   padding: 5vw;
+
+  
+}
+
+.imagenDePreguntas img{
+    width: 50px;
+    margin-right: 5px;
+    margin-top: 7px;
 }
 
 .faq-title {
@@ -16,6 +26,13 @@
 
 .cajaDePregunta{
   margin-top: 3vh;
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;    
+}
+
+.cajaDePreguntas img {
+    order: -1;
 }
 
 .preguntas{

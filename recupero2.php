@@ -1,9 +1,7 @@
 <?php
   session_start();
   require_once('actions/user-check.php');
-  if(isset($_SESSION['emailUsuario'])) {  /*Si hay usuario logueado, redireccionalos a index*/
-    header('location:index.php');
-  }
+  usuarioLogueado();
   require_once('includes/funciones.php'); /*Solo es necesario para formularios*/
   $email = $_SESSION['emailGuardado'];
   $usuarioRecuperado = $_SESSION['infoGuardada'];
@@ -34,7 +32,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/form.css">
     <title>Fancy Beauty</title>

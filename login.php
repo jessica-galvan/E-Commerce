@@ -1,16 +1,12 @@
 <?php
   session_start();
   require_once('actions/user-check.php');
-  if(isset($_SESSION['emailUsuario'])) {  /*Si hay usuario logueado, redireccionalos a index*/
-    header('location:index.php');
-  }
+  usuarioLogueado();
   require_once('includes/funciones.php'); /*Solo es necesario para formularios*/
-
   if($_POST) {
     $email = isset($_POST['email'])?trim($_POST['email']): "";
     $contrasenia = isset($_POST['contrasenia'])?trim($_POST['contrasenia']): "";
     $contraseniaOriginal = "";
-
     /*VALIDACIONES*/
     if($email == ""){
       $errorEmail = "* Completa el email";
@@ -22,7 +18,6 @@
       $errorEmail = "Ese email no esta registrado.";
       $hayErrores = true;
     }
-
     if($contrasenia == ""){
       $errorContrasenia = "* Completa la contraseña";
       $hayErrores = true;
@@ -36,7 +31,6 @@
         $errorContrasenia = "* Email o contraseña invalidas";
       }
     }
-
     if(!$hayErrores) {
       global $usuarioRecuperado;
       $_SESSION['emailUsuario'] = $email;
@@ -53,7 +47,6 @@
         setcookie("emailGuardado", "", $expirar); /*POR LAS DUDAS PISO EL DATO VACIO.*/
         setcookie("nombreUsuario", "", $expirar);
       }
-
       /*EN AMBOS CASOS, ANDA A CONFIRMAR.*/
       // header('location:confirmacion.php');
       $URL="confirmacion.php";
@@ -67,7 +60,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/form.css">
     <title>Fancy Beauty</title>

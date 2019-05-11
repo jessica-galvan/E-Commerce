@@ -1,14 +1,33 @@
 <header>
   <!--MENU MOBILE-->
   <nav class="menu-mobile">
-    <a href="#">
-      <i id="bars" class="fas fa-bars"></i>
-    </a>
+    <nav role="navigation">
+      <div id="menuToggle">
+        <!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it.-->
+        <input type="checkbox" />
 
-    <a href="<?=$linkUsuario?>"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
+        <!--Los spans actuan como hamburger-->
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!--Lo que va dentro del menu desplegable-->
+        <ul id="menu">
+          <a href="index.php"><li>Inicio</li></a>
+          <a href="#"><li>Categorias</li></a>
+          <a href="#"><li>Contacto</li></a>
+          <a href="faq.php"><li>Preguntas Frecuentes</li></a>
+          <a href="<?=$linkUsuario?>"><li><?=$textoHamburguesa?></li></a>
+
+        </ul>
+      </div>
+    </nav>
+
+
+    <a href="index.php"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
 
     <div class="icons">
-      <a href="login.php">
+      <a id="user-icon" href="<?=$linkUsuario?>">
         <img id="icon-img" class="icon-img" src="img/icons/logInRegister.png" alt="User">
       </a>
 

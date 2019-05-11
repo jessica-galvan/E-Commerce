@@ -1,6 +1,7 @@
 <?php
   session_start();
   require_once('actions/user-check.php');
+  usuarioLogueado();
   require_once('includes/funciones.php');
 
   if(isset($_POST['registro'])) {

@@ -18,7 +18,6 @@
           <a href="#"><li>Contacto</li></a>
           <a href="faq.php"><li>Preguntas Frecuentes</li></a>
           <a href="<?=$linkUsuario?>"><li><?=$textoHamburguesa?></li></a>
-
         </ul>
       </div>
     </nav>

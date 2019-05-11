@@ -258,6 +258,8 @@ nav a {
     color: white;
   }
 
+
+
 @media (min-width: 700px) { /*TABLET*/
   * {
     font-size: 26px;
@@ -489,6 +491,8 @@ nav a {
     width: 100%;
   }
 }
+
+
 
 @media (min-width: 1600px) { /*BIG SCREEN*/
  .xl-screen {

@@ -5,7 +5,7 @@
       <i id="bars" class="fas fa-bars"></i>
     </a>
 
-    <a href="index.php"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
+    <a href="<?=$linkUsuario?>"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
 
     <div class="icons">
       <a href="login.php">
@@ -16,6 +16,7 @@
         <img class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
       </a>
     </div>
+
   </nav>
 
   <!--MENU DESKTOP-->
@@ -35,10 +36,10 @@
         </a>
 
         <div class="icons">
-          <a href="login.php">
+          <a href="<?=$linkUsuario?>">
             <div id="user-box" class="icon-box">
                 <img id="user" class="icon-img" src="img/icons/logInRegister.png" alt="User">
-                <p>Ingresar</p>
+                <p><?=$textoBienvenida?></p>
             </div>
           </a>
 

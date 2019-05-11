@@ -1,10 +1,14 @@
+<?php
+  session_start();
+  include_once('actions/user-check.php');
+ ?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/producto.css">
@@ -15,7 +19,7 @@
       <div class="body-container">
         <!--HEADER-->
         <?php
-          include_once("includes/header.php");
+            include_once("includes/header.php");
          ?>
         <main class="main-container">
           <section class="intro">
@@ -45,7 +49,8 @@
             include("includes/lista-productos.php");
             $totalProductos = count($productos);
             $maxProductosPopulares = 0;
-            $nPopulares = 0;
+            $nPopulares = 0; /*$nPopulares es el $i de un for. Como lo hice con while, lo cree.*/
+
             while($maxProductosPopulares < 5) {
               if ($productos[$nPopulares]["estado"] === "Best-seller"):?>
                 <article class="producto">

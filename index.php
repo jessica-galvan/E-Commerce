@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include_once('actions/user-check.php');
+  require_once('actions/user-check.php');
  ?>
 
 <!DOCTYPE html>

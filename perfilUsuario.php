@@ -21,18 +21,19 @@
          ?>
         <main class="main-container">
           <div class="main-body">
-            <h2>Gracias por registrarte!</h2>
+            <h2>¿Quéres desloguearte?</h2>
+            <br>
+            <form class="" action="actions/logout.php" method="post">
+              <button type="submit" name="logout">Cerra sesión</button>
+            </form>
             <br>
             <br>
-            <h2>Control de Usuarios Temporal</h2>
+            <!-- <h2>Control de Usuarios Temporal</h2> -->
             <?php
-            $listaJSON = file_get_contents('includes/user.json');
-            $listaUsuarios = json_decode($listaJSON, true);
-
-            var_dump($listaUsuarios);
-
+            // $listaJSON = file_get_contents('includes/user.json');
+            // $listaUsuarios = json_decode($listaJSON, true);
+            // var_dump($listaUsuarios);
             // var_dump($usuarioNombre);
-
              ?>
 
           </div>

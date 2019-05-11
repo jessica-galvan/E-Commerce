@@ -58,6 +58,33 @@
       $hayErrores = true;
     }
 
+    if($foto == "") {
+      $errorFoto = "Elegi una foto";
+    }
+
+    if(isset($_FILES["foto"])){
+      if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
+        $nombreArchivo = $_FILES["foto"]["name"];
+        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+        $origen = $_FILES["foto"]["tmp_name"];
+
+        /*para poner parte del email del usuario en el nombre*/
+        $separar = strpos($email, '@');
+        $divido  = str_split($email, $separar);
+        $fotoNombre = $divido[0];
+
+        $destino = "";
+        $destino = $destino."user/";
+        $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
+
+        move_uploaded_file($origen,$destino);
+        $foto = $destino."$fotoNombre-fotoPerfil.".$ext;
+      }
+    } else {
+      $errorFoto = "Elegi una foto";
+      $hayErrores = true;
+    }
+
     /*ARRAY FINAL DEL USUARIO*/
     if(!$hayErrores) {
       require_once('includes/preguntaSeguridad.php');
@@ -77,6 +104,7 @@
         "preguntaValor" => $preguntaValor,
         "preguntaSeguridad" => $preguntaSeguridad,
         "respuestaSeguridad" => password_hash($respuestaSeguridad, PASSWORD_DEFAULT),
+        "foto" => $foto,
       ];
 
       /*MANDAR A BASE DE DATOS*/
@@ -115,7 +143,7 @@
                <h2>Registrate</h2>
              </div>
 
-             <form class="" action="register.php" method="post">
+             <form class="" action="register.php" method="post" enctype="multipart/form-data">
                <div class="form">
                  <label for="nombre">Nombre</label>
                  <input id="nombre" type="text" name="nombre" value="<?=$nombre?>">
@@ -167,6 +195,12 @@
                  </select>
                  <input type="text" name="respuestaSeguridad" placeholder="Respuesta" value="<?=$respuestaSeguridad?>">
                  <span class="error-form"><?=$errorPregunta?></span>
+               </div>
+
+               <div class="form">
+                 <label for="fotoPerfil">Foto de Perfil</label>
+                 <input type="file" name="foto" value="">
+                 <span class="error-form"><?=$errorFoto?></span>
                </div>
 
                <div class="login-button">

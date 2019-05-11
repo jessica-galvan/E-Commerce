@@ -58,10 +58,6 @@
       $hayErrores = true;
     }
 
-    if($foto == "") {
-      $errorFoto = "Elegi una foto";
-    }
-
     if(isset($_FILES["foto"])){
       if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
         $nombreArchivo = $_FILES["foto"]["name"];
@@ -73,15 +69,17 @@
         $divido  = str_split($email, $separar);
         $fotoNombre = $divido[0];
 
+        /*donde se guarda la foto y como se va a llamar*/
         $destino = "";
         $destino = $destino."user/";
         $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
 
-        move_uploaded_file($origen,$destino);
-        $foto = $destino."$fotoNombre-fotoPerfil.".$ext;
+      } else {
+        $errorFoto = "* Elegi una foto";
+        $hayErrores = true;
       }
     } else {
-      $errorFoto = "Elegi una foto";
+      $errorFoto = "* Elegi una foto";
       $hayErrores = true;
     }
 
@@ -95,6 +93,9 @@
         }
         return $preguntaSeguridad;
       };
+
+      $subir = move_uploaded_file($origen,$destino);
+      $foto = $destino;
 
       $usuarioEnArray = [
         "nombre" => $nombre,

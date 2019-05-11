@@ -50,6 +50,17 @@
   padding: 2vw;
 }
 
+.form select {
+  width: 70vw;
+  margin-bottom: 1vh;
+  font-size: 1em;
+  padding: 1vw;
+}
+
+.form option {
+  overflow: hidden;
+}
+
 label {
   color: black;
 }
@@ -94,6 +105,17 @@ label {
 
 .login-text p {
   margin-top: 2vh;
+}
+
+.error-form {
+  color: red;
+  font-size: 0.8em;
+}
+
+.error-link {
+  color: red;
+  font-size: 0.9em;
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) { /*TABLET*/
@@ -157,6 +179,16 @@ label {
     max-width: 960px;
   }
 
+  .form select {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .form option {
+    overflow: hidden;
+  }
   /*BOTON*/
   .login-button {
     margin: 20px;

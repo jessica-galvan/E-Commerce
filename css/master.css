@@ -1,4 +1,6 @@
 /*GENERAL A TODAS LAS PAGINAS*/
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans');
+
 * {
   font-family: 'Open Sans', sans-serif;
   color: black;

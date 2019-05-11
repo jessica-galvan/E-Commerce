@@ -33,7 +33,7 @@
         $hayErrores = false;
       } else {
         $hayErrores = true;
-        $errorContrasenia = "* <a class:'error-link' href:'recupero1.php'>¿Olvidáste tu contraseña?</a>";
+        $errorContrasenia = "* Email o contraseña invalidas";
       }
     }
 

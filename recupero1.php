@@ -63,8 +63,8 @@
 
              <form class="" action="recupero1.php" method="post">
                <div class="form">
-                 <label for="email">Email</label>
-                 <input id="email" type="text" name="email" value="<?=$email?>">
+                 <!-- <label for="email">Email</label> -->
+                 <input id="email" type="text" name="email" placeholder="Email" value="<?=$email?>" >
                  <span class="error-form"><?=$errorEmail?></span>
                </div>
 

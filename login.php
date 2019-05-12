@@ -1,4 +1,5 @@
 <?php
+  ob_start();
   session_start();
   require_once('actions/user-check.php');
   usuarioLogueado();
@@ -31,29 +32,32 @@
         $errorContrasenia = "* Email o contraseña invalidas";
       }
     }
+
+    if(isset($_POST['recordar'])) {
+      $recordar = "checked";
+    }
+
     if(!$hayErrores) {
       global $usuarioRecuperado;
-      $_SESSION['emailUsuario'] = $email;
-      $_SESSION['usuarioInfo'] = $usuarioRecuperado;
-      $_SESSION['nombreUsuario'] = $usuarioRecuperado['nombre'];
-
+      $_SESSION["email_usuario"] = $email;
+      $_SESSION["nombre_usuario"] = $usuarioRecuperado["nombre"];
       /*SI EL RECORDAR ESTA TILDADO, SETEAR UNA COOKIE.*/
       if(isset($_POST['recordar'])) {
-        $expirar = time() + 43200; /*30 DIAS.*/
-        setcookie("emailUsuario", $email, $expirar);
-        setcookie("nombreUsuario", $usuarioRecuperado['nombre'], $expirar);
+        $expirar = time() + 60*60*24*30; /*30 DIAS*/
+        setcookie("email_usuario", $email, $expirar);
+        setcookie("nombre_usuario", $usuarioRecuperado["nombre"], $expirar);
       } else {
-        $expirar = time() - 1; /*PARA QUE SE BORRE LA COOKIE ANTERIOR*/
-        setcookie("emailGuardado", "", $expirar); /*POR LAS DUDAS PISO EL DATO VACIO.*/
-        setcookie("nombreUsuario", "", $expirar);
+        /*if(!isset($_POST["recordar"]) && isset($_COOKIE["email_usuario"]))*/ 
+        borrarCookies();
       }
       /*EN AMBOS CASOS, ANDA A CONFIRMAR.*/
-      // header('location:confirmacion.php');
-      $URL="confirmacion.php";
+      $URL="perfilUsuario.php";
       echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
       echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+      // header('location:confirmacion.php');
     }
   }
+  ob_end_flush();
  ?>
 <!DOCTYPE html>
 <html>
@@ -89,7 +93,7 @@
                </div>
                <div class="remember">
                  <label for="recordar">Recordarme</label>
-                 <input id="recordar" type="checkbox" name="recordar" value="si">
+                 <input id="recordar" type="checkbox" name="recordar" value="si" <?=$recordar?>>
                </div>
                <div class="login-button">
                  <button type="submit" name="login">Ingresar</button>

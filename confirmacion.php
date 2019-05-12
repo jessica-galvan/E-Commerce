@@ -31,11 +31,7 @@
             $listaUsuarios = json_decode($listaJSON, true);
 
             var_dump($listaUsuarios);
-
-            // var_dump($usuarioNombre);
-
              ?>
-
           </div>
         </main>
        <!--FOOTER-->

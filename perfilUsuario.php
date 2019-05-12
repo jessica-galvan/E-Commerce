@@ -1,9 +1,9 @@
 <?php
   session_start();
   require_once('actions/user-check.php');
-  if(!isset($_SESSION['emailUsuario'])) {  /*Si no hay usuario logueado, redireccionalos a login*/
-    header('location:login.php');
-  }
+  // if(!isset($_SESSION['emailUsuario'])) {  /*Si no hay usuario logueado, redireccionalos a login*/
+  //   header('location:login.php');
+  // }
  ?>
 <!DOCTYPE html>
 <html>
@@ -29,6 +29,12 @@
             <form class="" action="actions/logout.php" method="post">
               <button type="submit" name="logout">Cerra sesión</button>
             </form>
+            <br>
+            <h2>Control Info</h2>
+            <?php
+            var_dump($_SESSION);
+            var_dump($_COOKIE);
+            ?>
           </div>
         </main>
        <!--FOOTER-->

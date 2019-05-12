@@ -3,7 +3,6 @@
   require_once('actions/user-check.php');
   usuarioLogueado();
   require_once('includes/funciones.php');
-
   if(isset($_POST['registro'])) {
     $nombre =isset($_POST['nombre'])?trim($_POST['nombre']): "";
     $apellido = isset($_POST['apellido'])?trim($_POST['apellido']): "";
@@ -13,17 +12,15 @@
     $preguntaValor = isset($_POST['preguntaSeguridad'])?$_POST['preguntaSeguridad']: "";
     $preguntaSeguridad = "";
     $respuestaSeguridad= isset($_POST['respuestaSeguridad'])?trim($_POST['respuestaSeguridad']): "";
-
+    /*VALIDACIONES*/
     if($nombre == "") {
       $errorNombre = "* Completa el nombre";
       $hayErrores = true;
     }
-
     if ($apellido == "") {
       $errorApellido = "* Completa el apellido";
       $hayErrores = true;
     }
-
     if($email == ""){
       $errorEmail = "* Completa el email";
       $hayErrores = true;
@@ -34,8 +31,6 @@
       $errorEmail = "* Esta direccion ya  esta registrada. Usa otra.";
       $hayErrores = true;
     }
-
-
     if($contrasenia == ""){
       $errorContrasenia = "* Completa la contraseña";
       $hayErrores = true;
@@ -50,7 +45,6 @@
       $contrasenia = "";
       $contraseniaConfirmar = "";
     }
-
     if($preguntaValor == "") {
       $errorPregunta = "* Selecciona una pregunta";
       $hayErrores = true;
@@ -58,23 +52,22 @@
       $errorPregunta = "* Tu respuesta no puede estar vacia";
       $hayErrores = true;
     }
-
     if(isset($_FILES["foto"])){
       if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
         $nombreArchivo = $_FILES["foto"]["name"];
         $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
         $origen = $_FILES["foto"]["tmp_name"];
-
+        /*Si el usuario completo el email, podemos hacer lo de renombrar la foto. Porque si no hago esto, sale un error si el usuario cargo la foto sin el email. */
+        if($errorEmail = "") {
         /*para poner parte del email del usuario en el nombre*/
         $separar = strpos($email, '@');
         $divido  = str_split($email, $separar);
         $fotoNombre = $divido[0];
-
-        /*donde se guarda la foto y como se va a llamar*/
+        /*Donde se guarda la foto y como se va a llamar*/
         $destino = "";
         $destino = $destino."user/";
         $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
-
+        }
       } else {
         $errorFoto = "* Elegi una foto";
         $hayErrores = true;
@@ -83,7 +76,6 @@
       $errorFoto = "* Elegi una foto";
       $hayErrores = true;
     }
-
     /*ARRAY FINAL DEL USUARIO*/
     if(!$hayErrores) {
       require_once('includes/preguntaSeguridad.php');
@@ -94,10 +86,9 @@
         }
         return $preguntaSeguridad;
       };
-
+      /*Para que solo suba la foto si el resto de los datos estan bien*/
       $subir = move_uploaded_file($origen,$destino);
       $foto = $destino;
-
       $usuarioEnArray = [
         "nombre" => $nombre,
         "apellido" => $apellido,
@@ -108,7 +99,6 @@
         "respuestaSeguridad" => password_hash($respuestaSeguridad, PASSWORD_DEFAULT),
         "foto" => $foto,
       ];
-
       /*MANDAR A BASE DE DATOS*/
       $listaUsuarios[] = $usuarioEnArray;
       $listaUsuariosJSON = json_encode($listaUsuarios);
@@ -120,7 +110,6 @@
       exit;
     }
   }
-
  ?>
 <!DOCTYPE html>
 <html>

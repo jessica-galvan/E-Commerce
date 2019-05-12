@@ -44,8 +44,8 @@
       /*SI EL RECORDAR ESTA TILDADO, SETEAR UNA COOKIE.*/
       if(isset($_POST['recordar'])) {
         $expirar = time() + 60*60*24*30; /*30 DIAS*/
-        setcookie("email_usuario", $email, $expirar);
-        setcookie("nombre_usuario", $usuarioRecuperado["nombre"], $expirar);
+        setcookie('email_usuario', $email, $expirar);
+        setcookie('nombre_usuario', $usuarioRecuperado["nombre"], $expirar);
       } else {
         /*if(!isset($_POST["recordar"]) && isset($_COOKIE["email_usuario"]))*/
         borrarCookiesLogin();

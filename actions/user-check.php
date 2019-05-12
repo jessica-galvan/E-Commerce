@@ -58,12 +58,26 @@
       }
     }
 
+  function logout() {
+    if(isset($_COOKIE["email_usuario"])) {   /*Y SI HAY UNA COOKIE SETEADA CON EL RECORDAME?*/
+      $expirar = time() - 900; /*Tiempo negativo de 15 minutos*/
+      setcookie("email_usuario", 'vacio', $expirar);
+      setcookie("nombre_usuario", 'vacio', $expirar);
+    }
+    session_destroy();
+    // header('location: ../index.php');
+    header('location: ../perfilUsuario.php');
+    exit;
+  }
+
+
   /*LOGOUT*/
   if(isset($_POST['logout'])) {
-    /*Y SI HAY UNA COOKIE SETEADA CON EL RECORDAME?*/
-    borrarCookiesLogin();
-    session_destroy();
-    header('location: ../index.php');
+    logout();
+    // /*Y SI HAY UNA COOKIE SETEADA CON EL RECORDAME?*/
+    // borrarCookiesLogin();
+    // session_destroy();
+    // header('location: ../index.php');
   }
 
 

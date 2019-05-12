@@ -24,17 +24,18 @@
          ?>
         <main class="main-container">
           <div class="main-body">
+
             <h2>¿Quéres desloguearte?</h2>
             <br>
             <form class="" action="actions/logout.php" method="post">
               <button type="submit" name="logout">Cerra sesión</button>
             </form>
+
             <br>
             <h2>Control Info</h2>
             <?php
             var_dump($_SESSION);
             var_dump($_COOKIE);
-            echo isset($_COOKIE);            
             ?>
           </div>
         </main>

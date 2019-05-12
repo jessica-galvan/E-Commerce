@@ -1,9 +1,9 @@
 <?php
+  ob_start();
   session_start();
   require_once('actions/user-check.php');
-  // if(!isset($_SESSION['emailUsuario'])) {  /*Si no hay usuario logueado, redireccionalos a login*/
-  //   header('location:login.php');
-  // }
+  // sinUsuario();
+  ob_end_flush();
  ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +34,7 @@
             <?php
             var_dump($_SESSION);
             var_dump($_COOKIE);
+            echo isset($_COOKIE);            
             ?>
           </div>
         </main>

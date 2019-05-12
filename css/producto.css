@@ -63,7 +63,7 @@
 
 @media (min-width: 992px) { /*DESKTOP*/
   .productos {
-    margin: 0 10%;
+    /* margin: 0 10%; */
   }
 
   .producto {

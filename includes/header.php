@@ -6,7 +6,7 @@
         <!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it.-->
         <input type="checkbox" />
 
-        <!--Los spans actuan como hamburger-->
+        <!--Los spans actuan como el icono de hamburgersa y se transforman en la cruz-->
         <span></span>
         <span></span>
         <span></span>
@@ -18,10 +18,10 @@
           <a href="#"><li>Contacto</li></a>
           <a href="faq.php"><li>Preguntas Frecuentes</li></a>
           <a href="<?=$linkUsuario?>"><li><?=$textoHamburguesa?></li></a>
+          <a href="actions/logout.php"><li><?=$textoLogout?></li></a>
         </ul>
       </div>
     </nav>
-
 
     <a href="index.php"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
 
@@ -34,7 +34,6 @@
         <img class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
       </a>
     </div>
-
   </nav>
 
   <!--MENU DESKTOP-->

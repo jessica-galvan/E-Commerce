@@ -47,8 +47,8 @@
         setcookie("email_usuario", $email, $expirar);
         setcookie("nombre_usuario", $usuarioRecuperado["nombre"], $expirar);
       } else {
-        /*if(!isset($_POST["recordar"]) && isset($_COOKIE["email_usuario"]))*/ 
-        borrarCookies();
+        /*if(!isset($_POST["recordar"]) && isset($_COOKIE["email_usuario"]))*/
+        borrarCookiesLogin();
       }
       /*EN AMBOS CASOS, ANDA A CONFIRMAR.*/
       $URL="perfilUsuario.php";

@@ -48,4 +48,30 @@
      }
      return $resultado;
    };
+
+   /*Funcion para eliminar cookies*/
+   function borrarCookiesLogin() {
+     if(isset($_COOKIE["email_usuario"])) {
+       $expirar = time() - 900; /*Tiempo negativo de 15 minutos*/
+       setcookie('email_usuario', '', $expirar, '/', $_SERVER['HTTP_HOST']);
+       setcookie('nombre_usuario', '', $expirar, '/', $_SERVER['HTTP_HOST']);
+     }
+   }
+
+   /*Funcion para sobrescribir datos en un usuario ya registrado. Tiene dos parametros $indice, que seria el lugar donde se reemplazaria el dato, y $dato, que seria la info nueva.*/
+   function reemplazar($indice, $dato){
+   for ($i=0; $i < count($listaUsuarios); $i++) {
+     if(checkEmail($email)){
+       $listaUsuarios[$i][$indice] = $dato;
+       break;
+     }
+     return $listaUsuarios;
+   }
+  };
+  /*OJO: que al final del archivo si o si tendrias que poner lo de enconde y file_put_contents, para que se actualice el user.json. Por las dudas lo dejo acá comentado. Ponelo al final de todo el editar perfil.*/
+  // $listaUsuariosJSON = json_encode($listaUsuarios);
+  // file_put_contents('includes/user.json', $listaUsuariosJSON);
+  /*Habria que ver si reemplazar funciona si lo usas varias veces en un formulario. Se me acaba de ocurrir.*/
+
+
   ?>

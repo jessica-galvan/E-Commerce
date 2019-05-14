@@ -49,31 +49,60 @@
           include_once("includes/header.php");
          ?>
         <main class="main-container">
-          <div class="main-body">
-              <form class="" action="perfilUsuario.php" method="post">
+          <div class="main-body register-form">
+            <div class="login-text">
+              <h2>Editar mi perfil</h2>
+            </div>
+              <form class="container-editarPerfil" action="perfilUsuario.php" method="post">
                 <label for="tipoDePiel">Tipo de piel:</label>
                 <br>
+                <div class="">
                 <input type="radio" name="tipoDePiel" value="n">Normal
+                </div>
+                <div class="">
                 <input type="radio" name="tipoDePiel" value="s">Seca
+                </div>
+                <div class="">
                 <input type="radio" name="tipoDePiel" value="g">Grasa
+                </div>
+                <div class="">
                 <input type="radio" name="tipoDePiel" value="m">Mixta
+                </div>
 
-                  <br>
+                <br>
                 <label for="tonoDePiel">Tono de piel:</label>
-                  <br>
-                <input type="radio" name="tonoDePiel" value="porcel">Porcelana
-                <input type="radio" name="tonoDePiel" value="cla">Clara
-                <input type="radio" name="tonoDePiel" value="med">Media
-                <input type="radio" name="tonoDePiel" value="osc">Oscura
-                <input type="radio" name="tonoDePiel" value="prof">Profunda
+                <br>
+                <div class="">
+                  <div class="">
+                  <input type="radio" name="tonoDePiel" value="cla">Clara
+                  </div>
+                  <div class="">
+                  <input type="radio" name="tonoDePiel" value="med">Media
+                  </div>
+                  <div class="">
+                  <input type="radio" name="tonoDePiel" value="osc">Oscura
+                  </div>
+                  <div class="">
+                    <input type="radio" name="tonoDePiel" value="prof">Profunda
+                  </div>
 
-                  <br>
+                </div>
+                <br>
+                <div class="input-flex">
                 <label for="genero">Género:</label>
-                  <br>
-                <input type="radio" name="genero" value="fem">Femenino
-                <input type="radio" name="genero" value="mas">Masculino
-                <input type="radio" name="genero" value="med">Otro
+                <br>
 
+                <div class="">
+                <input type="radio" name="genero" value="fem">Femenino
+                </div>
+                <div class="">
+                <input type="radio" name="genero" value="mas">Masculino
+                </div>
+                <div class="">
+                <input type="radio" name="genero" value="med">Otro
+                </div>
+                </div>
+                <br>
                 <p>
                   <label for="ubicacion">Provincia:</label>
                     <select class="" name="provincia">
@@ -103,9 +132,9 @@
                       <option value="tucu">Tucumán</option>
                     </select>
                 </p>
-
-                <div class="form">
-                  <label for="foto">Foto de Perfil</label>
+                <br>
+                <div class="">
+                  <label for="foto">Foto de Perfil:</label>
                   <input type="file" name="foto" value="">
                   <span class="error-form"><?=$errorFoto?></span>
                 </div>

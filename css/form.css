@@ -4,7 +4,6 @@
 }
 
 .form-container {
-  background: white;
   padding: 5vw;
   text-align: center;
   display: flex;
@@ -15,7 +14,8 @@
 
 .register-form {
   margin: auto;
-  background: white;
+  background-color: white;
+  background-image: url(../img/Fondos/FondoSeccionesTres.png);
   padding: 5vw;
   text-align: center;
   display: flex;
@@ -25,6 +25,7 @@
 }
 
 
+
 .login-text h2 {
   color:black;
   font-family: 'Bree Serif', serif;
@@ -32,7 +33,7 @@
 }
 
 /*FORMLUARIO*/
-.form {
+.form, .container-editarPerfil{
   font-family: 'Open Sans', sans-serif;
   margin: 5vw;
   /* margin-top: 6vh; */
@@ -41,6 +42,23 @@
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
+}
+.container-editarPerfil{
+  display: inline-block;
+  margin:38px;
+
+}
+
+.container-editarPerfil input {
+  padding: 5px;
+}
+.input-flex{
+    display: flex;
+    justify-content: space-between;
+
+}
+.input-flex input{
+  display: inline-block;
 }
 
 .form input {
@@ -117,6 +135,10 @@ label {
   font-size: 0.9em;
   text-decoration: underline;
 }
+
+
+/* */
+
 
 @media (min-width: 768px) { /*TABLET*/
   .login-text h2  {

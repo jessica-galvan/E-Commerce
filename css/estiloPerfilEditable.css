@@ -1,0 +1,14 @@
+.main-container {
+  background: rgba(196,170,215, 0.8);
+  padding: 5vw;
+}
+
+.form-container {
+  background: white;
+  padding: 5vw;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}

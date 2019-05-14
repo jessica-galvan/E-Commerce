@@ -38,37 +38,51 @@
 
   <!--MENU DESKTOP-->
   <nav class="menu-desktop">
+      <?php /*Primera Linea del Menu*/ ?>
       <div class="menu-top">
           <div class="icons">
-          <a href="#">
-            <div class="icon-box">
-              <img id="lupa" class="icon-img" src="img/icons/LupaDeBusqueda.png" alt="Busqueda">
-              <p>Buscar</p>
-            </div>
-          </a>
-        </div>
+            <a href="#">
+              <div class="icon-box">
+                <img id="lupa" class="icon-img" src="img/icons/LupaDeBusqueda.png" alt="Busqueda">
+                <p>Buscar</p>
+              </div>
+            </a>
+          </div>
 
-        <a href="index.php">
-          <img class="logo" src="img/icons/LogoComputadora.png" alt="Logo">
-        </a>
-
-        <div class="icons">
-          <a href="<?=$linkUsuario?>">
-            <div id="user-box" class="icon-box">
-                <img id="user" class="icon-img" src="img/icons/logInRegister.png" alt="User">
-                <p><?=$textoBienvenida?></p>
-            </div>
+          <a href="index.php">
+            <img class="logo" src="img/icons/LogoComputadora.png" alt="Logo">
           </a>
 
-          <a href="#">
-            <div class="icon-box">
-              <img id="bag" class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
-              <p>Carrito</p>
-            </div>
-          </a>
+          <div class="icons">
+            <a href="<?=$linkUsuario?>">
+              <div id="user-box" class="icon-box">
+                  <img id="user" class="icon-img" src="img/icons/logInRegister.png" alt="User">
+                  <p><?=$textoBienvenida?></p>
+              </div>
+            </a>
+
+            <a href="#">
+              <div class="icon-box">
+                <img id="bag" class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
+                <p>Carrito</p>
+              </div>
+            </a>
+
+            <?php if(isset($_SESSION['email_usuario'])) :?>
+              <div class="dropdown">
+                <button class="dropbtn">
+               	 <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="perfilUsuario.php">Perfil</a>
+                  <a href="perfilEditable.php">Opciones</a>
+                  <a href="actions/logout.php">Cerrar Sesión</a>
+                </div>
+              </div>
+          <?php endif;?>
         </div>
       </div>
-
+      <?php /*Segunda Linea del Menu*/ ?>
       <div class="menu-bottom">
         <ul>
           <li><a href="index.php">INICIO</a></li>

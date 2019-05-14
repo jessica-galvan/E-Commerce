@@ -27,7 +27,60 @@
          ?>
         <main class="main-container">
           <div class="main-body">
+              <form class="" action="perfilUsuario.php" method="post">
+                <label for="tipoDePiel">Tipo de piel:</label>
+                <br>
+                <input type="radio" name="" value="n">Normal
+                <input type="radio" name="" value="s">Seca
+                <input type="radio" name="" value="g">Grasa
+                <input type="radio" name="" value="m">Mixta
 
+                  <br>
+                <label for="tonoDePiel">Tono de piel:</label>
+                  <br>
+                <input type="radio" name="" value="porcel">Porcelana
+                <input type="radio" name="" value="cla">Clara
+                <input type="radio" name="" value="med">Media
+                <input type="radio" name="" value="osc">Oscura
+                <input type="radio" name="" value="prof">Profunda
+
+                  <br>
+                <label for="género">Género:</label>
+                  <br>
+                <input type="radio" name="" value="fem">Femenino
+                <input type="radio" name="" value="mas">Masculino
+                <input type="radio" name="" value="med">Otro
+
+                <p>
+                  <label for="Ubicacion">Provincia:</label>
+                    <select class="" name="Provincia">
+                      <option value="bsas">Buenos Aires</option>
+                      <option value="cat">Catamarca</option>
+                      <option value="chac">Chaco</option>
+                      <option value="chu">Chubut</option>
+                      <option value="cor">Córdoba</option>
+                      <option value="corri">Corrientes</option>
+                      <option value="entre"> Entre Ríos</option>
+                      <option value="for">Formosa</option>
+                      <option value="juj">Jujuy</option>
+                      <option value="laP"> La Pampa</option>
+                      <option value="laR"> La Rioja</option>
+                      <option value="men">Mendoza</option>
+                      <option value="mi">Misiones</option>
+                      <option value="neu">Neuquén</option>
+                      <option value="rio"> Río Negro</option>
+                      <option value="sal">Salta</option>
+                      <option value="sanJ">San Juan</option>
+                      <option value="sanL">San Luis</option>
+                      <option value="santaC">Santa Cruz</option>
+                      <option value="santaF"> Santa Fe</option>
+                      <option value="santi">Santiago del Estero</option>
+                      <option value="tierr">Tierra del Fuego</option>
+                      <option value="tucu">Tucumán</option>
+
+                    </select>
+                </p>
+              </form>
 
 
 

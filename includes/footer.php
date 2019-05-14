@@ -38,7 +38,7 @@
   <!--DESKTOP VERSION-->
   <section class="links-desktop">
     <article class="cuenta">
-      <a href="login.php"><h3>MI CUENTA</h3></a>
+      <a href="<?=$linkUsuario?>"><h3><?=$textoHamburguesa?></h3></a>
       <a href="#"><h3>VER CARRITO</h3></a>
       <a href="faq.php"><h3>PREGUNTAS FRECUENTES</h3></a>
       <a href="#"><h3>SOBRE NOSOTROS</h3> </a>

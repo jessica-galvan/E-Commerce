@@ -60,14 +60,6 @@
                   <p><?=$textoBienvenida?></p>
               </div>
             </a>
-
-            <a href="#">
-              <div class="icon-box">
-                <img id="bag" class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
-                <p>Carrito</p>
-              </div>
-            </a>
-
             <?php if(isset($_SESSION['email_usuario'])) :?>
               <div class="dropdown">
                 <button class="dropbtn">
@@ -75,11 +67,18 @@
                 </button>
                 <div class="dropdown-content">
                   <a href="perfilUsuario.php">Perfil</a>
-                  <a href="perfilEditable.php">Opciones</a>
+                  <a href="perfilEditable.php">Editar Perfil</a>
                   <a href="actions/logout.php">Cerrar Sesión</a>
                 </div>
               </div>
           <?php endif;?>
+
+            <a href="#">
+              <div id='bag-box' class="icon-box">
+                <img id="bag" class="icon-img" src="img/icons/BolsaDeCompra.png" alt="Carrito">
+                <p>Carrito</p>
+              </div>
+            </a>
         </div>
       </div>
       <?php /*Segunda Linea del Menu*/ ?>

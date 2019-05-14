@@ -5,6 +5,29 @@
   sinUsuario(); /*Y esto es para que los que no esten logueados no puedan entrar a esta seccion. */
   require_once('includes/funciones.php'); /*Por ahora solo es necesario para formularios. Te deje unos comentarios y la nueva funcion de reemplazar.*/
 
+  if(isset($_FILES["foto"])){
+    if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
+      $nombreArchivo = $_FILES["foto"]["name"];
+      $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+      $origen = $_FILES["foto"]["tmp_name"];
+
+      /*para poner parte del email del usuario en el nombre.*/
+      $email = $_SESSION['email_usuario']; /*Para que utilice el email de la sesion*/
+      $separar = strpos($email, '@'); /*Esto busca donde esta el @ en el sting de $email.*/
+      $divido  = str_split($email, $separar); /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
+      $fotoNombre = $divido[0]; /*Para que me ponga lo que separe primero*/
+      /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
+      $destino = "";
+      $destino = $destino."user/";
+      $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
+      $subir = move_uploaded_file($origen,$destino);
+      /*$foto es la ruta a la foto, para guardarla en el array.*/
+      $foto = $destino;
+    } else {
+      $errorFoto = "* Hubo un problema";
+      $hayErrores = true;
+    }
+  }
 
   // ob_end_flush();
  ?>
@@ -30,30 +53,31 @@
               <form class="" action="perfilUsuario.php" method="post">
                 <label for="tipoDePiel">Tipo de piel:</label>
                 <br>
-                <input type="radio" name="" value="n">Normal
-                <input type="radio" name="" value="s">Seca
-                <input type="radio" name="" value="g">Grasa
-                <input type="radio" name="" value="m">Mixta
+                <input type="radio" name="tipoDePiel" value="n">Normal
+                <input type="radio" name="tipoDePiel" value="s">Seca
+                <input type="radio" name="tipoDePiel" value="g">Grasa
+                <input type="radio" name="tipoDePiel" value="m">Mixta
 
                   <br>
                 <label for="tonoDePiel">Tono de piel:</label>
                   <br>
-                <input type="radio" name="" value="porcel">Porcelana
-                <input type="radio" name="" value="cla">Clara
-                <input type="radio" name="" value="med">Media
-                <input type="radio" name="" value="osc">Oscura
-                <input type="radio" name="" value="prof">Profunda
+                <input type="radio" name="tonoDePiel" value="porcel">Porcelana
+                <input type="radio" name="tonoDePiel" value="cla">Clara
+                <input type="radio" name="tonoDePiel" value="med">Media
+                <input type="radio" name="tonoDePiel" value="osc">Oscura
+                <input type="radio" name="tonoDePiel" value="prof">Profunda
 
                   <br>
-                <label for="género">Género:</label>
+                <label for="genero">Género:</label>
                   <br>
-                <input type="radio" name="" value="fem">Femenino
-                <input type="radio" name="" value="mas">Masculino
-                <input type="radio" name="" value="med">Otro
+                <input type="radio" name="genero" value="fem">Femenino
+                <input type="radio" name="genero" value="mas">Masculino
+                <input type="radio" name="genero" value="med">Otro
 
                 <p>
-                  <label for="Ubicacion">Provincia:</label>
-                    <select class="" name="Provincia">
+                  <label for="ubicacion">Provincia:</label>
+                    <select class="" name="provincia">
+                      <option hidden value=""> <i>Seleccionar</i> </option>
                       <option value="bsas">Buenos Aires</option>
                       <option value="cat">Catamarca</option>
                       <option value="chac">Chaco</option>
@@ -77,12 +101,19 @@
                       <option value="santi">Santiago del Estero</option>
                       <option value="tierr">Tierra del Fuego</option>
                       <option value="tucu">Tucumán</option>
-
                     </select>
                 </p>
+
+                <div class="form">
+                  <label for="foto">Foto de Perfil</label>
+                  <input type="file" name="foto" value="">
+                  <span class="error-form"><?=$errorFoto?></span>
+                </div>
+
+                <div class="login-button">
+                  <button type="submit" name="registro">ENVIAR</button>
+                </div>
               </form>
-
-
 
           </div>
         </main>

@@ -52,33 +52,11 @@
       $errorPregunta = "* Tu respuesta no puede estar vacia";
       $hayErrores = true;
     }
-    if(isset($_FILES["foto"])){
-      if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
-        $nombreArchivo = $_FILES["foto"]["name"];
-        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
-        $origen = $_FILES["foto"]["tmp_name"];
-        /*Si el usuario completo el email, podemos hacer lo de renombrar la foto. Porque si no hago esto, sale un error si el usuario cargo la foto sin el email. */
-        if($errorEmail = "") {
-        /*para poner parte del email del usuario en el nombre*/
-        $separar = strpos($email, '@');
-        $divido  = str_split($email, $separar);
-        $fotoNombre = $divido[0];
-        /*Donde se guarda la foto y como se va a llamar*/
-        $destino = "";
-        $destino = $destino."user/";
-        $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
-        }
-      } else {
-        $errorFoto = "* Elegi una foto";
-        $hayErrores = true;
-      }
-    } else {
-      $errorFoto = "* Elegi una foto";
-      $hayErrores = true;
-    }
+
     /*ARRAY FINAL DEL USUARIO*/
     if(!$hayErrores) {
       require_once('includes/preguntaSeguridad.php');
+      /*Este for es para que una vez completado todo, además de guardar el valor de la pregunta, se guarde la pregunta. Asi después en el recordame solo hacemos un echo a la pregunta.*/
       for ($i=0; $i < count($preguntas); $i++) {
         if ($preguntas[$i]['valor'] == $preguntaValor) {
           $preguntaSeguridad = $preguntas[$i]['pregunta'];
@@ -86,9 +64,7 @@
         }
         return $preguntaSeguridad;
       };
-      /*Para que solo suba la foto si el resto de los datos estan bien*/
-      $subir = move_uploaded_file($origen,$destino);
-      $foto = $destino;
+      /*Aca tendrian que agregarse todos los valores, hasta los que solo se completarian editando el perfil (pero acá tendrian el valor en blanco)*/
       $usuarioEnArray = [
         "nombre" => $nombre,
         "apellido" => $apellido,
@@ -98,6 +74,11 @@
         "preguntaSeguridad" => $preguntaSeguridad,
         "respuestaSeguridad" => password_hash($respuestaSeguridad, PASSWORD_DEFAULT),
         "foto" => $foto,
+        "genero" => "",
+        "ubicacion" => "",
+        "provincia" => "",
+        "tonoDePiel" => "",
+        "tipoDePiel" => "",
       ];
       /*MANDAR A BASE DE DATOS*/
       $listaUsuarios[] = $usuarioEnArray;
@@ -188,11 +169,7 @@
                  <span class="error-form"><?=$errorPregunta?></span>
                </div>
 
-               <div class="form">
-                 <label for="fotoPerfil">Foto de Perfil</label>
-                 <input type="file" name="foto" value="">
-                 <span class="error-form"><?=$errorFoto?></span>
-               </div>
+
 
                <div class="login-button">
                  <button type="submit" name="registro">ENVIAR</button>

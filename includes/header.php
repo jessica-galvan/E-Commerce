@@ -67,7 +67,7 @@
                 </button>
                 <div class="dropdown-content">
                   <a href="perfilUsuario.php">Perfil</a>
-                  <a href="perfilEditable.php">Editar Perfil</a>
+                  <a href="editarPerfil.php">Editar Perfil</a>
                   <a href="actions/logout.php">Cerrar Sesión</a>
                 </div>
               </div>

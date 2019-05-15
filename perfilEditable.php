@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/form.css"> <!--Supongo que va a ser necesaria con lo de edicion de perfil, ya que es un formulario.-->
+    <link rel="stylesheet" href="css/form2.css"> <!--Supongo que va a ser necesaria con lo de edicion de perfil, ya que es un formulario.-->
     <title>Fancy Beauty</title>
   </head>
   <body>

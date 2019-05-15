@@ -70,15 +70,19 @@
         "apellido" => $apellido,
         "email" => $email,
         "contrasenia" => password_hash($contrasenia, PASSWORD_DEFAULT),
+        "foto" => "",
         "preguntaValor" => $preguntaValor,
         "preguntaSeguridad" => $preguntaSeguridad,
         "respuestaSeguridad" => password_hash($respuestaSeguridad, PASSWORD_DEFAULT),
-        "foto" => $foto,
+        "generoValor" => "",
         "genero" => "",
-        "ubicacion" => "",
+        "provinciaValor" => "",
         "provincia" => "",
+        "tonoDePielValor" => "",
         "tonoDePiel" => "",
+        "tipoDePielValor" => "",
         "tipoDePiel" => "",
+        "fechaNacimiento" => "",
       ];
       /*MANDAR A BASE DE DATOS*/
       $listaUsuarios[] = $usuarioEnArray;

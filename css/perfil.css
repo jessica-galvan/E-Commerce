@@ -1,0 +1,61 @@
+.perfil-container {
+  padding: 5vw;
+  background: white;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.perfil-container h2 {
+  font-family: 'Bree Serif', serif;
+  font-size: 2em;
+  margin-top: 2vh;
+}
+
+.fotoPerfil {
+  margin: 2vh 0;
+}
+
+.fotoPerfil img {
+  width: 50vw;
+  border: solid 2px #CAE9F2; /*Lighter lightblue*/
+  border-radius: 25%;
+}
+
+.datosBasicos {
+  text-align: left;
+}
+
+#nombreUsuario {
+  text-transform: capitalize;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.datosBasicos h4 {
+  margin-top: 1vh;
+}
+
+@media (min-width: 700px) { /*TABLET*/ }
+
+@media (min-width: 992px) { /*DESKTOP*/
+  .perfil-container {
+    padding: 50px;
+    background: white;
+    text-align: center;
+    display: block;
+  }
+
+  .fotoPerfil {
+    margin: 20px 0;
+  }
+
+  .fotoPerfil img {
+    width: 25%;
+  }
+
+}

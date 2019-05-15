@@ -5,7 +5,6 @@
 
 .form-container {
   padding: 5vw;
-  background: white;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +25,7 @@
 }
 
 
+
 .login-text h2 {
   color:black;
   font-family: 'Bree Serif', serif;
@@ -33,7 +33,7 @@
 }
 
 /*FORMLUARIO*/
-.form {
+.form, .container-editarPerfil{
   font-family: 'Open Sans', sans-serif;
   margin: 5vw;
   /* margin-top: 6vh; */
@@ -42,6 +42,23 @@
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
+}
+.container-editarPerfil{
+  display: inline-block;
+  margin:38px;
+
+}
+
+.container-editarPerfil input {
+  padding: 5px;
+}
+.input-flex{
+    display: flex;
+    justify-content: space-between;
+
+}
+.input-flex input{
+  display: inline-block;
 }
 
 .form input {
@@ -120,103 +137,7 @@ label {
 }
 
 
-/*EDITAR PERFIL*/
-.editar-form {
-  margin: auto;
-  background-color: white;
-  background-image: url(../img/Fondos/FondoSeccionesTres.png);
-  padding: 5vw;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.container-editarPerfil{
-  display: inline-block;
-  /* margin:38px; */
-  font-family: 'Open Sans', sans-serif;
-  margin: 5vw;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  /* justify-content: ; */
-  text-align: left;
-}
-
-.login-text #titulo-editar {
-  width: 80vw;
-}
-
-.container-editarPerfil input {
-  padding: 5px;
-}
-
-.form-editar {
-  margin-top: 1vh;
-  font-family: 'Open Sans', sans-serif;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.form-editar label {
-  margin-top: 2vh;
-}
-
-.form-editar select {
-  width: 70vw;
-  margin-bottom: 1vh;
-  font-size: 1em;
-  padding: 1vw;
-}
-
-.check-box { /*cada checbox esta en un div*/
-  margin-top: 1vh;
-}
-
-.checkbox-form label {
-  margin-bottom: 1vh;
-  width: 100vh;
-}
-
-.check-box span {
-  margin-left: 0.5vh;
-}
-
-.check-box  input {
-  border: 1px solid #CCCCCC !important;
-  color: black;
-  padding: 2vw;
-}
-
-#genero-options {
-  /* width: 90vw; */
-}
-
-.editar-button {
-  margin: 5vw;
-  align-self: center;
-}
-
-.editar-button button {
-  padding: 2vw;
-  margin-top: 2vh;
-  background: #F7EB61; /*Yellow*/
-  border: none;
-  text-transform: uppercase;
-  font-family: 'Bree Serif', serif;
-  margin: auto;
-  color: black;
-}
-
-.fecha-form {
-  padding: 2vw;
-  
-}
+/* */
 
 
 @media (min-width: 768px) { /*TABLET*/
@@ -278,7 +199,6 @@ label {
   .register-form {
     width: 50%;
     max-width: 960px;
-    padding: 50px;
   }
 
   .form select {
@@ -291,81 +211,7 @@ label {
   .form option {
     overflow: hidden;
   }
-
-  /*EDICION PERFIL*/
-  .editar-form {
-    margin: auto;
-    padding: 8px;
-  }
-
-  .editar-form .login-text h2 {
-    margin-top: 30px;
-  }
-
-  .container-editarPerfil{
-    padding: 15px;
-    margin: 0 50px;
-    padding-top: 0;
-  }
-
-  .login-text #titulo-editar {
-    width:100%;
-  }
-
-  .form-editar select {
-    width: 70%;
-    max-width: 300px;
-    margin-bottom: 10px;
-    font-size: 1em;
-    padding: 10px;
-  }
-
-  .form-editar label {
-  margin-top: 15px;
-  }
-
-  .check-box {
-    margin-top: 10px;
-  }
-
-  .checkbox-form label {
-    margin-bottom: 10px;
-    width: 100%;
-  }
-
-  .check-box span {
-    margin-left: 10px;
-  }
-
-  .check-box  input {
-    color: black;
-    padding: 15px;
-  }
-
-  .genero-options {
-    /* display: flex;
-    flex-wrap: wrap;
-    flex-direction: row; */
-  }
-
-  .genero-options input {
-    margin-top: 9px;
-    margin-right: 5px;
-  }
-
-  .genero-options span {
-    margin-right: 15px;
-  }
-
-  .editar-button {
-    margin: 20px;
-  }
-
-  .editar-button button {
-    padding: 20px;
-  }
-
-  /*BOTON CLASICO*/
+  /*BOTON*/
   .login-button {
     margin: 20px;
   }

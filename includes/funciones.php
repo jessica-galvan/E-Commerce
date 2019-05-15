@@ -59,15 +59,28 @@
    }
 
    /*Funcion para sobrescribir datos en un usuario ya registrado. Tiene dos parametros $indice, que seria el lugar donde se reemplazaria el dato, y $dato, que seria la info nueva.*/
-   function reemplazar($indice, $dato){
-   for ($i=0; $i < count($listaUsuarios); $i++) {
-     if(checkEmail($email)){
-       $listaUsuarios[$i][$indice] = $dato;
-       break;
-     }
-     return $listaUsuarios;
-   }
+  function reemplazar($email, $indice, $dato){
+    global $listaUsuarios;
+    // global $dato;
+    for ($i=0; $i < count($listaUsuarios); $i++) {
+      if(checkEmail($email)){
+        $listaUsuarios[$i][$indice] = $dato;
+        break;
+      }
+      return $listaUsuarios;
+    }
   };
+
+  /*Funcion para recuperar un dato de las listas en listas-editas.php
+  $arra es*/
+  function recuperarUnDato($listaArray, $valor, $nuevaVariable){
+    for ($i=0; $i < count($listaArray); $i++) {
+      if ($listaArray[$i]['valor'] == $valor) {
+        $nuevaVariable = $listaArray[$i]['dato'];
+        return $nuevaVariable;
+      }
+    }
+  }
   /*OJO: que al final del archivo si o si tendrias que poner lo de enconde y file_put_contents, para que se actualice el user.json. Por las dudas lo dejo acá comentado. Ponelo al final de todo el editar perfil.*/
   // $listaUsuariosJSON = json_encode($listaUsuarios);
   // file_put_contents('includes/user.json', $listaUsuariosJSON);

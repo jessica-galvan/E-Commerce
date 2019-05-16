@@ -92,22 +92,6 @@ label {
   color: black;
 }
 
-/*BOTON EDITAR*/
-.editar-button {
-  margin: 5vw;
-}
-
-.editar-button button {
-  padding: 2vw;
-  margin-top: 2vh;
-  background: #C4AAD7; /*Violet*/
-  border: none;
-  text-transform: uppercase;
-  font-family: 'Bree Serif', serif;
-  margin: auto;
-  color: black;
-}
-
 /*REGISTRARSE*/
 .register-container {
   margin-top: 5vh;
@@ -393,14 +377,4 @@ label {
   .login-button button {
     padding: 20px;
   }
-
-  /*BOTON EDITAR*/
-  .editar-button {
-    margin: 20px;
-  }
-
-  .editar-button button {
-    padding: 20px;
-  }
-
 }

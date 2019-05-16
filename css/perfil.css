@@ -40,6 +40,22 @@
   margin-top: 1vh;
 }
 
+/*BOTONES EDITAR*/
+.editar-button {
+  margin: 5vw;
+}
+
+.editar-button button {
+  padding: 2vw;
+  margin-top: 2vh;
+  background: #C4AAD7; /*Violet*/
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  margin: auto;
+  color: black;
+}
+
 @media (min-width: 700px) { /*TABLET*/ }
 
 @media (min-width: 992px) { /*DESKTOP*/
@@ -56,6 +72,15 @@
 
   .fotoPerfil img {
     width: 25%;
+  }
+
+  /*BOTON EDITAR*/
+  .editar-button {
+    margin: 20px;
+  }
+
+  .editar-button button {
+    padding: 20px;
   }
 
 }

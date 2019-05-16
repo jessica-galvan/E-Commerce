@@ -57,29 +57,16 @@
               <h4>Tipo de Piel: </h4><span><?=$tipoDePiel?></span>
               <h4>Tono de Piel: </h4><span><?=$tonoDePiel?></span>
             </div>
-
-            <div class="" style="width:90vw; text-align:left;">
-              <?php
-                // echo "<br>";
-                // var_dump($usuarioRecuperado);
-              ?>
-            </div>
-
-
             <form class="editar-button" action="editarPerfil.php" method="post">
               <button type="submit" name="logout">Editar Perfil</button>
             </form>
-            <br>
-            <form class="logout-button" action="actions/logout.php" method="post">
+            <form class="editar-button" action="cambiarContrasenia.php" method="post">
+              <button type="submit" name="cambiarContrasenia">Cambiar Contraseña</button>
+            </form>
+            <form class="editar-button" action="actions/logout.php" method="post">
               <button type="submit" name="logout">Cerra sesión</button>
             </form>
 
-            <!-- <br>
-            COMENTARIO: <br>
-            DEJO DE FUNCIONAR EL RECUPERAR CONTRASEÑA <br>
-            Y AHORA TAMPOCO FUNCIONA REEMPLAZAR EN EL EDITOR DE PERFIL <br>
-            FALTA PARA CAMBIAR LA CONTRASEÑA LOGUEADA. <br>
-            Y EN EL FORMULARIO DE EDITAR PERFIL FALTA PARA AGREGAR LA FECHA DE NACIMIENTO. -->
           </div>
         </main>
        <!--FOOTER-->

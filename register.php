@@ -119,7 +119,7 @@
                <h2>Registrate</h2>
              </div>
 
-             <form class="" action="register.php" method="post" enctype="multipart/form-data">
+             <form class="" action="register.php" method="post">
                <div class="form">
                  <label for="nombre">Nombre</label>
                  <input id="nombre" type="text" name="nombre" value="<?=$nombre?>">

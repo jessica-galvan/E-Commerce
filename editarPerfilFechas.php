@@ -8,20 +8,27 @@
   /*Lo primero que necesitamos*/
   $email = $_SESSION['email_usuario'];
   getUser('email', $email);
-  // var_dump($usuarioRecuperado);
+  var_dump($usuarioRecuperado);
   /*Segundo, si el usuario ya completo anteriormente la info, que aparesca su respuesta. Excepto la foto. Ya esta armado en el formulario para que si la info esta completada, se marque.*/
   $generoValor = $usuarioRecuperado['generoValor'];
-  $genero = $usuarioRecuperado['genero'];
+  // $genero = $usuarioRecuperado['genero'];
   $tonoDePielValor = $usuarioRecuperado["tonoDePielValor"];
-  $tonoDePiel = $usuarioRecuperado['tonoDePiel'];
+  // $tonoDePiel = $usuarioRecuperado['tonoDePiel'];
   $tipoDePielValor = $usuarioRecuperado['tipoDePielValor'];
-  $tipoDePiel = $usuarioRecuperado['tipoDePiel'];
+  // $tipoDePiel = $usuarioRecuperado['tipoDePiel'];
   $provinciaValor = $usuarioRecuperado['provinciaValor'];
-  $provincia = $usuarioRecuperado['provincia'];
+  // $provincia = $usuarioRecuperado['provincia'];
   $fechaNacimiento = $usuarioRecuperado['fechaNacimiento'];
+  /*Sospecho que va a ser más facil si en el registro, te guardo las tres variables que una. Pero depende de como resuelva el soobrescribir.*/
+  $dia = "";
+  $mes = "";
+  $anio = "";
 
   /*Si hay POST. No hay necesidad de validar. Y solo updatear el array con lo que se completo.*/
-  if(isset($_POST['editar']) || isset($_FILES["foto"])) {
+  if(isset($_POST['editar'])) {
+    echo "PRE";
+    var_dump(getUser('email',$email));
+
     if(isset($_POST['tipoDePiel']) && $_POST['tipoDePiel'] != "") {
       $tipoDePielValor = $_POST['tipoDePiel'];
       $tipoDePiel = recuperarDato($tiposLista, $tipoDePielValor, $tipoDePiel);
@@ -47,46 +54,48 @@
       reemplazar($email,'provincia', $provincia);
     }
     if(isset($_POST['fechaNacimiento'])) {
-      $fechaNacimiento = $_POST['fechaNacimiento'];
+      $fechaNacimiento = [
+        "dia" => $dia,
+        "mes" => $mes,
+        "anio" => $anio
+      ];
       reemplazar($email,'fechaNacimiento', $fechaNacimiento);
-    }
-
-    if(isset($_FILES["foto"])){
-      if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
-        $nombreArchivo = $_FILES["foto"]["name"];
-        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
-        $origen = $_FILES["foto"]["tmp_name"];
-
-        /*para poner parte del email del usuario en el nombre.*/
-        $email = $_SESSION['email_usuario']; /*Para que utilice el email de la sesion*/
-        $separar = strpos($email, '@'); /*Esto busca donde esta el @ en el sting de $email.*/
-        $divido  = str_split($email, $separar); /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
-        $fotoNombre = $divido[0]; /*Para que me ponga lo que separe primero*/
-        /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
-        $destino = "";
-        $destino = $destino."user/";
-        $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
-        $subir = move_uploaded_file($origen,$destino);
-        $foto = $destino;   /*$foto es la ruta a la foto, para guardarla en el array.*/
-        reemplazar($email, 'foto', $foto);
-        move_uploaded_file($origen,$destino);
-      } else {
-        $errorFoto = "* Hubo un problema";
-        $hayErrores = true;
-      }
     }
 
     /*Una ves que terminaste de reemplazar todo....*/
     $listaUsuariosJSON = json_encode($listaUsuarios);
     file_put_contents('includes/user.json', $listaUsuariosJSON);
     // header('location:perfilUsuario.php');
-    if(!$hayErrores) {
-      $URL="perfilUsuario.php";
-      echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-      echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-      exit;
+    $URL="perfilUsuario.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    exit;
+  }
+
+  /*SECCION FOTOS*/
+  if(isset($_FILES["foto"])){
+    if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
+      $nombreArchivo = $_FILES["foto"]["name"];
+      $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+      $origen = $_FILES["foto"]["tmp_name"];
+
+      /*para poner parte del email del usuario en el nombre.*/
+      $email = $_SESSION['email_usuario']; /*Para que utilice el email de la sesion*/
+      $separar = strpos($email, '@'); /*Esto busca donde esta el @ en el sting de $email.*/
+      $divido  = str_split($email, $separar); /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
+      $fotoNombre = $divido[0]; /*Para que me ponga lo que separe primero*/
+      /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
+      $destino = "";
+      $destino = $destino."user/";
+      $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
+      $subir = move_uploaded_file($origen,$destino);
+      /*$foto es la ruta a la foto, para guardarla en el array.*/
+      $foto = $destino;
+    } else {
+      $errorFoto = "* Hubo un problema";
+      $hayErrores = true;
     }
-  } /*FIN if($_POST)*/
+  }
   ob_end_flush();
  ?>
 <!DOCTYPE html>
@@ -111,17 +120,97 @@
             <div class="login-text">
               <h2 id="titulo-editar">Editar mi perfil</h2>
             </div>
-            <form class="container-editarPerfil" action="editarPerfil.php" method="post" enctype="multipart/form-data">
+            <form class="container-editarPerfil" action="editarPerfil.php" method="post">
+              <!-- FECHA DE NACIMIENTO -->
+              <section class="fecha-form">
+                <label for="">Fecha de Nacimiento</label>
+                <!--DIA-->
+                <div class="">
+                  <select class="" name="dia">
+                    <?php if(($dia  == "")): ?>
+                      <option hidden value=""> <i>Dia</i> </option>
+                    <?php endif; ?>
+                    <?php for($i=0; $i < count($dias); $i++):?>
+                       <?php if($dia == $dias[$i]): ?>
+                         <option value='<?=$dias[$i]?>' selected>
+                           <?=$dias[$i]?>
+                         </option>
+                       <?php else: ?>
+                         <option value='<?=$dias[$i]?>'>
+                           <?=$dias[$i]?>
+                         </option>
+                       <?php endif; ?>
+                     <?php endfor;?>
+                  </select>
+                </div>
+
+                <!--MES-->
+                <div class="">
+                  <select class="" name="mes">
+                    <?php if(($mes  == "")): ?>
+                      <option hidden value=""> <i>Mes</i> </option>
+                    <?php endif; ?>
+                    <?php for($i=0; $i < count($meses); $i++):?>
+                       <?php if($mes == $meses[$i]['valor']): ?>
+                         <option value='<?=$meses[$i]['valor']?>' selected>
+                           <?=$meses[$i]['dato']?>
+                         </option>
+                       <?php else: ?>
+                         <option value='<?=$meses[$i]['valor']?>'>
+                           <?=$meses[$i]['dato']?>
+                         </option>
+                       <?php endif; ?>
+                     <?php endfor;?>
+                   </select>
+                </div>
+
+                <!--AÑO-->
+                <div class="">
+                  <select class="" name="anio">
+                    <?php if(($anio  == "")): ?>
+                      <option hidden value=""> <i>Año</i> </option>
+                    <?php endif; ?>
+                    <?php for($i=0; $i < count($anios); $i++):?>
+                       <?php if($anio == $anios[$i]): ?>
+                         <option value='<?=$anios[$i]?>' selected>
+                           <?=$anios[$i]?>
+                         </option>
+                       <?php else: ?>
+                         <option value='<?=$anios[$i]?>'>
+                           <?=$anios[$i]?>
+                         </option>
+                       <?php endif; ?>
+                     <?php endfor;?>
+                  </select>
+                </div>
+              </section>
+
+
+              <!-- FECHA DE NACIMIENTO -->
+              <section class="form-editar">
+                <!--DIA-->
+                <div class="">
+                  <input type="number" name="dia" value="" placeholder="Día">
+                </div>
+
+                <!--MES-->
+                <div class="">
+                  <input type="number" name="mes" value="" placeholder="Mes">
+                </div>
+
+                <!--AÑO-->
+                <div class="">
+                  <input type="number" name="anio" value="" placeholder="Año">
+                </div>
+              </section>
+
               <!-- SECCION TIPO -->
               <section class="form-editar">
                 <label for="tipoDePiel">Tipo de piel:</label>
-                <?php for($i=0; $i < count($tiposLista); $i++):
-                  global $tiposLista;
-                  ?>
-
+                <?php for($i=0; $i < count($tiposLista); $i++):?>
                   <?php if ($tipoDePielValor == $tiposLista[$i]['valor']): ?>
                     <div class="check-box">
-                      <input type="radio" name="tipoDePiel" value="<?=$tiposLista[$i]['valor']?>" checked><span><?=$tiposLista[$i]['dato']?></span>
+                      <input type="radio" name="tipoDePiel" value="<?=$tiposLista[$i]['valor']?>" checked><span><?=$tipoLista[$i]['dato']?></span>
                     </div>
                     <?php else: ?>
                     <div class="check-box">
@@ -171,7 +260,7 @@
                   <?php for($i=0; $i < count($provinciasLista); $i++):?>
                      <?php if($provinciaValor == $provinciasLista[$i]['valor']): ?>
                        <option value='<?=$provinciasLista[$i]['valor']?>' selected>
-                         <?=$provinciasLista[$i]['dato']?>
+                         <?=$provinciasListas[$i]['dato']?>
                        </option>
                      <?php else: ?>
                        <option value='<?=$provinciasLista[$i]['valor']?>'>
@@ -181,12 +270,6 @@
                    <?php endfor;?>
                 </select>
               </section>
-
-              <!-- FECHA DE NACIMIENTO -->
-              <div class="form-editar">
-                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input type="date" name="fechaNacimiento" value="<?=$fechaNacimiento?>">
-              </div>
 
               <!--SECCION FOTO-->
               <div class="form-editar">

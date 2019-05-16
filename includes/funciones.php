@@ -73,7 +73,7 @@
 
   /*Funcion para recuperar un dato de las listas en listas-editas.php
   $arra es*/
-  function recuperarUnDato($listaArray, $valor, $nuevaVariable){
+  function recuperarDato($listaArray, $valor, $nuevaVariable){
     for ($i=0; $i < count($listaArray); $i++) {
       if ($listaArray[$i]['valor'] == $valor) {
         $nuevaVariable = $listaArray[$i]['dato'];

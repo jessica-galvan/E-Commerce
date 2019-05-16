@@ -47,9 +47,10 @@
       reemplazar($email,'provincia', $provincia);
     }
     if(isset($_POST['fechaNacimiento'])) {
-      $fechaNacimiento = $_POST['fechaNacimiento'];
+      $fechaNacimiento =  $_POST['fechaNacimiento'];
       reemplazar($email,'fechaNacimiento', $fechaNacimiento);
     }
+
 
     if(isset($_FILES["foto"])){
       if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
@@ -70,7 +71,7 @@
         $foto = $destino;   /*$foto es la ruta a la foto, para guardarla en el array.*/
         reemplazar($email, 'foto', $foto);
         move_uploaded_file($origen,$destino);
-      } else {
+      } else if ($_FILES['foto']["error"] != 4){
         $errorFoto = "* Hubo un problema";
         $hayErrores = true;
       }

@@ -19,8 +19,11 @@
   $tipoDePiel = $usuarioRecuperado['tipoDePiel'];
   $provincia = $usuarioRecuperado["provincia"];
   $foto = $usuarioRecuperado["foto"] != ""?$usuarioRecuperado["foto"]: "img/user-profile-basic.jpg";
-  $fechaNacimiento = $usuarioRecuperado["fechaNacimiento"];
+  $fechaNacimientoOriginal = $usuarioRecuperado["fechaNacimiento"];
+  /*Este paso es para invertir la fecha, y que se vea Dia-Mes-Año, en vez de Año-Mes-Dia*/
+  $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
 
+  $edad = calcularEdad($fechaNacimientoOriginal);
   ob_end_flush();
  ?>
 <!DOCTYPE html>
@@ -52,23 +55,26 @@
               <h3 id="nombreUsuario"><?=$nombreCompleto;?></h3>
               <h4>Email: </h4><span><?=$email?></span>
               <h4>Genero: </h4> <span><?=$genero?></span>
+              <h4>Edad: </h4> <span><?=$edad?></span>
               <h4>Fecha de Nacimiento: </h4><span><?=$fechaNacimiento?></span>
               <h4>Provincia: </h4><span><?=$provincia?></span>
               <h4>Tipo de Piel: </h4><span><?=$tipoDePiel?></span>
               <h4>Tono de Piel: </h4><span><?=$tonoDePiel?></span>
             </div>
-            <form class="editar-button" action="editarPerfil.php" method="post">
-              <button type="submit" name="logout">Editar Perfil</button>
+
+            <form class="editar-button " action="editarPerfil.php" method="post">
+              <button class="violeta" type="submit" name="logout">Editar Perfil</button>
             </form>
             <form class="editar-button" action="cambiarContrasenia.php" method="post">
-              <button type="submit" name="cambiarContrasenia">Cambiar Contraseña</button>
+              <button class="amarillo" type="submit" name="cambiarContrasenia">Cambiar Contraseña</button>
             </form>
             <form class="editar-button" action="actions/logout.php" method="post">
-              <button type="submit" name="logout">Cerra sesión</button>
+              <button style="background: #FFB6BF;" id="logout-button" type="submit" name="logout">Cerra sesión</button>
             </form>
 
           </div>
         </main>
+
        <!--FOOTER-->
        <?php
        include_once("includes/footer.php");

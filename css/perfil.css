@@ -42,20 +42,29 @@
 
 /*BOTONES EDITAR*/
 .editar-button {
-  margin: 5vw;
+  margin: 3vw;
 }
 
 .editar-button button {
-  padding: 2vw;
+  padding: 5vw;
   margin-top: 2vh;
-  background: #C4AAD7; /*Violet*/
+  background: #C4AAD7;
+  /*Violet*/
   border: none;
   text-transform: uppercase;
   font-family: 'Bree Serif', serif;
   margin: auto;
   color: black;
+  cursor: pointer;
 }
 
+.editar-button .amarillo {
+  background: #F7EB61!important;  /*Yellow*/
+}
+
+.editar-button #logout-button button {
+  background: #FFB6BF!important; /*Pink*/
+}
 @media (min-width: 700px) { /*TABLET*/ }
 
 @media (min-width: 992px) { /*DESKTOP*/

@@ -21,9 +21,13 @@
   $foto = $usuarioRecuperado["foto"] != ""?$usuarioRecuperado["foto"]: "img/user-profile-basic.jpg";
   $fechaNacimientoOriginal = $usuarioRecuperado["fechaNacimiento"];
   /*Este paso es para invertir la fecha, y que se vea Dia-Mes-Año, en vez de Año-Mes-Dia*/
-  $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
-
-  $edad = calcularEdad($fechaNacimientoOriginal);
+  if($fechaNacimientoOriginal != "") {
+    $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
+    $edad = calcularEdad($fechaNacimientoOriginal);
+  } else {
+    $fechaNacimiento = "";
+    $edad = "";
+  }
   ob_end_flush();
  ?>
 <!DOCTYPE html>

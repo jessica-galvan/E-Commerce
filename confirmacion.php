@@ -26,13 +26,14 @@
               <div class="login-text">
                 <h2>¡Gracias por registrarte!</h2>
               </div>
-
-              <form class="editar-button" action="login.php" method="post">
-                <button class="amarillo" type="submit" name="logout">Iniciar Sesión</button>
-              </form>
-              <form class="editar-button" action="index.php" method="post">
-                <button type="submit" name="cambiarContrasenia">Volver al Index</button>
-              </form>
+              <div class="caja-botones">
+                <form class="editar-button-amarillo" action="login.php" method="post">
+                  <button type="submit" name="logout">Iniciar Sesión</button>
+                </form>
+                <form class="editar-button-rosa" action="index.php" method="post">
+                  <button type="submit" name="cambiarContrasenia">Volver al Index</button>
+                </form>
+              </div>
           </div>
         </main>
        <!--FOOTER-->

@@ -1,11 +1,12 @@
 .perfil-container {
   padding: 5vw;
-  background: white;
+  /* background: white; */
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  background-image: url('../img/Fondos/FondoSeccionesTres.png');
 }
 
 .perfil-container h2 {
@@ -22,6 +23,11 @@
   width: 50vw;
   border: solid 2px #CAE9F2; /*Lighter lightblue*/
   border-radius: 25%;
+}
+
+.nombreUsuario {
+
+
 }
 
 .datosBasicos {
@@ -41,15 +47,41 @@
 }
 
 /*BOTONES EDITAR*/
-.editar-button {
+/* .editar-button {
   margin: 3vw;
-}
+} */
 
-.editar-button button {
+/* .editar-button button {
   padding: 5vw;
   margin-top: 2vh;
   background: #C4AAD7;
-  /*Violet*/
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  margin: auto;
+  color: black;
+  cursor: pointer;
+} */
+.caja-botones form {
+  margin: 3vw;
+}
+
+.editar-button-amarillo button {
+  padding: 5vw;
+  margin-top: 2vh;
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  margin: auto;
+  color: black;
+  cursor: pointer;
+  background: #F7EB61
+}
+
+.editar-button-violeta button {
+  padding: 5vw;
+  margin-top: 2vh;
+  background: #C4AAD7;
   border: none;
   text-transform: uppercase;
   font-family: 'Bree Serif', serif;
@@ -58,19 +90,24 @@
   cursor: pointer;
 }
 
-.editar-button .amarillo {
-  background: #F7EB61!important;  /*Yellow*/
+.editar-button-rosa button {
+  padding: 5vw;
+  margin-top: 2vh;
+  background: #FFB6BF;
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  margin: auto;
+  color: black;
+  cursor: pointer;
 }
 
-.editar-button #logout-button button {
-  background: #FFB6BF!important; /*Pink*/
-}
 @media (min-width: 700px) { /*TABLET*/ }
 
 @media (min-width: 992px) { /*DESKTOP*/
   .perfil-container {
     padding: 50px;
-    background: white;
+    /* background: white; */
     text-align: center;
     display: block;
   }
@@ -83,6 +120,10 @@
     width: 25%;
   }
 
+  .datosBasicos {
+    padding-left:20%;
+  }
+
   /*BOTON EDITAR*/
   .editar-button {
     margin: 20px;
@@ -91,5 +132,26 @@
   .editar-button button {
     padding: 20px;
   }
+
+  .caja-botones form {
+    margin: 30px;
+  }
+
+  .editar-button-rosa button {
+    /* margin: 20px; */
+    padding: 20px;
+  }
+
+  .editar-button-amarillo button {
+    /* margin: 20px; */
+    padding: 20px;
+  }
+
+  .editar-button-violeta button {
+    /* margin: 20px; */
+    padding: 20px;
+  }
+
+
 
 }

@@ -51,8 +51,11 @@
               <img src="<?=$foto?>" alt="Foto Perfil">
             </div>
 
-            <div class="datosBasicos">
+            <div class="nombreUsuario">
               <h3 id="nombreUsuario"><?=$nombreCompleto;?></h3>
+            </div>
+
+            <div class="datosBasicos">
               <h4>Email: </h4><span><?=$email?></span>
               <h4>Genero: </h4> <span><?=$genero?></span>
               <h4>Edad: </h4> <span><?=$edad?></span>
@@ -62,15 +65,18 @@
               <h4>Tono de Piel: </h4><span><?=$tonoDePiel?></span>
             </div>
 
-            <form class="editar-button " action="editarPerfil.php" method="post">
-              <button class="violeta" type="submit" name="logout">Editar Perfil</button>
-            </form>
-            <form class="editar-button" action="cambiarContrasenia.php" method="post">
-              <button class="amarillo" type="submit" name="cambiarContrasenia">Cambiar Contraseña</button>
-            </form>
-            <form class="editar-button" action="actions/logout.php" method="post">
-              <button style="background: #FFB6BF;" id="logout-button" type="submit" name="logout">Cerra sesión</button>
-            </form>
+
+            <div class="caja-botones">
+              <form class="editar-button-violeta " action="editarPerfil.php" method="post">
+                <button type="submit" name="logout">Editar Perfil</button>
+              </form>
+              <form class="editar-button-amarillo" action="cambiarContrasenia.php" method="post">
+                <button type="submit" name="cambiarContrasenia">Cambiar Contraseña</button>
+              </form>
+              <form class="editar-button-rosa" action="actions/logout.php" method="post">
+                <button type="submit" name="logout">Cerra sesión</button>
+              </form>
+            </div>
 
           </div>
         </main>

@@ -34,7 +34,7 @@
   }
 
   /*Al revez de usuarioLogueado, te redirigue a los no logueados a login.php para poder acceder a esa pagina*/
-  function sinUsuario(){
+  function sinUsuarioLogueado(){
     if(!isset($_SESSION['email_usuario'])) {  /*Si no hay usuario logueado, redireccionalos a login*/
       header('location:login.php');
       exit;

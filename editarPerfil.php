@@ -2,12 +2,12 @@
     ob_start();
     session_start();
     require_once('actions/user-check.php');
-    sinUsuario();
+    sinUsuarioLogueado();
     require_once('includes/funciones.php');
     require_once("includes/listas-editar.php");
     /*Lo primero que necesitamos*/
     $email = $_SESSION['email_usuario'];
-    getUser('email', $email);
+    $usuarioRecuperado = getUser('email', $email);
     /*Segundo, si el usuario ya completo anteriormente la info, que aparesca su respuesta. Excepto la foto. Ya esta armado en el formulario para que si la info esta completada, se marque.*/
     $generoValor = $usuarioRecuperado['generoValor'];
     $genero = $usuarioRecuperado['genero'];

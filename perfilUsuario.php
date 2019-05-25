@@ -2,15 +2,14 @@
   ob_start();
   session_start();
   require_once('actions/user-check.php');  //Esto dejalo en todas las paginas. Es necesario para el menu.
-  sinUsuario();
+  sinUsuarioLogueado();
   require_once('includes/funciones.php'); /*Por ahora solo es necesario para formularios. Te deje unos comentarios y la nueva funcion de reemplazar.*/
   require_once("includes/listas-editar.php");
 
   $email = $_SESSION['email_usuario'];
-  getUser('email', $email); /*De acá sale el $usuarioRecuperado*/
+  $usuarioRecuperado = getUser('email', $email); /*De acá sale el $usuarioRecuperado*/
   $nombre = $usuarioRecuperado['nombre'];
   $apellido = $usuarioRecuperado['apellido'];
-
   $nombreCompleto = $nombre." ".$apellido;
 
   /*Si el usuario completo los datos, se van a ver, sino en el array estan vacios. ¿Quizas habria que hacer algo en caso de que este en blanco?*/
@@ -20,6 +19,7 @@
   $provincia = $usuarioRecuperado["provincia"];
   $foto = $usuarioRecuperado["foto"] != ""?$usuarioRecuperado["foto"]: "img/user-profile-basic.jpg";
   $fechaNacimientoOriginal = $usuarioRecuperado["fechaNacimiento"];
+
   /*Este paso es para invertir la fecha, y que se vea Dia-Mes-Año, en vez de Año-Mes-Dia*/
   if($fechaNacimientoOriginal != "") {
     $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
@@ -30,7 +30,7 @@
   }
 
   $CSS = ['perfil'];
-  include_once("includes/header.php");
+  require_once("includes/header.php");
   ob_end_flush();
  ?>
 <main class="main-container">
@@ -68,7 +68,7 @@
         </div>
     </div>
 </main>
-<!--FOOTER-->
 <?php
-    include_once("includes/footer.php");
+    /*Footer*/
+    require_once("includes/footer.php");
 ?>

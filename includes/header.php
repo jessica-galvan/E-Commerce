@@ -7,26 +7,27 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link rel="stylesheet" href="css/master.css">
         <?php
-        foreach($CSS as $variable => $valor){echo '<link rel="stylesheet" href="css/'.$valor.'.css">';}
+        foreach($CSS as $variable => $valor){
+            echo '<link rel="stylesheet" href="css/'.$valor.'.css">';
+        }
         ?>
     </head>
     <body>
         <div class="xl-screen">
             <div class="body-container">
-                <!--HEADER-->
                 <header>
-                    <!--MENU MOBILE-->
+                    <?php /*MENU MOBILE*/?>
                     <nav class="menu-mobile">
                         <nav role="navigation">
                             <div id="menuToggle">
                                 <input type="checkbox" />
 
-                                <!--Los spans actuan como el icono de hamburgersa y se transforman en la cruz-->
+                                <?php /*Los spans actuan como el icono de hamburgersa y se transforman en la cruz*/?>
                                 <span></span>
                                 <span></span>
                                 <span></span>
 
-                                <!--Lo que va dentro del menu desplegable-->
+                                <?php /*Lo que va dentro del menu desplegable*/?>
                                 <ul id="menu">
                                     <a href="index.php"><li>Inicio</li></a>
                                     <a href="#"><li>Categorias</li></a>
@@ -51,7 +52,7 @@
                         </div>
                     </nav>
 
-                    <!--MENU DESKTOP-->
+                    <?php /*MENU DESKTOP*/?>
                     <nav class="menu-desktop">
                         <?php /*Primera Linea del Menu*/ ?>
                         <div class="menu-top">
@@ -96,7 +97,7 @@
                                 </a>
                             </div>
                         </div>
-                        <?php /*Segunda Linea del Menu*/ ?>
+                        <?php/*Segunda Linea del Menu*/ ?>
                         <div class="menu-bottom">
                             <ul>
                                 <li><a href="index.php">INICIO</a></li>

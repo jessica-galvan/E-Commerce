@@ -6,25 +6,25 @@
     require_once('includes/funciones.php'); /*Solo es necesario para formularios*/
     if(isset($_POST['login'])) {
         foreach( $_POST as $variable => $valor ){
-          $P[$variable]=trim($valor);
+          $$variable=trim($valor);
         }
         /*VALIDACIONES*/
-        if($P['email']== ""){
+        if($email == ""){
             $errorEmail = "* Completa el email";
             $hayErrores = true;
-        } else if(!filter_var($P['email'], FILTER_VALIDATE_EMAIL)){
+        } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $errorEmail = "* Email no válido";
             $hayErrores = true;
-        } else if (!checkEmail($P['email'])) {
+        } else if (!checkEmail($email)) {
             $errorEmail = "Ese email no esta registrado.";
             $hayErrores = true;
         }
-        if($P['contrasenia'] == ""){
+        if($contrasenia == ""){
             $errorContrasenia = "* Completa la contraseña";
             $hayErrores = true;
-        } else if(checkEmail($P['email'])){ /*COMPARAR CONTRASEÑAS*/
-            getUser('email', $P['email']);
-            if(password_verify($P['contrasenia'], $usuarioRecuperado['contrasenia'])){
+        } else if(checkEmail($email)){ /*COMPARAR CONTRASEÑAS*/
+            $usuarioRecuperado = getUser('email', $email);
+            if(password_verify($contrasenia, $usuarioRecuperado['contrasenia'])) {
                 $hayErrores = false;
             } else {
                 $hayErrores = true;
@@ -38,12 +38,12 @@
 
         if(!$hayErrores) {
             global $usuarioRecuperado;
-            $_SESSION["email_usuario"] = $P['email'];
+            $_SESSION["email_usuario"] = $email;
             $_SESSION["nombre_usuario"] = $usuarioRecuperado["nombre"];
             /*SI EL RECORDAR ESTA TILDADO, SETEAR UNA COOKIE.*/
             if(isset($_POST['recordar'])) {
                 $expirar = time() + 60*60*24*30; /*30 DIAS*/
-                setcookie('email_usuario', $P['email'], $expirar, '/', $_SERVER['HTTP_HOST']);
+                setcookie('email_usuario', $email, $expirar, '/', $_SERVER['HTTP_HOST']);
                 setcookie('nombre_usuario', $usuarioRecuperado["nombre"], $expirar, '/', $_SERVER['HTTP_HOST']);
             } else {
                 borrarCookiesLogin();
@@ -55,7 +55,7 @@
         }
     }
     $CSS = ['form'];
-    include_once("includes/header.php");
+    require_once("includes/header.php");
     ob_end_flush();
 ?>
 <main class="main-container">
@@ -83,7 +83,7 @@
         </form>
 
         <div class="form-links">
-            <a href="recupero1.php">¿Olvidó su contraseña?</a>
+            <a href="recupero.php">¿Olvidó su contraseña?</a>
         </div>
     </div>
 

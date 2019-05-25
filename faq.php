@@ -1,9 +1,10 @@
 <?php
     session_start();
     require_once('actions/user-check.php');
-    include_once("includes/lista-de-faq.php");
+    /*Header*/
     $CSS = ['faq'];
-    include_once("includes/header.php");
+    require_once("includes/header.php");
+    include_once("includes/lista-de-faq.php");
  ?>
 <main class="main-container">
     <div class="faq-body">
@@ -27,7 +28,7 @@
         </div>
     </div>
 </main>
-<!--FOOTER-->
 <?php
+    /*Footer*/
     include_once("includes/footer.php");
 ?>

@@ -2,9 +2,9 @@
     ob_start();
     session_start();
     require_once('actions/user-check.php');
-    sinUsuario();
+    sinUsuarioLogueado();
     require_once('includes/funciones.php');
-    getUser('email', $_SESSION['email_usuario']);
+    $usuarioRecuperado = getUser('email', $_SESSION['email_usuario']);
     $contraseniaOriginal = $usuarioRecuperado['contrasenia'];
     $errorContraseniaVieja = "";
 
@@ -47,7 +47,7 @@
         }
     }
     $CSS = ['form'];
-    include_once("includes/header.php");
+    require_once("includes/header.php");
     ob_end_flush();
 ?>
 <main class="main-container">
@@ -57,21 +57,21 @@
         </div>
 
         <form class="cambiarContraseña" action="cambiarContrasenia.php" method="post">
-            <!--Contraseña Vieja-->
+            <?php /*Contraseña Vieja*/?>
             <div class="form">
                 <label for="passwordOld">Contraseña Original:</label>
                 <input class="cambiarContrasenia" id="passwordOld" type="password" name="contraseniaVieja" value="">
                 <span class="error-form"><?=$errorContraseniaVieja?></span>
             </div>
 
-            <!--Contraseña Nueva-->
+            <?php /*Contraseña Nueva*/?>
             <div class="form">
                 <label for="password">Contraseña Nueva</label>
                 <input class="cambiarContrasenia" id="password" type="password" name="contraseniaNueva" value="">
                 <span class="error-form"><?=$errorContrasenia?></span>
             </div>
 
-            <!--Confirmar Contraseña Nueva-->
+            <?php /*Confirmar Contraseña*/?>
             <div class="form">
                 <label for="confirm">Confirmar Contraseña</label>
                 <input class="cambiarContrasenia" id="confirm" type="password" name="contraseniaConfirmar" value="">
@@ -83,7 +83,7 @@
         </form>
     </div>
 </main>
-<!--FOOTER-->
 <?php
-include_once("includes/footer.php");
+    /*Footer*/
+    require_once("includes/footer.php");
 ?>

@@ -2,8 +2,8 @@
     session_start();
     require_once('actions/user-check.php');
     include_once("includes/lista-productos.php");
-     $CSS = ['index','producto'];
-    include_once("includes/header.php");
+    $CSS = ['index','producto'];
+    require_once("includes/header.php");
 ?>
 <main class="main-container">
     <section class="intro">
@@ -24,7 +24,7 @@
         <img src="img/publicidad/BannerUno.png" alt="Publicidad">
     </section>
 
-    <!--PRODUCTOS MÁS VENDIDOS-->
+    <?php /*PRODUCTOS MÁS VENDIDOS*/?>
     <section class="productos">
         <div class="titulo-seccion">
             <h2>Nuestros productos más populares</h2>
@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <!--OFERTAS-->
+    <?php /*OFERTAS*/?>
     <section class="ofertas-mobile">
         <img class="foto" src="img/ofertaUno.png" alt="oferta">
     </section>
@@ -70,7 +70,7 @@
         <img class="foto" src="img/ofertaCuatro.png" alt="Oferta">
     </section>
 
-    <!--PRODUCTOS NUEVOS-->
+    <?php /*PRODUCTOS NUEVOS*/?>
     <section class="productos">
         <div class="titulo-seccion">
             <h2>Lo más nuevo</h2>
@@ -104,7 +104,7 @@
         </div>
     </section>
 </main>
-<!--FOOTER-->
 <?php
-    include_once("includes/footer.php");
+    /*Footer*/
+    require_once("includes/footer.php");
 ?>

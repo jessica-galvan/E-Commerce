@@ -1,5 +1,5 @@
                 <footer class="footer-info">
-                    <!--MOBILE VERSION-->
+                    <?php /*MOBILE VERSION*/?>
                     <section class="links-mobile">
                         <article class="footer-info-mobile">
                             <h3>SOCIAL MEDIA</h3>
@@ -35,7 +35,7 @@
                         </div>
                     </section>
 
-                    <!--DESKTOP VERSION-->
+                    <?php /*DESKTOP VERSION*/?>
                     <section class="links-desktop">
                         <article class="cuenta">
                             <a href="<?=$linkUsuario?>"><h3><?=$textoHamburguesa?></h3></a>

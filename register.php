@@ -6,45 +6,46 @@
     require_once('includes/preguntaSeguridad.php');
     if(isset($_POST['registro'])) {
         foreach( $_POST as $variable => $valor ){
-          $P[$variable]=trim($valor);
+          $$variable=trim($valor);
+          /*el $$ es para que ponga lo que va en variable (que seria un indice de $_POST), me lo ponga ahi y sea variable tambien. No se porque, pero funciona, no lo cuestionen. El $P[$variable] funcionaba, pero era un quilombo hacer la persistencia de datos, y haciendo esto de la $$, resuelvo eso sin tener que cambiar nada del formulario.*/
         }
         /*VALIDACIONES*/
-        if($P['nombre'] == "") {
+        if($nombre == "") {
             $errorNombre = "* Completar campo";
             $hayErrores = true;
         }
-        if ($P['apellido'] == "") {
+        if ($apellido == "") {
             $errorApellido = "* Completar campo";
             $hayErrores = true;
         }
-        if($P['email']  == ""){
+        if($email  == ""){
             $errorEmail = "* Completar campo";
             $hayErrores = true;
-        } elseif(!filter_var($P['email'] , FILTER_VALIDATE_EMAIL)){
+        } elseif(!filter_var($email , FILTER_VALIDATE_EMAIL)){
             $errorEmail = "* Email no válido";
             $hayErrores = true;
-        } else if(checkEmail($P['email'])) {
+        } else if(checkEmail($email)) {
             $errorEmail = "* Esta direccion ya  esta registrada. Usa otra.";
             $hayErrores = true;
         }
-        if($P['contrasenia'] == ""){
+        if($contrasenia == ""){
             $errorContrasenia = "* Completar campo";
             $hayErrores = true;
-        } elseif(strlen($P['contrasenia']) < 6){
+        } elseif(strlen($contrasenia) < 6){
             $errorContrasenia = "* La contraseña debe tener más de 6 caracteres";
             $hayErrores = true;
             $contrasenia = "";
             $contraseniaConfirmar = "";
-        } else if($P['contrasenia'] != $P['contraseniaConfirmar']) {
+        } else if($contrasenia != $contraseniaConfirmar) {
             $errorContrasenia = "* Las contraseñas no coinciden";
             $hayErrores = true;
             $contrasenia = "";
             $contraseniaConfirmar = "";
         }
-        if($P['preguntaSeguridad'] == "") {
+        if($preguntaSeguridadValor == "") {
             $errorPregunta = "* Selecciona una pregunta";
             $hayErrores = true;
-        } else if($P['respuestaSeguridad'] == "") {
+        } else if($respuestaSeguridad == "") {
             $errorPregunta = "* Completar campo";
             $hayErrores = true;
         }
@@ -53,21 +54,21 @@
         if(!$hayErrores) {
             /*Este for es para que una vez completado todo, además de guardar el valor de la pregunta, se guarde la pregunta. Asi después en el recordame solo hacemos un echo a la pregunta.*/
             for ($i=0; $i < count($preguntas); $i++) {
-                if ($preguntas[$i]['valor'] == $P['preguntaSeguridad']) {
+                if ($preguntas[$i]['valor'] == $preguntaSeguridadValor) {
                     $preguntaSeguridad = $preguntas[$i]['pregunta'];
                     break;
                 }
             };
             /*Aca tendrian que agregarse todos los valores, hasta los que solo se completarian editando el perfil (pero acá tendrian el valor en blanco)*/
             $listaUsuarios[] = [
-                "nombre" => $P['nombre'],
-                "apellido" => $P['apellido'],
-                "email" => $P['email'],
-                "contrasenia" => password_hash($P['contrasenia'], PASSWORD_DEFAULT),
+                "nombre" => $nombre,
+                "apellido" => $apellido,
+                "email" => $email,
+                "contrasenia" => password_hash($contrasenia, PASSWORD_DEFAULT),
                 "foto" => "",
-                "preguntaValor" => $P['preguntaSeguridad'],
+                "preguntaValor" => $preguntaSeguridadValor,
                 "preguntaSeguridad" => $preguntaSeguridad,
-                "respuestaSeguridad" => password_hash($P['respuestaSeguridad'], PASSWORD_DEFAULT),
+                "respuestaSeguridad" => password_hash($respuestaSeguridad, PASSWORD_DEFAULT),
                 "generoValor" => "",
                 "genero" => "",
                 "provinciaValor" => "",
@@ -88,8 +89,9 @@
             exit;
         }
     }
+    /*Header*/
     $CSS = ['form'];
-    include_once("includes/header.php");
+    require_once("includes/header.php");
 ?>
 <main class="main-container">
     <div class="register-form">
@@ -128,14 +130,14 @@
             </div>
 
             <div class="form">
-                <label for="preguntaSeguridad">Pregunta de Seguridad</label>
-                <select name="preguntaSeguridad">
+                <label for="preguntaSeguridadValor">Pregunta de Seguridad</label>
+                <select name="preguntaSeguridadValor">
                     <?php if(($preguntaSeguridad == "")): ?>
                         <option hidden value=""> <i>Seleccionar</i> </option>
                     <?php endif; ?>
                         <?php
                         for($i=0; $i < count($preguntas); $i++):?>
-                        <?php if($preguntaValor == $preguntas[$i]['valor']): ?>
+                        <?php if($preguntaSeguridadValor == $preguntas[$i]['valor']): ?>
                             <option value='<?=$preguntas[$i]['valor']?>' selected>
                                 <?=$preguntas[$i]['pregunta']?>
                             </option>
@@ -157,7 +159,7 @@
     </div>
 </main>
 
-<!--FOOTER-->
 <?php
-    include_once("includes/footer.php");
+    /*Footer*/
+    require_once("includes/footer.php");
 ?>

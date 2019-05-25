@@ -18,15 +18,16 @@
     $respuestaSeguridad = "";
     $foto = "";
     $recordar = "";
+
     /*DATA BASE USER: Lista de usuarios es el user.json decodificado. Es el array con todos los usuarios.*/
     $listaJSON = file_get_contents('includes/user.json');
     $listaUsuarios = json_decode($listaJSON, true);
+
     /*---FUNCIONES PARA LAS VALIDACIONES----*/
     /*getUser es para recuperar la informacion del usuario en nuestra base de datos json. Si el usuario esta logueado,devuelve el array de dicho usarios. Sino la devuelve en blanco.*/
     function getUser($indice, $dato){
         global $listaUsuarios;
         for ($i=0; $i < count($listaUsuarios); $i++) {
-            global $usuarioRecuperado;
             $comparar = $listaUsuarios[$i][$indice];
             if($comparar == $dato) {
                 $usuarioRecuperado = $listaUsuarios[$i];
@@ -34,8 +35,8 @@
             }
         }
         return $usuarioRecuperado;
-    };
-    /*checkEmail revisa en el json de usuarios si el email wue provee el usuario esta ahi adentro. Devuelve true o false. */
+    }
+    /*checkEmail revisa en el json de usuarios si el email que provee el usuario esta ahi adentro. Devuelve true o false. */
     function checkEmail($email){
         global $listaUsuarios;
         $resultado = false;
@@ -47,7 +48,7 @@
             }
         }
         return $resultado;
-    };
+    }
 
     /*Funcion para eliminar cookies*/
     function borrarCookiesLogin() {
@@ -59,7 +60,6 @@
     }
 
     /*Funcion para sobrescribir datos en un usuario ya registrado. Tiene dos parametros $indice, que seria el lugar donde se reemplazaria el dato, y $dato, que seria la info nueva.*/
-    /*NO FUNCIONA Y NO SE PORQUÉ*/
     function reemplazar($email, $indice, $dato){
         global $listaUsuarios;
         for ($i=0; $i < count($listaUsuarios); $i++) {
@@ -67,9 +67,12 @@
                 $listaUsuarios[$i][$indice] = $dato;
                 break;
             }
-        return $listaUsuarios;
         }
-    };
+        return $listaUsuarios;
+    }
+    /*OJO: que al final del archivo si o si tendrias que poner lo de enconde y file_put_contents, para que se actualice el user.json. Por las dudas lo dejo acá comentado. pONELO DESPUES de usar la funcion reemplazar.*/
+    // $listaUsuariosJSON = json_encode($listaUsuarios);
+    // file_put_contents('includes/user.json', $listaUsuariosJSON);
 
     /*Funcion para recuperar un dato de las listas en listas-editar.php, solo funciona si la lista tiene dos variables, valor y dato.*/
     function recuperarDato($listaArray, $valor, $nuevaVariable){
@@ -80,11 +83,8 @@
         }
         return $nuevaVariable;
     }
-    /*OJO: que al final del archivo si o si tendrias que poner lo de enconde y file_put_contents, para que se actualice el user.json. Por las dudas lo dejo acá comentado. Ponelo al final de todo el editar perfil.*/
-    // $listaUsuariosJSON = json_encode($listaUsuarios);
-    // file_put_contents('includes/user.json', $listaUsuariosJSON);
 
-
+    /*Funcion para calcular Edad. No necesito explicar nada más*/
     function calcularEdad($fecha){
         $dia = date("j");
         $mes = date("n");

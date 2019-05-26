@@ -102,11 +102,16 @@ button {
   padding: 2vw;
   margin-top: 2vh;
   background: #F7EB61; /*Yellow*/
+  box-shadow: 4px 4px 0 #73d2e6;
   border: none;
   text-transform: uppercase;
   font-family: 'Bree Serif', serif;
   margin: auto;
   color: black;
+}
+
+.ver-mas:hover {
+    background: linear-gradient(to left,#F7EB61 0,#73d2e6 100%);
 }
 
 @media (min-width: 992px) { /*DESKTOP*/

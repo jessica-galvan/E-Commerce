@@ -25,11 +25,6 @@
   border-radius: 25%;
 }
 
-.nombreUsuario {
-
-
-}
-
 .datosBasicos {
   text-align: left;
 }
@@ -47,21 +42,6 @@
 }
 
 /*BOTONES EDITAR*/
-/* .editar-button {
-  margin: 3vw;
-} */
-
-/* .editar-button button {
-  padding: 5vw;
-  margin-top: 2vh;
-  background: #C4AAD7;
-  border: none;
-  text-transform: uppercase;
-  font-family: 'Bree Serif', serif;
-  margin: auto;
-  color: black;
-  cursor: pointer;
-} */
 .caja-botones form {
   margin: 3vw;
 }
@@ -75,13 +55,19 @@
   margin: auto;
   color: black;
   cursor: pointer;
-  background: #F7EB61
+  background: #F7EB61;
+  box-shadow: 4px 4px 0 #73d2e6;
+}
+
+.editar-button-amarillo button:hover{
+    background: linear-gradient(to left,#F7EB61 0,#73d2e6 100%);
 }
 
 .editar-button-violeta button {
   padding: 5vw;
   margin-top: 2vh;
   background: #C4AAD7;
+  box-shadow: 4px 4px 0 #73d2e6;
   border: none;
   text-transform: uppercase;
   font-family: 'Bree Serif', serif;
@@ -90,16 +76,25 @@
   cursor: pointer;
 }
 
+.editar-button-violeta button:hover{
+    background: linear-gradient(to left,#C4AAD7 0,#f08ccd 100%);
+}
+
 .editar-button-rosa button {
   padding: 5vw;
   margin-top: 2vh;
   background: #FFB6BF;
+  box-shadow: 4px 4px 0 #C4AAD7;
   border: none;
   text-transform: uppercase;
   font-family: 'Bree Serif', serif;
   margin: auto;
   color: black;
   cursor: pointer;
+}
+
+.editar-button-rosa button:hover{
+    background: linear-gradient(to left,#FFB6BF 0,#f08ccd 100%);
 }
 
 @media (min-width: 700px) { /*TABLET*/ }

@@ -18,14 +18,36 @@
 }
 
 .p-imagen {
-  align-self: center;
-  margin-bottom: 3vh;
+    align-self: center;
+    margin-bottom: 3vh;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
 }
 
+/* .p-imagen:hover, .p-imagen:focus, .p-imagen:active {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+} */
+
+.producto:hover .p-imagen, .producto:focus .p-imagen, .producto:active .p-imagen{
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+
+
 .p-imagen img {
-  max-width: 50vw;
-  border: solid, lightgrey, 1vw;
-  text-align: center;
+    max-width: 50vw;
+    border: solid, lightgrey, 1vw;
+    text-align: center;
 }
 
 .producto-texto {
@@ -41,12 +63,24 @@
   text-transform: capitalize;
 }
 
-.producto-texto .precio {
+.producto-texto, .precio {
   color: black;
 }
 
 .producto-boton {
   text-align: center;
+}
+
+.producto-boton button {
+
+}
+
+.boton-efecto {
+    background: #F7EB61;  /*Yellow*/
+    width: 100%;
+    height: inherit;
+    position: relative;
+    left: 5px;
 }
 
 .comprar {
@@ -57,7 +91,13 @@
   text-transform: uppercase;
   font-family: 'Bree Serif', serif;
   text-align: center;
+  box-shadow: 4px 4px 0 #f5ea77;
 }
+
+.comprar:hover{
+    background: linear-gradient(to right,#8cd0e3 0,#f08ccd 150%);
+}
+
 
 @media (min-width: 768px) { /*TABLET*/}
 

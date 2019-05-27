@@ -91,6 +91,11 @@ label {
   font-family: 'Bree Serif', serif;
   margin: auto;
   color: black;
+  cursor: pointer;
+}
+
+.login-button button:hover {
+    background: linear-gradient(to left,#F7EB61 0, #FFB6Bf 100%);
 }
 
 /*REGISTRARSE*/

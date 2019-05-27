@@ -81,7 +81,7 @@
         while($maxProductosNuevos < 5) {
         if ($productos[$nNuevos]["estado"] === "Nuevo"):?>
         <article class="producto">
-            <img class="etiqueta-nuevo" src="img/new/NewVioleta.png" alt="">
+            <img class="etiqueta-nuevo" src="img/new/NewRosa.png" alt="">
 
             <div class="p-imagen">
                 <img src="img/productos/<?=$productos[$nNuevos]["foto"]?>" alt="<?=$productos[$nNuevos]["nombre"]?>">

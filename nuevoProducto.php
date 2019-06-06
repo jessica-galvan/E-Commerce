@@ -1,9 +1,5 @@
 <?php
-    session_start();
-    require_once('actions/user-check.php');
-    // sinUsuarioLogueado();
-    require_once('partials/funciones.php');
-    require_once('partials/conexion.php');
+    require_once('loader.php');
     $nombre = "";
     $precio = "";
     $descripcion = "";

@@ -20,7 +20,7 @@
     $recordar = "";
 
     /*DATA BASE USER: Lista de usuarios es el user.json decodificado. Es el array con todos los usuarios.*/
-    $listaJSON = file_get_contents('includes/user.json');
+    $listaJSON = file_get_contents('partials/user.json');
     $listaUsuarios = json_decode($listaJSON, true);
 
     /*---FUNCIONES PARA LAS VALIDACIONES----*/

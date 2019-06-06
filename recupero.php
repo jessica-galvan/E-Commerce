@@ -1,75 +1,68 @@
 <?php
-    session_start();
-    require_once('actions/user-check.php');
-    usuarioLogueado();
-    require_once('partials/funciones.php'); /*Solo es necesario para formularios*/
+    require_once('loader.php');
+    $auth->usuarioLogueado();
+    require_once('partials/preguntaSeguridad.php');
+
     $etapa = 'primera';
+    $errorEmail = "";
+    $errorContrasenia = "";
+    $errorPregunta = "";
+    $email = "";
+    $respuestaSeguridad = "";
+    $contrasenia = "";
+    $contraseniaConfirmar = "";
 
     //  PARTE 1
     if(isset($_POST['recupero1'])) {
-        $email = trim($_POST['email']);
-
-        //Primero validar que sea un email y este registrado.
-        if($email == ""){
-            $errorEmail = "* Completa el email";
-            $hayErrores = true;
-            } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errorEmail = "* Email no válido";
-            $hayErrores = true;
-            } else if(!checkEmail($email)) {
-            $errorEmail = "Ese email no esta registrado.";
-            $hayErrores = true;
+        $usuarios = $consultaUsuarios->fetchAll(PDO::FETCH_ASSOC);
+        $validar = $validator->validateEmail($_POST['email']);
+        if($validar){
+            $errorEmail = $validar;
         }
 
-        if(!$hayErrores) {
+        if(!$validar) {
+            $email = trim($_POST['email']);
             $etapa = "segunda";
-            $_SESSION['usuarioInfo'] = getUser('email', $email);
-            $preguntaSeguridad = $_SESSION['usuarioInfo']['preguntaSeguridad'];
+            $_SESSION['usuarioInfo'] = $baseDatos->getUser($email);
+
+            /*Recuperamos la pregunta de seguridad*/
+            foreach ($preguntas as $pregunta) {
+                if($_SESSION['usuarioInfo']['preguntaSeguridad'] == $pregunta['valor']){
+                        $_SESSION['preguntaSeguridad'] = $pregunta['pregunta'];
+                }
+            }
         }
     }
 
     //PARTE 2
     if(isset($_POST['recupero2'])) {
         $respuestaSeguridad= trim($_POST['respuestaSeguridad']);
-
-        if($respuestaSeguridad == "") {
-            $errorPregunta = "* Tu respuesta no puede estar vacia";
-            $hayErrores = true;
-        } else if(!password_verify($respuestaSeguridad, $_SESSION['usuarioInfo']['respuestaSeguridad'])) {
-            $errorPregunta = "Respuesta incorrecta";
-            $hayErrores = true;
+        $validar2 = $validator->validateRespuestaSeguridad($respuestaSeguridad);
+        if($validar2){
+            $errorRespuesta = $validar2;
         }
 
-        if(!$hayErrores) {
+        if(!$validar2) {
             $etapa = 'tercera';
         }
     }
     //PARTE 3
     if(isset($_POST['recupero3'])) {
-        foreach( $_POST as $variable => $valor ){
-          $P[$variable]=trim($valor);
+        $validar3 = $validator->validatePassword($_POST['contrasenia'], $_POST['contraseniaConfirmar']);
+
+        if($validar3){
+            $errorContrasenia = $validar3;
         }
 
-        if($P['contrasenia'] == ""){
-            $errorContrasenia = "* Completa la contraseña";
-            $hayErrores = true;
-            } else if(strlen($P['contrasenia']) < 6){
-            $errorContrasenia = "* La contraseña debe tener más de 6 caracteres";
-            $hayErrores = true;
-            $contrasenia = "";
-            $contraseniaConfirmar = "";
-        } else if($P['contrasenia'] != $P['contraseniaConfirmar']) {
-            $errorContrasenia = "* Las contraseñas no coinciden";
-            $hayErrores = true;
-            $contrasenia = "";
-            $contraseniaConfirmar = "";
-        }
-
-        if(!$hayErrores) {
+        if(!$validar3) {
             /*Una vez que no hay errores, reemplazamos la contraseña anterior por la nueva (pisando el dato).*/
-            reemplazar($_SESSION['usuarioInfo']['email'], 'contrasenia', password_hash($P['contrasenia'], PASSWORD_DEFAULT));
-            $listaUsuariosJSON = json_encode($listaUsuarios);
-            file_put_contents('includes/user.json', $listaUsuariosJSON);
+            $nuevaContrasenia = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
+            $usuarioID = $_SESSION['usuarioInfo']['id'];
+
+            $modificarUsuario = $conex->prepare("UPDATE usuarios SET contrasenia =:contrasenia WHERE id = $usuarioID");
+            $modificarUsuario->bindValue(":contrasenia", $nuevaContrasenia, PDO::PARAM_STR);
+            $modificarUsuario->execute();
+
             $etapa = 'cuarta';
         }
     }
@@ -111,7 +104,7 @@
 
             <form class="" action="recupero.php" method="post">
                 <div class="form">
-                    <label for="preguntaSeguridad"><?=$preguntaSeguridad?></label>
+                    <label for="preguntaSeguridad"><?=$_SESSION['preguntaSeguridad']?></label>
                     <input type="text" name="respuestaSeguridad" placeholder="Respuesta" value="<?=$respuestaSeguridad?>">
                     <span class="error-form"><?=$errorPregunta?></span>
                 </div>

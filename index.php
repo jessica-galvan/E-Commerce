@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    require_once('actions/user-check.php');
+    require_once('loader.php');
     include_once("partials/lista-productos.php");
     $CSS = ['index','producto'];
     require_once("partials/header.php");

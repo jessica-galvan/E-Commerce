@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    require_once('actions/user-check.php');
+    require_once('loader.php');
     /*Header*/
     $CSS = ['faq'];
     require_once("partials/header.php");

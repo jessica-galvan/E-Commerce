@@ -1,54 +1,42 @@
 <?php
     ob_start();
-    session_start();
+    require_once('loader.php');
+    $auth->usuarioLogueado();
     require_once('actions/user-check.php');
-    usuarioLogueado();
-    require_once('partials/funciones.php'); /*Solo es necesario para formularios*/
+    // require_once('partials/funciones.php'); /*Solo es necesario para formularios*/
+
+    $email = "";
+    $contrasenia = "";
+    $recordar = "";
+    $errorEmail = "";
+    $errorContrasenia = "";
+
     if(isset($_POST['login'])) {
-        foreach( $_POST as $variable => $valor ){
-          $$variable=trim($valor);
-        }
-        /*VALIDACIONES*/
-        if($email == ""){
-            $errorEmail = "* Completa el email";
-            $hayErrores = true;
-        } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errorEmail = "* Email no válido";
-            $hayErrores = true;
-        } else if (!checkEmail($email)) {
-            $errorEmail = "Ese email no esta registrado.";
-            $hayErrores = true;
-        }
-        if($contrasenia == ""){
-            $errorContrasenia = "* Completa la contraseña";
-            $hayErrores = true;
-        } else if(checkEmail($email)){ /*COMPARAR CONTRASEÑAS*/
-            $usuarioRecuperado = getUser('email', $email);
-            if(password_verify($contrasenia, $usuarioRecuperado['contrasenia'])) {
-                $hayErrores = false;
-            } else {
-                $hayErrores = true;
-                $errorContrasenia = "* Email o contraseña invalidas";
+        $email = $_POST['email'];
+        $contrasenia = $_POST['contrasenia'];
+        $validar = $baseDatos->validateLogin($email, $contrasenia);
+
+        if($validar){
+            foreach($validar as $indice => $valor ){
+              $$indice=$valor;
             }
+            $contrasenia = "";
         }
 
         if(isset($_POST['recordar'])) {
             $recordar = "checked";
         }
 
-        if(!$hayErrores) {
-            global $usuarioRecuperado;
-            $_SESSION["email_usuario"] = $email;
-            $_SESSION["nombre_usuario"] = $usuarioRecuperado["nombre"];
+        if(!$validar) {
+            $auth->login($email);
             /*SI EL RECORDAR ESTA TILDADO, SETEAR UNA COOKIE.*/
             if(isset($_POST['recordar'])) {
-                $expirar = time() + 60*60*24*30; /*30 DIAS*/
-                setcookie('email_usuario', $email, $expirar, '/', $_SERVER['HTTP_HOST']);
-                setcookie('nombre_usuario', $usuarioRecuperado["nombre"], $expirar, '/', $_SERVER['HTTP_HOST']);
+                $auth->recordar($email);
             } else {
-                borrarCookiesLogin();
+                $auth->borrarCookiesLogin();
             }
-            /*EN AMBOS CASOS, ANDA A CONFIRMAR.*/
+
+            /*EN AMBOS CASOS, ANDA A PERFIL.*/
             echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=perfilUsuario.php">';
             // header('location:confirmacion.php');

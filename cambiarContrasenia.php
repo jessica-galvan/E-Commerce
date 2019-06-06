@@ -1,8 +1,8 @@
 <?php
     ob_start();
-    session_start();
-    require_once('actions/user-check.php');
-    sinUsuarioLogueado();
+    require_once('loader.php');
+    $auth->usuarioNoLogueado();
+    
     require_once('includes/funciones.php');
     $usuarioRecuperado = getUser('email', $_SESSION['email_usuario']);
     $contraseniaOriginal = $usuarioRecuperado['contrasenia'];

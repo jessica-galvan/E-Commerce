@@ -1,23 +1,17 @@
 <?php
     ob_start();
-    session_start();
-    require_once('actions/user-check.php');
-    sinUsuarioLogueado();
-    require_once('partialsfunciones.php');
+    require_once('loader.php');
+    $auth->usuarioNoLogueado();
     require_once("partials/listas-editar.php");
     /*Lo primero que necesitamos*/
     $email = $_SESSION['email_usuario'];
-    $usuarioRecuperado = getUser('email', $email);
-    /*Segundo, si el usuario ya completo anteriormente la info, que aparesca su respuesta. Excepto la foto. Ya esta armado en el formulario para que si la info esta completada, se marque.*/
-    $generoValor = $usuarioRecuperado['generoValor'];
+    $usuarioRecuperado = $baseDatos->getUserPerfil($email);
     $genero = $usuarioRecuperado['genero'];
-    $tonoDePielValor = $usuarioRecuperado["tonoDePielValor"];
     $tonoDePiel = $usuarioRecuperado['tonoDePiel'];
-    $tipoDePielValor = $usuarioRecuperado['tipoDePielValor'];
     $tipoDePiel = $usuarioRecuperado['tipoDePiel'];
-    $provinciaValor = $usuarioRecuperado['provinciaValor'];
     $provincia = $usuarioRecuperado['provincia'];
     $fechaNacimiento = $usuarioRecuperado['fechaNacimiento'];
+    $errorFoto = "";
 
     /*Si hay POST. No hay necesidad de validar. Y solo updatear el array con lo que se completo.*/
     if(isset($_POST['editar']) || isset($_FILES["foto"])) {
@@ -76,33 +70,47 @@
         }
 
         if(isset($_FILES["foto"])){
-            if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
-                $nombreArchivo = $_FILES["foto"]["name"];
-                $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
-                $origen = $_FILES["foto"]["tmp_name"];
+            /*Primero habria que validar la foto, luego subir el cambio de avatar y preparar lo que se va a subir a las base de datos. */
+            $foto = $_FILES["foto"];
+            $validarFoto = $validator->imagenValidate($foto);
 
-                /*para poner parte del email del usuario en el nombre.*/
-                $email = $_SESSION['email_usuario']; /*Para que utilice el email de la sesion*/
-                $separar = strpos($email, '@'); /*Esto busca donde esta el @ en el sting de $email.*/
-                $divido  = str_split($email, $separar); /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
-                $fotoNombre = $divido[0]; /*Para que me ponga lo que separe primero*/
-                /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
-                $destino = "";
-                $destino = $destino."img/user-avatar/";
-                $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
-                $subir = move_uploaded_file($origen,$destino);
-                move_uploaded_file($origen,$destino);
-                $foto = $destino;   /*$foto es la ruta a la foto, para guardarla en el array.*/
-                for ($i=0; $i < count($listaUsuarios); $i++) {
-                    if($listaUsuarios[$i]['email'] == $email){
-                        $listaUsuarios[$i]['foto'] = $foto;
-                        break;
-                    }
-                }
-            } else if ($_FILES['foto']["error"] != 4){
-                $errorFoto = "* Hubo un problema";
-                $hayErrores = true;
-            }
+            var_dump($validarFoto);
+            exit;
+
+            // if(!$validarFoto){
+            //     $fotoNombre = $baseDatos->changeAvatar($foto);
+            // } else {
+            //     $errorFoto = $validarFoto;
+            // }
+
+
+            // if($_FILES["foto"]["error"] === UPLOAD_ERR_OK){
+            //     $nombreArchivo = $_FILES["foto"]["name"];
+            //     $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+            //     $origen = $_FILES["foto"]["tmp_name"];
+            //
+            //     /*para poner parte del email del usuario en el nombre.*/
+            //     $email = $_SESSION['email_usuario']; /*Para que utilice el email de la sesion*/
+            //     $separar = strpos($email, '@'); /*Esto busca donde esta el @ en el sting de $email.*/
+            //     $divido  = str_split($email, $separar); /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
+            //     $fotoNombre = $divido[0]; /*Para que me ponga lo que separe primero*/
+            //     /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
+            //     $destino = "";
+            //     $destino = $destino."img/user-avatar/";
+            //     $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
+            //     $subir = move_uploaded_file($origen,$destino);
+            //     move_uploaded_file($origen,$destino);
+            //     $foto = $destino;   /*$foto es la ruta a la foto, para guardarla en el array.*/
+            //     for ($i=0; $i < count($listaUsuarios); $i++) {
+            //         if($listaUsuarios[$i]['email'] == $email){
+            //             $listaUsuarios[$i]['foto'] = $foto;
+            //             break;
+            //         }
+            //     }
+            // } else if ($_FILES['foto']["error"] != 4){
+            //     $errorFoto = "* Hubo un problema";
+            //     $hayErrores = true;
+            // }
         }
 
         /*Una ves que terminaste de reemplazar todo....*/
@@ -129,48 +137,48 @@
             <!-- SECCION TIPO -->
             <section class="form-editar">
                 <label for="tipoDePiel">Tipo de piel:</label>
-                <?php for($i=0; $i < count($tiposLista); $i++):
-                global $tiposLista;
-                ?>
-                    <?php if ($tipoDePielValor == $tiposLista[$i]['valor']): ?>
+                <?php
+                foreach ($tiposLista as $tipo) {
+                    if ($tipoDePiel == $tipo['dato']): ?>
                         <div class="check-box">
-                            <input type="radio" name="tipoDePiel" value="<?=$tiposLista[$i]['valor']?>" checked><span><?=$tiposLista[$i]['dato']?></span>
+                            <input type="radio" name="tipoDePiel" value="<?=$tipo['valor']?>" checked><span><?=$tipo['dato']?></span>
                         </div>
                     <?php else: ?>
                         <div class="check-box">
-                            <input type="radio" name="tipoDePiel" value="<?=$tiposLista[$i]['valor']?>"><span><?=$tiposLista[$i]['dato']?></span>
+                            <input type="radio" name="tipoDePiel" value="<?=$tipo['valor']?>"><span><?=$tipo['dato']?></span>
                         </div>
-                    <?php endif; ?>
-                <?php endfor; ?>
+                    <?php endif; } ?>
             </section>
 
             <!-- SECCION TONO -->
             <section class="form-editar">
                 <label for="tonoDePiel">Tono de piel:</label>
-                <?php for($i=0; $i < count($tonosLista); $i++):?>
-                    <?php if ($tonoDePielValor == $tonosLista[$i]['valor']): ?>
-                        <div class="check-box">
-                            <input type="radio" name="tonoDePiel" value="<?=$tonosLista[$i]['valor']?>" checked><span><?=$tonosLista[$i]['dato']?></span>
-                        </div>
-                    <?php else: ?>
-                        <div class="check-box">
-                            <input type="radio" name="tonoDePiel" value="<?=$tonosLista[$i]['valor']?>"><span><?=$tonosLista[$i]['dato']?></span>
-                        </div>
-                    <?php endif; ?>
-                <?php endfor; ?>
+                <?php foreach ($tonosLista as $tono) {
+                    if ($tonoDePiel == $tono['dato']):?>
+                    <div class="check-box">
+                        <input type="radio" name="tonoDePiel" value="<?=$tono['valor']?>" checked><span><?=$tono['dato']?></span>
+                    </div>
+                <?php else: ?>
+                    <div class="check-box">
+                        <input type="radio" name="tonoDePiel" value="<?=$tono['valor']?>"><span><?=$tono['dato']?></span>
+                    </div>
+                <?php endif; }?>
             </section>
 
             <!-- SECCION GENERO -->
             <section class="form-editar" id='genero-checkbox'>
                 <label for="genero">Género:</label>
                 <div class="genero-options">
-                    <?php for($i=0; $i < count($generosLista); $i++):?>
-                        <?php if ($generoValor == $generosLista[$i]['valor'] ): ?>
-                            <input type="radio" name="genero" value="<?=$generosLista[$i]['valor']?>" checked><span><?=$generosLista[$i]['dato']?></span>
-                        <?php else: ?>
-                            <input type="radio" name="genero" value="<?=$generosLista[$i]['valor']?>"><span><?=$generosLista[$i]['dato']?></span>
-                        <?php endif; ?>
-                    <?php endfor; ?>
+                    <?php foreach ($generosLista as $generos) {
+                        if ($genero == $generos['dato']):?>
+                        <div class="check-box">
+                            <input type="radio" name="tonoDePiel" value="<?=$generos['valor']?>" checked><span><?=$generos['dato']?></span>
+                        </div>
+                    <?php else: ?>
+                        <div class="check-box">
+                            <input type="radio" name="tonoDePiel" value="<?=$generos['valor']?>"><span><?=$generos['dato']?></span>
+                        </div>
+                    <?php endif; }?>
                 </div>
             </section>
 
@@ -178,20 +186,19 @@
             <section class="form-editar">
                 <label for="ubicacion">Provincia:</label>
                 <select class="" name="provincia">
-                    <?php if($provinciaValor  == ""): ?>
+                    <?php if($provincia  == ""): ?>
                         <option hidden value=""> <i>Seleccionar</i> </option>
                     <?php endif; ?>
-                    <?php for($i=0; $i < count($provinciasLista); $i++):?>
-                        <?php if($provinciaValor == $provinciasLista[$i]['valor']): ?>
-                            <option value='<?=$provinciasLista[$i]['valor']?>' selected>
-                                <?=$provinciasLista[$i]['dato']?>
-                            </option>
+                    <?php foreach ($provinciasLista as $provincias) {
+                        if ($provincia == $provincias['dato']):?>
+                        <option value='<?=$provincias['valor']?>' selected>
+                            <?=$provincias['dato']?>
+                        </option>
                         <?php else: ?>
-                            <option value='<?=$provinciasLista[$i]['valor']?>'>
-                                <?=$provinciasLista[$i]['dato']?>
+                            <option value='<?=$provincias['valor']?>'>
+                                <?=$provincias['dato']?>
                             </option>
-                        <?php endif; ?>
-                    <?php endfor;?>
+                        <?php endif; }?>
                 </select>
             </section>
 

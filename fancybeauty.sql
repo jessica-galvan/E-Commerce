@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2019 a las 02:36:10
+-- Tiempo de generación: 06-06-2019 a las 08:59:15
 -- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -32,8 +32,8 @@ CREATE TABLE `carritos` (
   `id` int(4) UNSIGNED NOT NULL,
   `usuario_id` int(4) UNSIGNED NOT NULL,
   `direccionEnvio` varchar(200) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -104,32 +104,19 @@ CREATE TABLE `perfiles` (
   `genero` varchar(20) DEFAULT NULL,
   `provincia` varchar(20) DEFAULT NULL,
   `tipoDePiel` varchar(20) DEFAULT NULL,
-  `tonoDePiel` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `preguntasSeguridad`
---
-
-CREATE TABLE `preguntasSeguridad` (
-  `id` int(1) UNSIGNED NOT NULL,
-  `valor` varchar(10) NOT NULL,
-  `nombre` varchar(100) NOT NULL
+  `tonoDePiel` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `preguntasSeguridad`
+-- Volcado de datos para la tabla `perfiles`
 --
 
-INSERT INTO `preguntasSeguridad` (`id`, `valor`, `nombre`) VALUES
-(1, 'mascota', '¿Cuál fue el nombre de tu primera mascota?'),
-(2, 'apellido', '¿Cuál fue el apellido de soltera de tu madre?'),
-(3, 'libro', '¿Cuál es tu libro infantil favorito?'),
-(4, 'pelicula', '¿Cuál fue la primera película que viste en el cine?'),
-(5, 'nacimiento', '¿Cuál fue la ciudad de nacimiento de tu padre?'),
-(6, 'materia', '¿Cuál fue tu materia favorita en el primario?');
+INSERT INTO `perfiles` (`id`, `fotoPerfil`, `fechaNacimiento`, `genero`, `provincia`, `tipoDePiel`, `tonoDePiel`, `created_at`, `updated_at`) VALUES
+(1, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 04:29:33', '2019-06-06 04:29:33'),
+(2, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 04:37:08', '2019-06-06 04:37:08'),
+(3, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 04:41:20', '2019-06-06 04:41:20');
 
 -- --------------------------------------------------------
 
@@ -188,9 +175,18 @@ CREATE TABLE `usuarios` (
   `preguntaSeguridad` varchar(50) NOT NULL,
   `respuestaSeguridad` varchar(100) NOT NULL,
   `perfil_id` int(10) UNSIGNED NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `contrasenia`, `preguntaSeguridad`, `respuestaSeguridad`, `perfil_id`, `updated_at`, `created_at`) VALUES
+(1, 'Jessica', 'Galvan', 'jessica_lamelli@hotmail.com', '$2y$10$cRKL77HKbDQ5X4qN7vGvd.2HBjSvXDmxgihnyabVzPbjQDHYej4sy', 'mascota', '$2y$10$B.LaAlTFNJ9Yp5yXkRO2/OTndRY.DY1WarnIExte.7YckUIo1UA5m', 1, '0000-00-00 00:00:00', '2019-06-06 04:08:45'),
+(2, 'Jessica', 'Galvan', 'jessica.galvan@hotmail.com', '$2y$10$Zu/eF/ztmTasiyxqVxkX.OnyN973v3kTpuiumctzqKBVmgx/KmgIO', 'mascota', '$2y$10$KPPvyHp7YHz1c.GHAIyD6.yoYCU0p8gJkALSDOqkex.Fw3rZSUMgG', 2, '2019-06-06 04:39:55', '2019-06-06 04:39:55'),
+(3, 'Harry', 'Potter', 'harry@potter.com', '$2y$10$e95EpOvyWYBgtbPFbNdnPORmzYJ1qg8GABR19eqUu5XXMkF/Y5Frq', 'libro', '$2y$10$joiGAbpE38XA6mQZQc.iuOx5S18W3np0kXVJarHjKb9OEexFysBTS', 3, '2019-06-06 06:50:14', '2019-06-06 04:41:20');
 
 --
 -- Índices para tablas volcadas
@@ -227,12 +223,6 @@ ALTER TABLE `estados`
 -- Indices de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `preguntasSeguridad`
---
-ALTER TABLE `preguntasSeguridad`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -290,13 +280,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `preguntasSeguridad`
---
-ALTER TABLE `preguntasSeguridad`
-  MODIFY `id` int(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -314,7 +298,7 @@ ALTER TABLE `tipoProductos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

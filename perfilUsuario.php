@@ -1,13 +1,11 @@
 <?php
   ob_start();
-  session_start();
-  require_once('actions/user-check.php');  //Esto dejalo en todas las paginas. Es necesario para el menu.
-  sinUsuarioLogueado();
-  require_once('partials/funciones.php'); /*Por ahora solo es necesario para formularios. Te deje unos comentarios y la nueva funcion de reemplazar.*/
-  require_once("partials/listas-editar.php");
+  require_once('loader.php');
+  $auth->usuarioNoLogueado();
+  require_once('actions/user-check.php');
 
   $email = $_SESSION['email_usuario'];
-  $usuarioRecuperado = getUser('email', $email); /*De acá sale el $usuarioRecuperado*/
+  $usuarioRecuperado = $baseDatos->getUserPerfil($email);
   $nombre = $usuarioRecuperado['nombre'];
   $apellido = $usuarioRecuperado['apellido'];
   $nombreCompleto = $nombre." ".$apellido;
@@ -17,10 +15,30 @@
   $tonoDePiel = $usuarioRecuperado['tonoDePiel'];;
   $tipoDePiel = $usuarioRecuperado['tipoDePiel'];
   $provincia = $usuarioRecuperado["provincia"];
-  $foto = $usuarioRecuperado["foto"] != ""?'img/'.$usuarioRecuperado["foto"]: "img/user-avatar/user-profile-basic.jpg";
+  $foto = 'img/user-avatar/'.$usuarioRecuperado["fotoPerfil"];
   $fechaNacimientoOriginal = $usuarioRecuperado["fechaNacimiento"];
 
   /*Este paso es para invertir la fecha, y que se vea Dia-Mes-Año, en vez de Año-Mes-Dia*/
+  function calcularEdad($fecha){
+      $dia = date("j");
+      $mes = date("n");
+      $anio = date("Y");
+      $anioNacimiento = substr($fecha, 0, 4);
+      $mesNacimiento = substr($fecha, 5, 2);
+      $diaNacimiento = substr($fecha, 8, 2);
+
+      if($mesNacimiento > $mes){
+          $edad = $anio - $anioNacimiento-1;
+      } else {
+          if($mes == $mesNacimiento && $diaNacimiento > $dia){
+              $edad = $anio - $anioNacimiento -1;
+          } else {
+              $edad = $anio - $anioNacimiento;
+          }
+      }
+      return $edad;
+  }
+
   if($fechaNacimientoOriginal != "") {
     $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
     $edad = calcularEdad($fechaNacimientoOriginal);

@@ -3,8 +3,8 @@
     require_once('actions/user-check.php');
     /*Header*/
     $CSS = ['faq'];
-    require_once("includes/header.php");
-    include_once("includes/lista-de-faq.php");
+    require_once("partials/header.php");
+    include_once("partials/lista-de-faq.php");
  ?>
 <main class="main-container">
     <div class="faq-body">
@@ -30,5 +30,5 @@
 </main>
 <?php
     /*Footer*/
-    include_once("includes/footer.php");
+    include_once("partials/footer.php");
 ?>

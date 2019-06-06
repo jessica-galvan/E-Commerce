@@ -3,7 +3,7 @@
     session_start();
     require_once('actions/user-check.php');
     usuarioLogueado();
-    require_once('includes/funciones.php'); /*Solo es necesario para formularios*/
+    require_once('partials/funciones.php'); /*Solo es necesario para formularios*/
     if(isset($_POST['login'])) {
         foreach( $_POST as $variable => $valor ){
           $$variable=trim($valor);
@@ -55,7 +55,7 @@
         }
     }
     $CSS = ['form'];
-    require_once("includes/header.php");
+    require_once("partials/header.php");
     ob_end_flush();
 ?>
 <main class="main-container">
@@ -99,5 +99,5 @@
 </main>
 <!--FOOTER-->
 <?php
-include_once("includes/footer.php");
+include_once("partials/footer.php");
 ?>

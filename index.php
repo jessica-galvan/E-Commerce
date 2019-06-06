@@ -1,9 +1,9 @@
 <?php
     session_start();
     require_once('actions/user-check.php');
-    include_once("includes/lista-productos.php");
+    include_once("partials/lista-productos.php");
     $CSS = ['index','producto'];
-    require_once("includes/header.php");
+    require_once("partials/header.php");
 ?>
 <main class="main-container">
     <section class="intro">
@@ -106,5 +106,5 @@
 </main>
 <?php
     /*Footer*/
-    require_once("includes/footer.php");
+    require_once("partials/footer.php");
 ?>

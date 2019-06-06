@@ -3,8 +3,8 @@
   session_start();
   require_once('actions/user-check.php');  //Esto dejalo en todas las paginas. Es necesario para el menu.
   sinUsuarioLogueado();
-  require_once('includes/funciones.php'); /*Por ahora solo es necesario para formularios. Te deje unos comentarios y la nueva funcion de reemplazar.*/
-  require_once("includes/listas-editar.php");
+  require_once('partials/funciones.php'); /*Por ahora solo es necesario para formularios. Te deje unos comentarios y la nueva funcion de reemplazar.*/
+  require_once("partials/listas-editar.php");
 
   $email = $_SESSION['email_usuario'];
   $usuarioRecuperado = getUser('email', $email); /*De acá sale el $usuarioRecuperado*/
@@ -17,7 +17,7 @@
   $tonoDePiel = $usuarioRecuperado['tonoDePiel'];;
   $tipoDePiel = $usuarioRecuperado['tipoDePiel'];
   $provincia = $usuarioRecuperado["provincia"];
-  $foto = $usuarioRecuperado["foto"] != ""?$usuarioRecuperado["foto"]: "img/user-profile-basic.jpg";
+  $foto = $usuarioRecuperado["foto"] != ""?'img/'.$usuarioRecuperado["foto"]: "img/user-avatar/user-profile-basic.jpg";
   $fechaNacimientoOriginal = $usuarioRecuperado["fechaNacimiento"];
 
   /*Este paso es para invertir la fecha, y que se vea Dia-Mes-Año, en vez de Año-Mes-Dia*/
@@ -30,7 +30,7 @@
   }
 
   $CSS = ['perfil'];
-  require_once("includes/header.php");
+  require_once("partials/header.php");
   ob_end_flush();
  ?>
 <main class="main-container">
@@ -70,5 +70,5 @@
 </main>
 <?php
     /*Footer*/
-    require_once("includes/footer.php");
+    require_once("partials/footer.php");
 ?>

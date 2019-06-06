@@ -3,8 +3,8 @@
     session_start();
     require_once('actions/user-check.php');
     sinUsuarioLogueado();
-    require_once('includes/funciones.php');
-    require_once("includes/listas-editar.php");
+    require_once('partialsfunciones.php');
+    require_once("partials/listas-editar.php");
     /*Lo primero que necesitamos*/
     $email = $_SESSION['email_usuario'];
     $usuarioRecuperado = getUser('email', $email);
@@ -88,7 +88,7 @@
                 $fotoNombre = $divido[0]; /*Para que me ponga lo que separe primero*/
                 /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
                 $destino = "";
-                $destino = $destino."user/";
+                $destino = $destino."img/user-avatar/";
                 $destino = $destino."$fotoNombre-fotoPerfil.".$ext;
                 $subir = move_uploaded_file($origen,$destino);
                 move_uploaded_file($origen,$destino);
@@ -117,7 +117,7 @@
     }
 
     $CSS = ['form', 'perfil'];
-    include_once("includes/header.php");
+    include_once("partials/header.php");
     ob_end_flush();
 ?>
 <main class="main-container">
@@ -217,5 +217,5 @@
 </main>
 <!--FOOTER-->
 <?php
-    include_once("includes/footer.php");
+    include_once("partials/footer.php");
 ?>

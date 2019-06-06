@@ -2,7 +2,7 @@
     session_start();
     require_once('actions/user-check.php');
     usuarioLogueado();
-    require_once('includes/funciones.php'); /*Solo es necesario para formularios*/
+    require_once('partials/funciones.php'); /*Solo es necesario para formularios*/
     $etapa = 'primera';
 
     //  PARTE 1
@@ -80,7 +80,7 @@
 
     /*Header*/
     $CSS = ['form','perfil'];
-    require_once("includes/header.php");
+    require_once("partials/header.php");
 ?>
 <main class="main-container">
     <div class="register-form">
@@ -165,5 +165,5 @@
 </main>
  <?php
     /*Footer*/
-    require_once("includes/footer.php");
+    require_once("partials/footer.php");
  ?>

@@ -330,7 +330,6 @@ nav a {
     color: white;
     background: #8CD0E3; /*Lightblue*/
     padding: 10px;
-    /* padding-bottom: 2%; */
     display: flex;
     flex-wrap: wrap;
   }
@@ -355,10 +354,6 @@ nav a {
     flex-direction: row;
   }
 
-  #user-box {
-    /* margin-right: 10px; */
-  }
-
   #bag-box {
     margin-right: 15px;
     margin-left: 15px;
@@ -369,7 +364,6 @@ nav a {
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    /* margin-right: 15px; */
   }
 
   .icons:first-child {
@@ -409,25 +403,10 @@ nav a {
   }
 
   .icon-box:hover, .icon-box:focus {
-    /* -webkit-transform: scale(1.1);
-    transform: scale(1.1); */
     -webkit-transform: scale(0.95);
     transform: scale(0.95)
-    /* -webkit-transform: scale(0.9);
-    transform: scale(0.9); */
-
-    /* background:  #CAE9F2; /*Lighter lightblue*/
-    /* border-radius: 25%; */
-    /* border: solid 5px  #CAE9F2; /*Lighter lightblue*/
   }
 
-  .icon-box p:hover   {
-    /* color:  #CAE9F2; /*Lighter lightblue*/
-  }
-
-  .icon-box img:hover {
-
-  }
 
   /* Grow */
   .hvr-grow {
@@ -450,14 +429,12 @@ nav a {
   .dropdown {
     position: relative;
     display: inline-block;
-    /* float:right; */
   }
 
   .dropbtn {
     background: #8CD0E3; /*Lightblue*/
     color: white;
     padding: 5px;
-    /* font-size: 5px; */
     border: none;
     cursor: pointer;
     position: relative;
@@ -665,6 +642,17 @@ nav a {
    background-position: top left;
    background-size: 10%;
    background-repeat: repeat;
+   /* background-image: linear-gradient(rgba(247, 235, 97, 0.47) 0px, rgba(240, 140, 205, 0.47) 50%, rgba(115, 210, 230, 0.47) 100%);
+       background-position-x: initial;
+       background-position-y: initial;
+       background-size: initial;
+       background-repeat-x: initial;
+       background-repeat-y: initial;
+       background-attachment: initial;
+       background-origin: initial;
+       background-clip: initial;
+       background-color: initial; */
+
  }
 
  .body-container {

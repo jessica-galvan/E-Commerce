@@ -2,8 +2,8 @@
     session_start();
     require_once('actions/user-check.php');
     usuarioLogueado();
-    require_once('includes/funciones.php');
-    require_once('includes/preguntaSeguridad.php');
+    require_once('partials/funciones.php');
+    require_once('partials/preguntaSeguridad.php');
     if(isset($_POST['registro'])) {
         foreach( $_POST as $variable => $valor ){
           $$variable=trim($valor);
@@ -91,7 +91,7 @@
     }
     /*Header*/
     $CSS = ['form'];
-    require_once("includes/header.php");
+    require_once("partials/header.php");
 ?>
 <main class="main-container">
     <div class="register-form">
@@ -161,5 +161,5 @@
 
 <?php
     /*Footer*/
-    require_once("includes/footer.php");
+    require_once("partials/footer.php");
 ?>

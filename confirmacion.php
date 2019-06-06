@@ -3,7 +3,7 @@
     require_once('actions/user-check.php');
     usuarioLogueado();
     $CSS = ['form', 'perfil'];
-    require_once("includes/header.php");
+    require_once("partials/header.php");
 ?>
 <main class="main-container">
     <div class="register-form">
@@ -20,7 +20,7 @@
         </div>
     </div>
 </main>
-<!--FOOTER-->
 <?php
-    require_once("includes/footer.php");
+    /*Footer*/
+    require_once("partials/footer.php");
 ?>

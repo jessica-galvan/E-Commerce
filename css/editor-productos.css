@@ -1,0 +1,225 @@
+.main-container {
+  background: rgba(196,170,215, 0.8);
+  padding: 5vw;
+}
+
+/*General*/
+.login-text h2 {
+  color:black;
+  font-family: 'Bree Serif', serif;
+  font-size: 2em;
+}
+
+label {
+  color: black;
+}
+
+.error-form {
+  color: red;
+  font-size: 0.8em;
+}
+
+.error-link {
+  color: red;
+  font-size: 0.9em;
+  text-decoration: underline;
+}
+
+/*EDITAR PERFIL*/
+.editar-form {
+  background-color: white;
+  background-image: url('../img/Fondos/FondoSeccionesTres.png');
+  padding: 5vw;
+  margin: auto;
+  text-align: center;
+}
+
+.form-editar {
+  margin-top: 1vh;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.form-editar label {
+  margin-top: 2vh;
+}
+
+.form-editar select {
+  width: 70vw;
+  margin-bottom: 1vh;
+  font-size: 1em;
+  padding: 1vw;
+}
+
+.form-editar input {
+    border: 1px solid #CCCCCC !important;
+    /* height: 5vh; */
+    max-width: 70vw;
+    color: black;
+    padding: 2vw;
+}
+
+.form-editar textarea {
+    max-width: 70vw;
+    border: 1px solid #CCCCCC !important;
+}
+
+.check-box  {
+  margin: 2vh 0;
+}
+
+.check-box span {
+    margin-left: 1vw;
+}
+
+.check-box input {
+  border: 1px solid #CCCCCC !important;
+  color: black;
+  padding: 2vw;
+}
+
+/*BOTON DE LOGEO*/
+.login-button {
+  margin: 5vw;
+}
+
+.login-button button {
+  padding: 2vw;
+  margin-top: 2vh;
+  background: #F7EB61; /*Yellow*/
+  box-shadow: 4px 4px 0 #73d2e6;
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  margin: auto;
+  color: black;
+  cursor: pointer;
+}
+
+.login-button button:hover {
+    background: linear-gradient(to left,#F7EB61 0, #FFB6Bf 100%);
+}
+@media (min-width: 768px) { /*TABLET*/
+  .login-text h2  {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 992px) { /*DESKTOP*/
+  .main-container {
+    padding: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /*LOGIN*/
+  .login-text {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /*REGISTRO*/
+  .editar-form {
+    margin-top: 0;
+    width: 50%;
+    padding: 70px;
+  }
+
+  .login-text p {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+
+  .form-editar {
+    margin: auto;
+    padding: 8px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .form-editar .login-text h2 {
+    margin-top: 30px;
+  }
+
+  .form-editar label {
+      margin-top: 15px;
+      width: 100%
+  }
+
+  .form-editar input {
+      max-width: 100%;
+      color: black;
+      padding: 10px;
+  }
+
+  .form-editar textarea {
+      max-width: 100%;
+  }
+
+  .form-editar select {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .form-editar option {
+    overflow: hidden;
+  }
+
+  /* section.form-editar {
+      width: 70%;
+  } */
+
+  .check-product {
+      width: 70%;
+  }
+
+  .check-box {
+    margin-top: 10px;
+  }
+
+  .checkbox-form label {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .check-box span {
+    margin-left: 10px;
+  }
+
+  .check-box  input {
+    color: black;
+    padding: 15px;
+  }
+
+  /*BOTON CLASICO*/
+  .login-button {
+    margin: 20px;
+  }
+
+  .login-button button {
+    padding: 20px;
+  }
+
+  /*EDITOR PRODUCTOS*/
+  /* .form-product {
+    margin: 30px;
+  }
+
+  .form-editar input {
+    margin: auto;
+    padding: 10px;
+    width: 70%;
+    max-width: 700px;
+  } */
+
+}

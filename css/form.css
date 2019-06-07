@@ -16,7 +16,7 @@
 .register-form {
   margin: auto;
   background-color: white;
-  background-image: url(../img/Fondos/FondoSeccionesTres.png);
+  background-image: url('../img/Fondos/FondoSeccionesTres.png');
   padding: 5vw;
   text-align: center;
   display: flex;
@@ -228,7 +228,6 @@ label {
   padding: 2vw;
 
 }
-
 
 @media (min-width: 768px) { /*TABLET*/
   .login-text h2  {

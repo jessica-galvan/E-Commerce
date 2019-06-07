@@ -34,13 +34,13 @@
         PRIMERO habria que validar la foto, luego subir el cambio de avatar y preparar lo que se va a subir a las base de datos.
         SEGUNDO, si todo esta bien, subi la foto a su carpeta correspondiente y actualizar la base de datos*/
         if(isset($_FILES["foto"])){
-        /*------FALTA HACER LA VALIDACION EN LA CLASE VALIDATOR. imageValidate NO FUNCIONA------- */
             // $foto = $_FILES["foto"];
             // $validarFoto = $validator->imageValidate($foto);
-            // if(!$validarFoto){
+            // if($validarFoto){
             //     $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
             // } else {
-            //     $errorFoto = $validarFoto;
+            //     $errores = $validator->getErrores();
+            //     $errorFoto = $errores['imagen'];
             // }
 
             /*Por ahora sulo subi lo que te paso. Esto es temporal y esta mal porque no hay validacion que confirme que recibio todo bien, que el archivo es una imagen y eso*/

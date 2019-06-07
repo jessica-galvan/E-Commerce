@@ -2,7 +2,7 @@
 /*Esta clase es para obtener y manipular info de la base de Datos, desde obtener info con los gets, cambiar cosas y hasta controlar el login*/
 Class DB {
 
-    /*SECCION USUARIOS*/
+    /*---------SECCION USUARIOS---------*/
     public function createUser($nombre, $apellido, $email, $contrasenia, $preguntaSeguridad, $respuestaSeguridad, $perfil_id){
         global $conex;
         $crearUsuario = $conex->prepare("INSERT INTO usuarios(nombre, apellido, email, contrasenia, preguntaSeguridad, respuestaSeguridad, perfil_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -170,7 +170,7 @@ Class DB {
           return $dato;
     }
 
-    /*SECCION PRODUCTOS*/
+    /*---------SECCION PRODUCTOS---------*/
     public function createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $foto, $descripcion){
         global $conex;
         $crearProducto = $conex->prepare("INSERT INTO productos(nombre, precio, categoria_id, estado_id, tipoproducto_id, foto, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -207,22 +207,33 @@ Class DB {
         }
     }
 
-    public function getProducto($email){
-          global $conex;
-          $consultaUsuarios = $conex->prepare("SELECT * FROM usuarios WHERE email = ?");
-          $consultaUsuarios->bindValue(1, $email, PDO::PARAM_STR);
-          $consultaUsuarios->execute();
-          $usuario = $consultaUsuarios->fetch(PDO::FETCH_ASSOC);
-          return $usuario;
+    public function uploadProductPicture($product_id, $imagen){
+        global $conex;
+        $nombre = $this->getProductoInfoEspecifica($producto_id, 'nombre');
+
+        $nombreArchivo = $imagen["name"];
+        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+        $origen = $imagen["tmp_name"];
+
+
+        $fotoNombre = "$producto_id-$nombre.$ext";
+
+        $destino = "img/productos/";
+        $destino = $destino.$fotoNombre;
+        $subir = move_uploaded_file($origen,$destino);
+        move_uploaded_file($origen,$destino);
+
+        $this->updateProducto($producto_id, 'foto', $fotoNombre);
     }
 
-
-
-
-
-
-
-
+    public function getProductoInfoEspecifica($producto_id, $indice){
+        $consulta = $conex->prepare("SELECT ? FROM productos WHERE id = ?");
+        $consulta->bindValue(1, $producto_id, PDO::PARAM_STR);
+        $consulta->bindValue(2, $producto_id, PDO::PARAM_INT);
+        $consulta->execute();
+        $data= $consulta->fetch(PDO::FETCH_ASSOC);
+        return $data[$indice];
+    }
 
 
 

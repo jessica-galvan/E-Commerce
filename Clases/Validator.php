@@ -20,7 +20,8 @@ Class Validator {
             'noRegistrado' => '* Este mail no esta registrado',
             'corta' => '* La contraseña debe tener más de 6 caracteres',
             'coinciden' => '* Las contraseñas no coinciden',
-            'invalidos' => "* Email o contraseña invalidas"
+            'invalidos' => "* Email o contraseña invalidas",
+            'imagen' => '* Imagen no valida',
         ];
     }
 
@@ -149,48 +150,16 @@ Class Validator {
         }
     }
 
-    public function imageValidate($imagen) {
-        // if($imagen["error"] === UPLOAD_ERR_OK){
-        //
-        //     exif_imagetype($imagen);
-        //     $a = getimagesize($imagen);
-        // 	$image_type = $a[2];
-        //
-        // 	if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP))) {
-        // 		return true;
-        // 	}
-        // 	return false;
-        // } elseif ($imagen["error"] != 4){
-        //     $error = "* Hubo un problema";
-        // }
-        // if (!empty($foto['tmp_name']) {
-        //     $image = $foto["name"];
-        //     $path_info = pathinfo($image);
-        //     if ($path_info['extension'] == 'jpg' || $path_info['extension'] == 'jpeg' || $path_info['extension'] == 'png' || $path_info['extension'] == 'gif'){
-        //         // if ($foto["size"] <= $maxFileSize){
-        //         //     $image_d = getimagesize($image);
-        //         //     if(($image_d[0] >= $minWidth) && ($image_d[1] >= $minHeight)){
-        //         //         $errors[]="valid image";
-        //         //     }else{
-        //         //         $errors[]="invalid dimension";
-        //         //     }
-        //         // }else{
-        //         //     $errors[]="invalid file size";
-        //         // }
-        //     }else{
-        //         $error="El formato no se soporta";
-        //     }
-        //
-        // }else{
-        //     $error = 'Por favor selecciona al menos una imagen.';
-        // }
-        //
-        // if($error){
-        //     return $error;
-        // } else {
-        //     return false;
-        // }
+    public function imageValidate($file) {
+        if($file["error"] === UPLOAD_ERR_OK){
+            $foto = getimagesize($file['tmp_name']);
+            $image_type = $foto[2];
 
+            if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP))) {
+                return true;
+            }
+            return false;
+        }
     }
 
     /*SECCION PRODUCTOS*/
@@ -223,10 +192,10 @@ Class Validator {
 
         $validarFoto = !$this->imageValidate($foto);
         if($validarFoto) {
-            $error['errorFoto'] = $validarFoto;
+            $error['errorFoto'] = $this->errores['imagen'];
         }
 
-        if($error){
+        if(isset($error)){
             return $error;
         } else {
             return false;

@@ -21,13 +21,14 @@
         }
 
         if(!$validar) {
-            $email = trim($_POST['email']);
+            $_SESSION['email'] = trim($_POST['email']);
             $etapa = "segunda";
-            $_SESSION['usuarioInfo'] = $baseDatos->getUser($email);
+            $preguntaSeguridadValor = $baseDatos->getInfoEspecificaUsuario($_SESSION['email'], 'preguntaSeguridad');
+
 
             /*Recuperamos la pregunta de seguridad*/
             foreach ($preguntas as $pregunta) {
-                if($_SESSION['usuarioInfo']['preguntaSeguridad'] == $pregunta['valor']){
+                if($preguntaSeguridadValor == $pregunta['valor']){
                         $_SESSION['preguntaSeguridad'] = $pregunta['pregunta'];
                 }
             }
@@ -37,7 +38,7 @@
     //PARTE 2
     if(isset($_POST['recupero2'])) {
         $respuestaSeguridad= trim($_POST['respuestaSeguridad']);
-        $validar2 = $validator->validateRespuestaSeguridad($respuestaSeguridad);
+        $validar2 = $baseDatos->verifyRespuestaSeguridad($_SESSION['email'], $respuestaSeguridad);
         if($validar2){
             $errorRespuesta = $validar2;
         }
@@ -48,7 +49,7 @@
     }
     //PARTE 3
     if(isset($_POST['recupero3'])) {
-        $validar3 = $validator->validatePassword($_POST['contrasenia'], $_POST['contraseniaConfirmar']);
+        $validar3 = $validator->validateNewPassword($_POST['contrasenia'], $_POST['contraseniaConfirmar']);
 
         if($validar3){
             $errorContrasenia = $validar3;
@@ -57,13 +58,24 @@
         if(!$validar3) {
             /*Una vez que no hay errores, reemplazamos la contraseña anterior por la nueva (pisando el dato).*/
             $nuevaContrasenia = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
-            $usuarioID = $_SESSION['usuarioInfo']['id'];
+            $modificarUsuario = $baseDatos->updateUsuario($_SESSION['email'], 'contrasenia', $nuevaContrasenia);
 
-            $modificarUsuario = $conex->prepare("UPDATE usuarios SET contrasenia =:contrasenia WHERE id = $usuarioID");
-            $modificarUsuario->bindValue(":contrasenia", $nuevaContrasenia, PDO::PARAM_STR);
-            $modificarUsuario->execute();
+            /*Por ultimo, si sale false en el modificar usuario, tirar un error.*/
+            if(!$modificarUsuario) {
+                $etapa = 'cuarta';
+            }
 
-            $etapa = 'cuarta';
+            // $usuarioID = $_SESSION['usuarioInfo']['id'];
+            //
+            // $modificarUsuario = $conex->prepare("UPDATE usuarios SET contrasenia =:contrasenia WHERE id = $usuarioID");
+            // $modificarUsuario->bindValue(":contrasenia", $nuevaContrasenia, PDO::PARAM_STR);
+            // $modificarUsuario->execute();
+            //
+            // if(!$modificarUsuario) {
+            //     $errorContrasenia = "* Oops! Hubo un problema";
+            // } else {
+            //
+            // }
         }
     }
     //PARTE 4

@@ -1,57 +1,132 @@
 <?php
-/*No estoy segura de si necesito un DB. O que. En algun lado tengo que poder pisar la info, sea en usuario o DB. */
-
-
+/*Esta clase es para obtener y manipular info de la base de Datos, desde obtener info con los gets, cambiar cosas y hasta controlar el login*/
 Class DB {
 
-  // private $file;
-  //
-  // public function __construct($file) {
-  //   $this->file = $file;
-  // }
+    /*SECCION USUARIOS*/
+    public function createUser($nombre, $apellido, $email, $contrasenia, $preguntaSeguridad, $respuestaSeguridad, $perfil_id){
+        global $conex;
+        $crearUsuario = $conex->prepare("INSERT INTO usuarios(nombre, apellido, email, contrasenia, preguntaSeguridad, respuestaSeguridad, perfil_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $crearUsuario->bindValue(1, $nombre, PDO::PARAM_STR);
+        $crearUsuario->bindValue(2, $apellido, PDO::PARAM_STR);
+        $crearUsuario->bindValue(3, $email, PDO::PARAM_STR);
+        $crearUsuario->bindValue(4, $contrasenia, PDO::PARAM_STR);
+        $crearUsuario->bindValue(5, $preguntaSeguridad, PDO::PARAM_STR);
+        $crearUsuario->bindValue(6, $respuestaSeguridad, PDO::PARAM_STR);
+        $crearUsuario->bindValue(7, $perfil_id, PDO::PARAM_INT);
+        $crearUsuario->execute();
 
+        if(!$crearUsuario) {
+            return "* Oops! Hubo un problema. Proba registrarte de nuevo.";
+        } else {
+            return false;
+        }
+    }
 
-  /*Validar Login*/
-  public function validateLogin($emailValidar, $contraseniaValidar){
-      global $validator;
-      $listaErrores = $validator->getErrores();
-      $email = trim($emailValidar);
-      $contrasenia = trim($contraseniaValidar);
-      $hayErrores = false;
+    /*VERIFY*/
+    public function verifyPassword($email, $contrasenia){
+        global $validator;
+        $listaErrores = $validator->getErrores();
+        $contrasenia = trim($contrasenia);
+        $hayErrores = false;
 
-      if($email == ""){
-          $errores['errorEmail'] = $listaErrores['completar'];
-          $hayErrores = true;
-      } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-          $errores['errorEmail'] = $listaErrores['emailNoValido'];
-          $hayErrores = true;
-      } elseif(!$this->checkEmail($email)) {
-          $errores['errorEmail'] = $listaErrores['noRegistrado'];
-          $hayErrores = true;
-      }
+        if($contrasenia == ""){
+            $errores = $listaErrores['completar'];
+            $hayErrores = true;
+        } elseif($this->checkEmail($email)){ /*COMPARAR CONTRASEÑAS*/
+            $contraseniaOficial = $this->getInfoEspecificaUsuario($email, 'contrasenia');
+            if(password_verify($contrasenia, $contraseniaOficial)) {
+                $hayErrores = false;
+            } else {
+                $hayErrores = true;
+                $errores = '* Contraseña incorrecta.';
+            }
+        }
 
-      if($contrasenia == ""){
-          $errores['errorContrasenia'] = $listaErrores['completar'];
-          $hayErrores = true;
-      } elseif($this->checkEmail($email)){ /*COMPARAR CONTRASEÑAS*/
-          $usuario = $this->getUser($email);
-          if(password_verify($contrasenia, $usuario['contrasenia'])) {
-              $hayErrores = false;
-          } else {
-              $hayErrores = true;
-              $errores['errorContrasenia'] = $listaErrores['invalidos'];
-          }
-      }
+        if($hayErrores){
+            return $errores;
+        } else {
+            return false;
+        }
+    }
 
-      if($hayErrores){
-          return $errores;
-      } else {
-          return false;
-      }
+    public function verifyRespuestaSeguridad($email, $dato){
+        $respuestaSeguridad = trim($dato);
+        $hayErrores = false;
+        $respuestaOficial = $this->getInfoEspecificaUsuario($email, 'respuestaSeguridad');
+
+        if($respuestaSeguridad == "") {
+            $errorPregunta = "* Tu respuesta no puede estar vacia";
+            $hayErrores = true;
+        } elseif(!password_verify($respuestaSeguridad, $respuestaOficial)) {
+            $errorPregunta = "Respuesta incorrecta";
+            $hayErrores = true;
+        }
+
+        if($hayErrores){
+            return $errorPregunta;
+        } else {
+            return false;
+        }
+    }
+
+    /*Cambiar datos*/
+    public function updateUsuario($email, $indice, $data){
+        global $conex;
+        $usuarioID = $this->getInfoEspecificaUsuario($email, 'id');
+
+        $modificarUsuario = $conex->prepare("UPDATE usuarios SET $indice =:$indice WHERE id = $usuarioID");
+        $modificarUsuario->bindValue($indice, $data, PDO::PARAM_STR);
+        $modificarUsuario->execute();
+
+        if(!$modificarUsuario) {
+            return "* Oops! Hubo un problema";
+        } else {
+            return false;
+        }
+    }
+
+    public function changeAvatar($email, $imagen){
+        global $conex;
+        $perfil_id = $this->getInfoEspecificaUsuario($email, 'perfil_id');
+        $usuario_id = $this->getInfoEspecificaUsuario($email, 'id');
+
+        $nombreArchivo = $imagen["name"];
+        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+        $origen = $imagen["tmp_name"];
+
+        /*Esto busca donde esta el @ en el sting de $email.*/
+        $separar = strpos($email, '@');
+        /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
+        $divido  = str_split($email, $separar);
+        /*Y aca armo el nombre del archivo. Incluye el ID del usuario, la primera aprte del mail y -avatar, junto con su extension. Este nombre es lo que va a subirse a la base de datos, perfles-fotoPerfil*/
+        $fotoNombre = "$usuario_id-$divido[0]-avatar.$ext";
+
+        $destino = "img/user-avatar/";
+        $destino = $destino.$fotoNombre;
+        $subir = move_uploaded_file($origen,$destino);
+        move_uploaded_file($origen,$destino);
+
+        $this->updatePerfil($email, 'fotoPerfil', $fotoNombre);
+    }
+
+    public function updatePerfil($email, $indice, $data){
+        global $conex;
+        $perfil_id = $this->getInfoEspecificaUsuario($email, 'perfil_id');
+
+        $modificarUsuario = $conex->prepare("UPDATE perfiles SET $indice =:$indice WHERE id = $perfil_id");
+        $modificarUsuario->bindValue($indice, $data, PDO::PARAM_STR);
+        $modificarUsuario->execute();
+
+        if(!$modificarUsuario) {
+            // $errorContrasenia = ;
+            return "* Oops! Hubo un problema";
+        } else {
+            return false;
+        }
     }
 
     /*Controlar si un email esta en la base de datos*/
-      public function checkEmail($email){
+    public function checkEmail($email){
           global $conex;
           $consultaUsuarios = $conex->prepare("SELECT * FROM usuarios WHERE email = ?");
           $consultaUsuarios->bindValue(1, $email, PDO::PARAM_STR);
@@ -65,7 +140,7 @@ Class DB {
           }
       }
 
-    /*Recuperar info usuario*/
+    /*GETTERS*/
     public function getUser($email){
           global $conex;
           $consultaUsuarios = $conex->prepare("SELECT * FROM usuarios WHERE email = ?");
@@ -75,7 +150,15 @@ Class DB {
           return $usuario;
     }
 
-    /*Recupera la info necesaria para perfilUsuario*/
+    public function getInfoEspecificaUsuario($email, $indice){
+        global $conex;
+        $consultaUsuarios = $conex->prepare("SELECT $indice FROM usuarios WHERE email = ?");
+        $consultaUsuarios->bindValue(1, $email, PDO::PARAM_STR);
+        $consultaUsuarios->execute();
+        $data= $consultaUsuarios->fetch(PDO::FETCH_ASSOC);
+        return $data[$indice];
+    }
+
     public function getUserPerfil($email){
           global $conex;
           $consulta = "SELECT usuarios.id, usuarios.nombre, usuarios.apellido, perfiles.id AS 'perfil_id', perfiles.fechaNacimiento, perfiles.fotoPerfil, perfiles.tipoDePiel, perfiles.tonoDePiel, perfiles.genero, perfiles.provincia FROM usuarios INNER JOIN perfiles ON usuarios.perfil_id = perfiles.id WHERE usuarios.email = ?";
@@ -87,28 +170,53 @@ Class DB {
           return $dato;
     }
 
-    public function changeAvatar($imagen){
-        global $usuarioRecuperado, $conex;
+    /*SECCION PRODUCTOS*/
+    public function createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $foto, $descripcion){
+        global $conex;
+        $crearProducto = $conex->prepare("INSERT INTO productos(nombre, precio, categoria_id, estado_id, tipoproducto_id, foto, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-        $nombreArchivo = $imagen["name"];
-        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
-        $origen = $imagen["tmp_name"];
+        $crearProducto->bindValue(1, $nombre, PDO::PARAM_STR);
+        $crearProducto->bindValue(2, $precio, PDO::PARAM_INT);
+        $crearProducto->bindValue(3, $categoria, PDO::PARAM_STR);
+        $crearProducto->bindValue(4, $estado, PDO::PARAM_STR);
+        $crearProducto->bindValue(5, $tipoProducto, PDO::PARAM_STR);
+        $crearProducto->bindValue(6, $foto, PDO::PARAM_STR);
+        $crearProducto->bindValue(7, $descripcion, PDO::PARAM_STR);
+        $crearProducto->execute();
 
-        $separar = strpos($email, '@'); /*Esto busca donde esta el @ en el sting de $email.*/
-        $divido  = str_split($email, $separar); /*Y acá. utilizando la posicion del @, separo en un array numerico -del email hasta el @ en posicion 0 y el resto en posicion 1. */
-        $fotoNombre = $usuarioRecuperado['id'].$divido[0]; /*Para que me ponga el id del usuario y la primera parte del email.*/
-        /*Donde se guarda la foto y como se va a llamar. En este caso va a ir a la carpeta User. Si queres ponerla en otro lado, genial!*/
-        $destino = "";
-        $destino = $destino."img/users-avatars/";
-        $destino = $destino."$fotoNombre-avatar.".$ext;
-        $subir = move_uploaded_file($origen,$destino);
-        move_uploaded_file($origen,$destino);
-
-        // $subirFoto = $conex->query("UPDATE `perfiles` SET `fotoPerfil`= $fotoNombre WHERE `id` = $usuarioRecuperado['perfil_id']");
-        // $subirFoto->bindValue(1, $fotoNombre, PDO::PARAM_STR);
-        // $subirFoto->execute();
-        /*Devuelvo solo $fotoNombre porque es lo que la base de datos necesita.*/
+        if(!$crearProducto) {
+            return "* Oops! Hubo un problema. Proba registrarte de nuevo.";
+        } else {
+            return false;
+        }
     }
+
+    public function updateProducto($producto_id, $indice, $data){
+        global $conex;
+        $perfil_id = $this->getInfoEspecificaUsuario($email, 'perfil_id');
+
+        $modificarUsuario = $conex->prepare("UPDATE perfiles SET $indice =:$indice WHERE id = $perfil_id");
+        $modificarUsuario->bindValue($indice, $data, PDO::PARAM_STR);
+        $modificarUsuario->execute();
+
+        if(!$modificarUsuario) {
+            // $errorContrasenia = ;
+            return "* Oops! Hubo un problema";
+        } else {
+            return false;
+        }
+    }
+
+    public function getProducto($email){
+          global $conex;
+          $consultaUsuarios = $conex->prepare("SELECT * FROM usuarios WHERE email = ?");
+          $consultaUsuarios->bindValue(1, $email, PDO::PARAM_STR);
+          $consultaUsuarios->execute();
+          $usuario = $consultaUsuarios->fetch(PDO::FETCH_ASSOC);
+          return $usuario;
+    }
+
+
 
 
 

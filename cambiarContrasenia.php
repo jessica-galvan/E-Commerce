@@ -2,52 +2,41 @@
     ob_start();
     require_once('loader.php');
     $auth->usuarioNoLogueado();
-    
-    require_once('includes/funciones.php');
-    $usuarioRecuperado = getUser('email', $_SESSION['email_usuario']);
-    $contraseniaOriginal = $usuarioRecuperado['contrasenia'];
+
     $errorContraseniaVieja = "";
+    $errorContrasenia = "";
+    // $usuarioRecuperado = $baseDatos->getUser($_SESSION['email_usuario']);
 
     if(isset($_POST['cambiar'])){
-        foreach( $_POST as $variable => $valor ){
-          $P[$variable]=trim($valor);
-        }
+        /*Primero chequeamos que la contrasenia vieja sea la correcta*/
+        $verificar = $baseDatos->verifyPassword($_SESSION['email_usuario'], $_POST['contraseniaVieja']);
 
-        if($P['contraseniaVieja'] == ""){
-            $errorContraseniaVieja = "* Completa la contraseña";
-            $hayErrores = true;
-        } else if(!password_verify($P['contraseniaVieja'], $contraseniaOriginal)){
-            $hayErrores = true;
-            $errorContrasenia = "* Contraseña invalida";
-        } else if($P['contraseniaNueva'] == ""){
-            $errorContrasenia = "* Completa la contraseña";
-            $hayErrores = true;
-        } else if(strlen($P['contraseniaNueva']) < 6){
-            $errorContrasenia = "* La contraseña debe tener más de 6 caracteres";
-            $hayErrores = true;
-        } else if($P['contraseniaNueva'] !=$P['contraseniaConfirmar']) {
-            $errorContrasenia = "* Las contraseñas no coinciden";
-            $hayErrores = true;
-        }
+        if($verificar) {
+            /* Si sale un error, imprimilo*/
+            $errorContraseniaVieja = $verificar;
+        } else {
+            /*Si esta todo bien, valida la nueva contrasenia y su confirmacion*/
+            $validar = $validator->validateNewPassword($_POST['contraseniaNueva'], $_POST['contraseniaConfirmar']);
 
-        if(!$hayErrores) {
-            for ($i=0; $i < count($listaUsuarios); $i++) {
-                if($listaUsuarios[$i]['email'] == $_SESSION['email_usuario']){
-                    $listaUsuarios[$i]['contrasenia'] = password_hash($P['contraseniaNueva'], PASSWORD_DEFAULT);
-                    break;
+            if($validar){
+                /*De nuevo, si la validacion de la nueva contrasenia esta mal, imprimila*/
+                $errorContrasenia = $validar;
+            } else {
+                /*Sino, cambiala en la base de datos*/
+                $nuevaContrasenia = password_hash($_POST['contraseniaNueva'], PASSWORD_DEFAULT);
+                $modificarUsuario = $baseDatos->updateUsuario($_SESSION['email_usuario'], 'contrasenia', $nuevaContrasenia);
+
+                /*Por ultimo, si sale false en el modificar usuario, tirar un error.*/
+                if(!$modificarUsuario) {
+                    echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";
+                    echo '<META HTTP-EQUIV="refresh" content="0;URL=perfilUsuario.php">';
+                    exit;
                 }
             }
-
-            $listaUsuariosJSON = json_encode($listaUsuarios);
-            file_put_contents('includes/user.json', $listaUsuariosJSON);
-            // header('location:perfilUsuario.php');
-            echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";
-            echo '<META HTTP-EQUIV="refresh" content="0;URL=perfilUsuario.php">';
-            exit;
         }
     }
     $CSS = ['form'];
-    require_once("includes/header.php");
+    require_once("partials/header.php");
     ob_end_flush();
 ?>
 <main class="main-container">
@@ -85,5 +74,5 @@
 </main>
 <?php
     /*Footer*/
-    require_once("includes/footer.php");
+    require_once("partials/footer.php");
 ?>

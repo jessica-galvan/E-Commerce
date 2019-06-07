@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2019 a las 08:59:15
+-- Tiempo de generación: 07-06-2019 a las 01:42:33
 -- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -114,9 +114,10 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`id`, `fotoPerfil`, `fechaNacimiento`, `genero`, `provincia`, `tipoDePiel`, `tonoDePiel`, `created_at`, `updated_at`) VALUES
-(1, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 04:29:33', '2019-06-06 04:29:33'),
-(2, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 04:37:08', '2019-06-06 04:37:08'),
-(3, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 04:41:20', '2019-06-06 04:41:20');
+(1, '1-jessica_lamelli-avatar.jpg', '1993-12-08', 'Femenino', 'Capital Federal', 'Normal', 'Clara', '2019-06-06 04:29:33', '2019-06-06 23:30:51'),
+(2, 'user-profile-basic.jpg', '1993-08-16', 'Femenino', 'Buenos Aires', 'Normal', 'Clara', '2019-06-06 04:37:08', '2019-06-06 23:15:46'),
+(3, 'user-profile-basic.jpg', '1980-07-31', 'Masculino', 'Tierra del Fuego', 'Seca', 'Media', '2019-06-06 04:41:20', '2019-06-06 23:16:55'),
+(4, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 23:17:42', '2019-06-06 23:17:42');
 
 -- --------------------------------------------------------
 
@@ -184,9 +185,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `contrasenia`, `preguntaSeguridad`, `respuestaSeguridad`, `perfil_id`, `updated_at`, `created_at`) VALUES
-(1, 'Jessica', 'Galvan', 'jessica_lamelli@hotmail.com', '$2y$10$cRKL77HKbDQ5X4qN7vGvd.2HBjSvXDmxgihnyabVzPbjQDHYej4sy', 'mascota', '$2y$10$B.LaAlTFNJ9Yp5yXkRO2/OTndRY.DY1WarnIExte.7YckUIo1UA5m', 1, '0000-00-00 00:00:00', '2019-06-06 04:08:45'),
+(1, 'Jessica', 'Galvan', 'jessica_lamelli@hotmail.com', '$2y$10$zV0.UkSm6caA9JtDAXX6deoW4QA074/oVZK1GmU3WG98n8fkn0Oby', 'mascota', '$2y$10$B.LaAlTFNJ9Yp5yXkRO2/OTndRY.DY1WarnIExte.7YckUIo1UA5m', 1, '2019-06-06 18:23:42', '2019-06-06 04:08:45'),
 (2, 'Jessica', 'Galvan', 'jessica.galvan@hotmail.com', '$2y$10$Zu/eF/ztmTasiyxqVxkX.OnyN973v3kTpuiumctzqKBVmgx/KmgIO', 'mascota', '$2y$10$KPPvyHp7YHz1c.GHAIyD6.yoYCU0p8gJkALSDOqkex.Fw3rZSUMgG', 2, '2019-06-06 04:39:55', '2019-06-06 04:39:55'),
-(3, 'Harry', 'Potter', 'harry@potter.com', '$2y$10$e95EpOvyWYBgtbPFbNdnPORmzYJ1qg8GABR19eqUu5XXMkF/Y5Frq', 'libro', '$2y$10$joiGAbpE38XA6mQZQc.iuOx5S18W3np0kXVJarHjKb9OEexFysBTS', 3, '2019-06-06 06:50:14', '2019-06-06 04:41:20');
+(3, 'Harry', 'Potter', 'harry@potter.com', '$2y$10$zCZX4R70CN826KxZrQO2KeichyzOpicILIUsOMMb72QNtmkqMLOHS', 'libro', '$2y$10$joiGAbpE38XA6mQZQc.iuOx5S18W3np0kXVJarHjKb9OEexFysBTS', 3, '2019-06-06 23:16:17', '2019-06-06 04:41:20'),
+(4, 'Hermione', 'Granger', 'hermione@granger.com', '$2y$10$M36LXnr8SALRgGnXNOR76.KlXob/pd.OQ/EOjixVzaPgat8MsxX8S', 'libro', '$2y$10$4tG52FU8xLd2zHUtUa8n2.viMyy6OM8k2/Cjl72BjvIIQcOJ825NG', 4, '2019-06-06 23:17:42', '2019-06-06 23:17:42');
 
 --
 -- Índices para tablas volcadas
@@ -280,7 +282,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -298,7 +300,7 @@ ALTER TABLE `tipoProductos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -323,7 +325,7 @@ ALTER TABLE `carrito_producto`
 ALTER TABLE `productos`
   ADD CONSTRAINT `producto_categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
   ADD CONSTRAINT `producto_estado_id` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`),
-  ADD CONSTRAINT `producto_tipo_id` FOREIGN KEY (`tipoproducto_id`) REFERENCES `tipoproductos` (`id`);
+  ADD CONSTRAINT `producto_tipo_id` FOREIGN KEY (`tipoproducto_id`) REFERENCES `tipoProducto` (`id`);
 
 --
 -- Filtros para la tabla `usuarios`

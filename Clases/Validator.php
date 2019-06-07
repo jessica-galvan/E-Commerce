@@ -1,4 +1,6 @@
 <?php
+
+/*Esta clase es para validar cosas: Registro, Login y Imagenes. O hasta campos especificos como Contraseñas, Respuestas de Seguridad, e Emails.*/
 /*
 Necesito: registervalidar() y avatarvalidar(). Quizas necesita un validador de emails solamente, uno de trim, y uno de password por separado, asi tengo los errores en distintos lugares. Ademas, un atributo error con los distintos errores, asi puedo llamarlos en distintos metodos.
 
@@ -9,7 +11,6 @@ Class Validator {
     public $errores = [];
 
 //responsabilidades
-
     public function __construct(){
         $this->errores = [
             'completar' => '* Completar el campo',
@@ -27,65 +28,52 @@ Class Validator {
             return $this->errores;
     }
 
-    //esta función va a recibir POST y va a validar los campos. El nombre del parámetro puede ser el que ustedes quieran
-
-    /*Quizas sea necesario definir una base de datos como atributo, en el constructor. O no. */
+    /*SECCION USUARIOS*/
     public function registerValidate($nombre, $apellido, $email, $contrasenia, $contraseniaConfirmar, $preguntaSeguridad, $respuestaSeguridad) {
-        global $conex, $baseDatos;
-        $consultaUsuarios = $conex->query("SELECT * FROM usuarios");
-        // $consultaUsuarios->execute();
-        $usuarios = $consultaUsuarios->fetchAll(PDO::FETCH_ASSOC);
+        global $baseDatos;
         $hayErrores = false;
 
         /*Controlar que no este vacio*/
         if($nombre == "") {
-            // $errorNombre = $this->errores['completar'];
             $error['errorNombre'] = $this->errores['completar'];
             $hayErrores = true;
         }
 
         if($apellido == "") {
-            // $errorApellido = $this->errores['completar'];
             $error['errorApellido'] = $this->errores['completar'];
             $hayErrores = true;
         }
 
         if($email == ""){
-            // $errorEmail = $this->errores['completar'];
             $error['errorEmail'] = $this->errores['completar'];
             $hayErrores = true;
         } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            // $errorEmail = $this->errores['emailNoValido'];
+            /*que sea un email valido*/
             $error['errorEmail'] = $this->errores['emailNoValido'];
             $hayErrores = true;
         } elseif($baseDatos->checkEmail($email)) {
             /*Controlamos que no este ya registrado*/
-            // $errorEmail = $this->errores['registrado'];
             $error['errorEmail'] = $this->errores['registrado'];
             $hayErrores = true;
         }
 
         if($contrasenia == ""){
-            // $errorContrasenia = $this->errores['completar'];
             $hayErrores = true;
             $error['errorContrasenia'] = $this->errores['completar'];
         } elseif(strlen($contrasenia) < 6 ) {
-            /*y acá vemos si la contraseña tiene suficientes caracteres*/
-            // $errorContrasenia = $this->errores['corta'];
+            /*largo de la contraseña*/
             $hayErrores = true;
             $error['errorContrasenia'] = $this->errores['corta'];
         } elseif($contrasenia != $contraseniaConfirmar){
-            // $errorContrasenia = $this->errores['noCoinciden'];
+            /*que coincidan*/
             $hayErrores = true;
             $error['errorContrasenia'] = $this->errores['coinciden'];
         }
 
         if ($preguntaSeguridad == ""){
-            // $errorPregunta =  $this->errores['seleccionar'];
             $hayErrores = true;
             $error['errorPregunta'] =  $this->errores['seleccionar'];
         } elseif($respuestaSeguridad == ""){
-            // $errorRespuesta = $this->errores['completar'];
             $hayErrores = true;
             $error['errorPregunta'] = $this->errores['completar'];
         }
@@ -98,7 +86,70 @@ Class Validator {
 
     }
 
-    public function imagenValidate($imagen) {
+    public function validateLogin($email, $contrasenia){
+      global $baseDatos;
+      $validarEmail = $this->validateEmail($email);
+      $validarContrasenia = $baseDatos->verifyPassword($email, $contrasenia);
+      if($validarEmail){
+          $errores['errorEmail'] = $validarEmail;
+      }
+      if($validarContrasenia){
+          $errores['errorContrasenia'] = $validarContrasenia;
+      }
+      if(isset($errores)){
+          return $errores;
+      } else {
+          return false;
+      }
+    }
+
+    public function validateEmail($dato){
+        global $baseDatos;
+        $hayErrores = false;
+        $email = trim($dato);
+
+        if($email == ""){
+            $error = $this->errores['completar'];
+            $hayErrores = true;
+        } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $error = $this->errores['emailNoValido'];
+            $hayErrores = true;
+        } elseif(!$baseDatos->checkEmail($email)) {
+            $error = $this->errores['noRegistrado'];
+            $hayErrores = true;
+        }
+
+        if($hayErrores){
+            return $error;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateNewPassword($contrasenia, $contraseniaConfirmar){
+        $contrasenia = trim($contrasenia);
+        $contraseniaConfirmar = trim($contraseniaConfirmar);
+        $hayErrores = false;
+
+        if($contrasenia == ""){
+            $hayErrores = true;
+            $errorContrasenia = $this->errores['completar'];
+        } elseif(strlen($contrasenia) < 6 ) {
+            $hayErrores = true;
+            $errorContrasenia = $this->errores['corta'];
+        } elseif($contrasenia != $contraseniaConfirmar){
+            $hayErrores = true;
+            $errorContrasenia = $this->errores['coinciden'];
+        }
+
+        if($hayErrores){
+            return $errorContrasenia;
+        } else {
+            return false;
+        }
+    }
+
+    public function imageValidate($imagen) {
         // if($imagen["error"] === UPLOAD_ERR_OK){
         //
         //     exif_imagetype($imagen);
@@ -142,69 +193,46 @@ Class Validator {
 
     }
 
-    public function validateEmail($dato){
+    /*SECCION PRODUCTOS*/
+    public function validateProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $foto, $descripcion){
         global $baseDatos;
-        $hayErrores = false;
-        $email = trim($dato);
 
-        if($email == ""){
-            $error = $this->errores['completar'];
-            $hayErrores = true;
-        } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $error = $this->errores['emailNoValido'];
-            $hayErrores = true;
-        } elseif(!$baseDatos->checkEmail($email)) {
-            $error = $this->errores['noRegistrado'];
-            $hayErrores = true;
+        if($nombre == "") {
+            $error['errorNombre'] = $this->errores['completar'];
         }
 
-        if($hayErrores){
+        if($precio == "") {
+            $error['errorPrecio'] = $this->errores['completar'];
+        }
+
+        if($descripcion == "") {
+            $error['errorPrecio'] = $this->errores['completar'];
+        }
+
+        if($categoria == "") {
+            $error['errorCategoria'] = $this->errores['completar'];
+        }
+
+        if($estado == "") {
+            $error['errorEstado'] = $this->errores['completar'];
+        }
+
+        if($tipoProducto == "") {
+            $error['errorTipoProducto'] = $this->errores['completar'];
+        }
+
+        $validarFoto = !$this->imageValidate($foto);
+        if($validarFoto) {
+            $error['errorFoto'] = $validarFoto;
+        }
+
+        if($error){
             return $error;
         } else {
             return false;
         }
+
+
+
     }
-
-    public function validatePassword($contrasenia, $contraseniaConfirmar){
-        $contrasenia = trim($contrasenia);
-        $contraseniaConfirmar = trim($contraseniaConfirmar);
-        $hayErrores = false;
-
-        if($contrasenia == ""){
-            $hayErrores = true;
-            $errorContrasenia = $this->errores['completar'];
-        } elseif(strlen($contrasenia) < 6 ) {
-            $hayErrores = true;
-            $errorContrasenia = $this->errores['corta'];
-        } elseif($contrasenia != $contraseniaConfirmar){
-            $hayErrores = true;
-            $errorContrasenia = $this->errores['coinciden'];
-        }
-
-        if($hayErrores){
-            return $errorContrasenia;
-        } else {
-            return false;
-        }
-    }
-
-    public function validateRespuestaSeguridad($dato){
-        $respuestaSeguridad = trim($dato);
-        $hayErrores = false;
-
-        if($respuestaSeguridad == "") {
-            $errorPregunta = "* Tu respuesta no puede estar vacia";
-            $hayErrores = true;
-        } else if(!password_verify($respuestaSeguridad,     $_SESSION['usuarioInfo']['respuestaSeguridad'])) {
-            $errorPregunta = "Respuesta incorrecta";
-            $hayErrores = true;
-        }
-
-        if($hayErrores){
-            return $errorPregunta;
-        } else {
-            return false;
-        }
-    }
-
 }

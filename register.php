@@ -17,6 +17,7 @@
     $errorEmail = "";
     $errorContrasenia = "";
     $errorPregunta = "";
+    $errorPrincial = "";
 
 
     if(isset($_POST['registro'])) {
@@ -49,20 +50,17 @@
             $respuestaSeguridad = password_hash($respuestaSeguridad, PASSWORD_DEFAULT);
 
             /*Tercero: creo el usuario en la base de datos*/
-            $crearUsuario = $conex->prepare("INSERT INTO usuarios(nombre, apellido, email, contrasenia, preguntaSeguridad, respuestaSeguridad, perfil_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $crearUsuario->bindValue(1, $nombre, PDO::PARAM_STR);
-            $crearUsuario->bindValue(2, $apellido, PDO::PARAM_STR);
-            $crearUsuario->bindValue(3, $email, PDO::PARAM_STR);
-            $crearUsuario->bindValue(4, $contrasenia, PDO::PARAM_STR);
-            $crearUsuario->bindValue(5, $preguntaSeguridad, PDO::PARAM_STR);
-            $crearUsuario->bindValue(6, $respuestaSeguridad, PDO::PARAM_STR);
-            $crearUsuario->bindValue(7, $perfil_id, PDO::PARAM_INT);
-            $crearUsuario->execute();
+            $crear = $baseDatos->createUser($nombre, $apellido, $email, $contrasenia, $preguntaSeguridad, $respuestaSeguridad, $perfil_id);
 
-            header('location:confirmacion.php');
-            echo "<script type='text/javascript'>document.location.href='confirmacion.php';</script>";
-            echo '<META HTTP-EQUIV="refresh" content="0;URL=confirmacion.php">';
-            exit;
+            /*Cuarto: check si hubo problemas. Si no hubo, envialos a confirmacion.php, sino, tirar error.*/
+            if(!$crear){
+                header('location:confirmacion.php');
+                echo "<script type='text/javascript'>document.location.href='confirmacion.php';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=confirmacion.php">';
+                exit;
+            } else {
+                $errorPrincial = $crear;
+            }
         }
     }
     /*Header*/
@@ -128,6 +126,7 @@
                 <span class="error-form"><?=$errorPregunta?></span>
             </div>
 
+            <span class="error-form"><?=$errorPrincial?></span>
             <div class="login-button">
                 <button type="submit" name="registro">ENVIAR</button>
             </div>

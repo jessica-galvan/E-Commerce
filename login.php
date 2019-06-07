@@ -14,7 +14,7 @@
     if(isset($_POST['login'])) {
         $email = $_POST['email'];
         $contrasenia = $_POST['contrasenia'];
-        $validar = $baseDatos->validateLogin($email, $contrasenia);
+        $validar = $validator->validateLogin($email, $contrasenia);
 
         if($validar){
             foreach($validar as $indice => $valor ){

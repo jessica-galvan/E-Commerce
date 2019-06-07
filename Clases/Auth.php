@@ -12,10 +12,8 @@ login(), logout(), sessionStart(), check(), guest()*/
 
   public function login($email){
       global $baseDatos;
-      $usuarioRecuperado = $baseDatos->getUser($email);
       $_SESSION["email_usuario"] = $email;
-      $_SESSION["nombre_usuario"] = $usuarioRecuperado["nombre"];
-      $_SESSION["id_usuario"] = $usuarioRecuperado["id"];
+        $_SESSION["nombre_usuario"] = $baseDatos->getInfoEspecificaUsuario($_SESSION["email_usuario"], 'nombre');
   }
 
   public function logout(){
@@ -31,18 +29,14 @@ login(), logout(), sessionStart(), check(), guest()*/
   }
 
   public function recordar($email){
-      global $baseDatos;
-      $usuarioRecuperado = $baseDatos->getUser($email);
       $expirar = time() + 60*60*24*30; /*30 DIAS*/
       setcookie('email_usuario', $email, $expirar, '/', $_SERVER['HTTP_HOST']);
-      setcookie('nombre_usuario', $usuarioRecuperado["nombre"], $expirar, '/', $_SERVER['HTTP_HOST']);
   }
 
   public function borrarCookiesLogin(){
       if(isset($_COOKIE["email_usuario"])) {
           $expirar = time() - 900; /*Tiempo negativo de 15 minutos*/
           setcookie('email_usuario', '', $expirar, '/', $_SERVER['HTTP_HOST']);
-          setcookie('nombre_usuario', '', $expirar, '/', $_SERVER['HTTP_HOST']);
       }
   }
 
@@ -60,16 +54,13 @@ login(), logout(), sessionStart(), check(), guest()*/
 
   public function checkSessionEmail(){
       global $baseDatos;
-      $email = false;
       if(isset($_SESSION["email_usuario"])) {
-        $email = $_SESSION["email_usuario"];
+        return true;
       } elseif (isset($_COOKIE["email_usuario"])) {
-        $email = $_COOKIE["email_usuario"];
-        $usuarioRecuperado = $baseDatos->getUser($email);
-        $_SESSION["email_usuario"] = $email;
-        $_SESSION["nombre_usuario"] = $usuarioRecuperado["nombre"];
-        $_SESSION["id_usuario"] = $usuarioRecuperado["id"];
+        $_SESSION["email_usuario"] = $_COOKIE["email_usuario"];
+        $_SESSION["nombre_usuario"] = $baseDatos->getInfoEspecificaUsuario($_SESSION["email_usuario"], 'nombre');
+        return true;
     }
-      return $email;
+      return false;
   }
 }

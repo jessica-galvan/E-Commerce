@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2019 a las 01:42:33
+-- Tiempo de generación: 08-06-2019 a las 09:28:22
 -- Versión del servidor: 10.1.40-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -114,10 +114,12 @@ CREATE TABLE `perfiles` (
 --
 
 INSERT INTO `perfiles` (`id`, `fotoPerfil`, `fechaNacimiento`, `genero`, `provincia`, `tipoDePiel`, `tonoDePiel`, `created_at`, `updated_at`) VALUES
-(1, '1-jessica_lamelli-avatar.jpg', '1993-12-08', 'Femenino', 'Capital Federal', 'Normal', 'Clara', '2019-06-06 04:29:33', '2019-06-06 23:30:51'),
+(1, '1-jessica_lamelli-avatar.png', '1993-12-08', 'Femenino', 'Capital Federal', 'Normal', 'Clara', '2019-06-06 04:29:33', '2019-06-08 03:02:03'),
 (2, 'user-profile-basic.jpg', '1993-08-16', 'Femenino', 'Buenos Aires', 'Normal', 'Clara', '2019-06-06 04:37:08', '2019-06-06 23:15:46'),
 (3, 'user-profile-basic.jpg', '1980-07-31', 'Masculino', 'Tierra del Fuego', 'Seca', 'Media', '2019-06-06 04:41:20', '2019-06-06 23:16:55'),
-(4, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 23:17:42', '2019-06-06 23:17:42');
+(4, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 23:17:42', '2019-06-06 23:17:42'),
+(5, 'user-profile-basic.jpg', NULL, NULL, NULL, NULL, NULL, '2019-06-06 23:54:19', '2019-06-06 23:54:19'),
+(6, '6-anto-avatar.', '1995-06-14', 'Femenino', 'Formosa', 'Normal', 'Clara', '2019-06-07 17:15:35', '2019-06-07 20:12:53');
 
 -- --------------------------------------------------------
 
@@ -131,13 +133,29 @@ CREATE TABLE `productos` (
   `tipoproducto_id` int(2) UNSIGNED NOT NULL,
   `estado_id` int(1) UNSIGNED NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `nombre` int(100) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
   `precio` decimal(15,2) NOT NULL,
   `rating` decimal(2,1) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `categoria_id`, `tipoproducto_id`, `estado_id`, `descripcion`, `nombre`, `precio`, `rating`, `created_at`, `updated_at`, `foto`) VALUES
+(1, 1, 6, 2, 'Lallalal', 'Rubor Cremoso Rosa', '1300.00', NULL, '2019-06-07 20:49:09', NULL, '81-Rubor Cremoso Rosa.jpg'),
+(2, 1, 5, 2, 'Producto de Prueba', 'Polvo Translucido', '1400.00', NULL, '2019-06-07 19:41:35', NULL, '68-Polvo Translucido.jpg'),
+(3, 2, 2, 1, 'Prueba Descripcion', 'Gloss Coral', '1100.00', NULL, '2019-06-08 03:28:09', NULL, '73-Gloss Coral.jpg'),
+(4, 1, 8, 1, 'Prueba', 'Iluminador Duo', '1300.00', NULL, '2019-06-08 03:30:19', NULL, '87-Iluminador Duo.jpg'),
+(5, 2, 3, 1, 'Prueba', 'Labial Matte', '1200.00', NULL, '2019-06-08 03:30:57', NULL, '95-Labial Matte.jpg'),
+(6, 3, 7, 1, 'Prueba', 'Paleta de Sombras', '1800.00', NULL, '2019-06-08 03:31:47', NULL, '26-Paleta de Sombras.jpg'),
+(7, 1, 4, 1, 'Prueba', 'Base Matte 001', '1900.00', NULL, '2019-06-08 03:32:18', NULL, '35-Base Matte 001.png'),
+(8, 4, 1, 2, 'Prueba', 'Brocha 001', '1000.00', NULL, '2019-06-08 03:32:53', NULL, '41-Brocha 001.jpg'),
+(9, 2, 3, 2, 'Prueba', 'Labial Matte Azul', '1200.00', NULL, '2019-06-08 03:33:22', NULL, '11-Labial Matte Azul.png'),
+(10, 2, 2, 2, 'Prueba', 'Gloss Rosa', '1100.00', NULL, '2019-06-08 03:33:59', NULL, '81-Gloss Rosa.png');
 
 -- --------------------------------------------------------
 
@@ -159,7 +177,10 @@ INSERT INTO `tipoProductos` (`id`, `nombre`) VALUES
 (2, 'Gloss'),
 (3, 'Labial'),
 (4, 'Base'),
-(5, 'Polvo Translucido');
+(5, 'Polvo Translucido'),
+(6, 'Rubor'),
+(7, 'Sombra'),
+(8, 'Iluminador');
 
 -- --------------------------------------------------------
 
@@ -188,7 +209,9 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `contrasenia`, `pre
 (1, 'Jessica', 'Galvan', 'jessica_lamelli@hotmail.com', '$2y$10$zV0.UkSm6caA9JtDAXX6deoW4QA074/oVZK1GmU3WG98n8fkn0Oby', 'mascota', '$2y$10$B.LaAlTFNJ9Yp5yXkRO2/OTndRY.DY1WarnIExte.7YckUIo1UA5m', 1, '2019-06-06 18:23:42', '2019-06-06 04:08:45'),
 (2, 'Jessica', 'Galvan', 'jessica.galvan@hotmail.com', '$2y$10$Zu/eF/ztmTasiyxqVxkX.OnyN973v3kTpuiumctzqKBVmgx/KmgIO', 'mascota', '$2y$10$KPPvyHp7YHz1c.GHAIyD6.yoYCU0p8gJkALSDOqkex.Fw3rZSUMgG', 2, '2019-06-06 04:39:55', '2019-06-06 04:39:55'),
 (3, 'Harry', 'Potter', 'harry@potter.com', '$2y$10$zCZX4R70CN826KxZrQO2KeichyzOpicILIUsOMMb72QNtmkqMLOHS', 'libro', '$2y$10$joiGAbpE38XA6mQZQc.iuOx5S18W3np0kXVJarHjKb9OEexFysBTS', 3, '2019-06-06 23:16:17', '2019-06-06 04:41:20'),
-(4, 'Hermione', 'Granger', 'hermione@granger.com', '$2y$10$M36LXnr8SALRgGnXNOR76.KlXob/pd.OQ/EOjixVzaPgat8MsxX8S', 'libro', '$2y$10$4tG52FU8xLd2zHUtUa8n2.viMyy6OM8k2/Cjl72BjvIIQcOJ825NG', 4, '2019-06-06 23:17:42', '2019-06-06 23:17:42');
+(4, 'Hermione', 'Granger', 'hermione@granger.com', '$2y$10$M36LXnr8SALRgGnXNOR76.KlXob/pd.OQ/EOjixVzaPgat8MsxX8S', 'libro', '$2y$10$4tG52FU8xLd2zHUtUa8n2.viMyy6OM8k2/Cjl72BjvIIQcOJ825NG', 4, '2019-06-06 23:17:42', '2019-06-06 23:17:42'),
+(5, 'Lily', 'Evans', 'lily@evans.com', '$2y$10$M1gIi90QAQjyzbYYvRDz.e5sF2MEPoxK0qY6VY2kmU/JrXdGDOoWK', 'libro', '$2y$10$XP93GCogMijV50ZfFDThKez9H3WyNEv8yYumivyCaZ5MDBiEyKcSu', 5, '2019-06-06 23:54:19', '2019-06-06 23:54:19'),
+(6, 'anto', 'car', 'anto@gmail.com', '$2y$10$VEcmFzU39CVXgL/ZA5SS1OV4qh28SSSiLz0ZGaJGTJqa9dwwG0a6u', 'mascota', '$2y$10$BhSRCCoSXoQTVXnLix5pxeptYjLByGl8EJamzrtD4eMIuvCQ5erju', 6, '2019-06-07 17:17:22', '2019-06-07 17:15:35');
 
 --
 -- Índices para tablas volcadas
@@ -282,25 +305,25 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoProductos`
 --
 ALTER TABLE `tipoProductos`
-  MODIFY `id` int(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -318,20 +341,6 @@ ALTER TABLE `carritos`
 ALTER TABLE `carrito_producto`
   ADD CONSTRAINT `carrito_id` FOREIGN KEY (`carrito_id`) REFERENCES `carritos` (`id`),
   ADD CONSTRAINT `producto_id` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
-
---
--- Filtros para la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD CONSTRAINT `producto_categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
-  ADD CONSTRAINT `producto_estado_id` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`),
-  ADD CONSTRAINT `producto_tipo_id` FOREIGN KEY (`tipoproducto_id`) REFERENCES `tipoProducto` (`id`);
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `perfil_id` FOREIGN KEY (`perfil_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

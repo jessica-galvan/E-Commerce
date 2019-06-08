@@ -103,7 +103,6 @@ Class DB {
 
         $destino = "img/user-avatar/";
         $destino = $destino.$fotoNombre;
-        $subir = move_uploaded_file($origen,$destino);
         move_uploaded_file($origen,$destino);
 
         $this->updatePerfil($email, 'fotoPerfil', $fotoNombre);
@@ -118,7 +117,6 @@ Class DB {
         $modificarUsuario->execute();
 
         if(!$modificarUsuario) {
-            // $errorContrasenia = ;
             return "* Oops! Hubo un problema";
         } else {
             return false;
@@ -171,16 +169,25 @@ Class DB {
     }
 
     /*---------SECCION PRODUCTOS---------*/
-    public function createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $foto, $descripcion){
+    public function createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion, $foto){
         global $conex;
+        /*SUBIR FOTO a carpeta productos*/
+        $nombreArchivo = $foto["name"];
+        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
+        $origen = $foto["tmp_name"];
+        $fotoNombre = rand(1,99)."-$nombre.$ext";
+        $destino = "img/productos/";
+        $destino = $destino.$fotoNombre;
+        move_uploaded_file($origen,$destino);
+
         $crearProducto = $conex->prepare("INSERT INTO productos(nombre, precio, categoria_id, estado_id, tipoproducto_id, foto, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
         $crearProducto->bindValue(1, $nombre, PDO::PARAM_STR);
         $crearProducto->bindValue(2, $precio, PDO::PARAM_INT);
-        $crearProducto->bindValue(3, $categoria, PDO::PARAM_STR);
-        $crearProducto->bindValue(4, $estado, PDO::PARAM_STR);
-        $crearProducto->bindValue(5, $tipoProducto, PDO::PARAM_STR);
-        $crearProducto->bindValue(6, $foto, PDO::PARAM_STR);
+        $crearProducto->bindValue(3, $categoria, PDO::PARAM_INT);
+        $crearProducto->bindValue(4, $estado, PDO::PARAM_INT);
+        $crearProducto->bindValue(5, $tipoProducto, PDO::PARAM_INT);
+        $crearProducto->bindValue(6, $fotoNombre, PDO::PARAM_STR);
         $crearProducto->bindValue(7, $descripcion, PDO::PARAM_STR);
         $crearProducto->execute();
 
@@ -193,48 +200,78 @@ Class DB {
 
     public function updateProducto($producto_id, $indice, $data){
         global $conex;
-        $perfil_id = $this->getInfoEspecificaUsuario($email, 'perfil_id');
 
-        $modificarUsuario = $conex->prepare("UPDATE perfiles SET $indice =:$indice WHERE id = $perfil_id");
-        $modificarUsuario->bindValue($indice, $data, PDO::PARAM_STR);
-        $modificarUsuario->execute();
+        $update = $conex->prepare("UPDATE productos SET $indice =:$indice WHERE id = $producto_id");
+        $update->bindValue($indice, $data);
+        $update->execute();
 
-        if(!$modificarUsuario) {
-            // $errorContrasenia = ;
+        if(!$update) {
             return "* Oops! Hubo un problema";
         } else {
             return false;
         }
     }
 
-    public function uploadProductPicture($product_id, $imagen){
+    public function updateProduct($product_id, $nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion){
         global $conex;
-        $nombre = $this->getProductoInfoEspecifica($producto_id, 'nombre');
+        $update = $conex->prepare("UPDATE productos SET categoria_id=:categoria, tipoproducto_id=:tipoproducto, estado_id=:estado, descripcion=:descripcion, nombre=:nombre, precio=:precio WHERE id = $product_id");
+        $update->bindValue(':nombre', $nombre, PDO::PARAM_STR);
+        $update->bindValue(':precio', $precio, PDO::PARAM_INT);
+        $update->bindValue(':categoria', $categoria, PDO::PARAM_INT);
+        $update->bindValue('estado', $estado, PDO::PARAM_INT);
+        $update->bindValue('tipoproducto', $tipoProducto, PDO::PARAM_INT);
+        $update->bindValue(':descripcion', $descripcion, PDO::PARAM_STR);
+        $update->execute();
 
-        $nombreArchivo = $imagen["name"];
-        $ext = pathinfo($nombreArchivo,PATHINFO_EXTENSION);
-        $origen = $imagen["tmp_name"];
-
-
-        $fotoNombre = "$producto_id-$nombre.$ext";
-
-        $destino = "img/productos/";
-        $destino = $destino.$fotoNombre;
-        $subir = move_uploaded_file($origen,$destino);
-        move_uploaded_file($origen,$destino);
-
-        $this->updateProducto($producto_id, 'foto', $fotoNombre);
+        if($update){
+            return false;
+        } else {
+            return '* Hubo un problema con la subida';
+        }
     }
 
-    public function getProductoInfoEspecifica($producto_id, $indice){
-        $consulta = $conex->prepare("SELECT ? FROM productos WHERE id = ?");
-        $consulta->bindValue(1, $producto_id, PDO::PARAM_STR);
-        $consulta->bindValue(2, $producto_id, PDO::PARAM_INT);
+    public function changeProductPicture($product_id, $fotoNombre,$foto){
+        global $conex;
+        move_uploaded_file($foto["tmp_name"],"img/productos/".$fotoNombre);
+
+        $subir = $this->updateProducto($product_id, 'foto', $fotoNombre);
+
+        if(!$subir){
+            return "* Oops! Hubo un problema al subir la foto";
+        } else {
+            return false;
+        }
+
+
+    }
+
+    public function getInfoEspecificaProducto($producto_id, $indice){
+        global $conex;
+        $consulta = $conex->prepare("SELECT $indice FROM productos WHERE id = ?");
+        $consulta->bindValue(1, $producto_id, PDO::PARAM_INT);
         $consulta->execute();
         $data= $consulta->fetch(PDO::FETCH_ASSOC);
         return $data[$indice];
     }
 
+    public function getProduct($product_id){
+          global $conex;
+          $consulta = $conex->prepare("SELECT * FROM productos WHERE id = ?");
+          $consulta->bindValue(1, $product_id, PDO::PARAM_STR);
+          $consulta->execute();
+          $producto = $consulta->fetch(PDO::FETCH_ASSOC);
+          return $producto;
+    }
 
+    public function deleteProduct($producto_id){
+        global $conex;
 
+        $borrar = $conex->query("DELETE FROM productos WHERE id = $producto_id");
+        $borrar->bindValue(1, PDO::PARAM_INT);
+        $borrar->execute();
+
+        if(!$borrar){
+            return 'Hubo un problema, no se pudo completar la operación.';
+        }
+    }
 }

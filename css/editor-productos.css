@@ -25,6 +25,10 @@ label {
   text-decoration: underline;
 }
 
+.mensajeConfirmar {
+  color: blue;
+}
+
 /*EDITAR PERFIL*/
 .editar-form {
   background-color: white;
@@ -103,6 +107,24 @@ label {
 .login-button button:hover {
     background: linear-gradient(to left,#F7EB61 0, #FFB6Bf 100%);
 }
+
+/*Color Rosa*/
+.return {
+    padding: 5vw;
+    margin-top: 2vh;
+    background: #FFB6BF;
+    box-shadow: 4px 4px 0 #C4AAD7;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    margin: auto;
+    color: black;
+    cursor: pointer;
+}
+.return:hover{
+    background: linear-gradient(to left,#FFB6BF 0,#f08ccd 100%);
+}
+
 @media (min-width: 768px) { /*TABLET*/
   .login-text h2  {
     font-size: 2em;
@@ -210,16 +232,13 @@ label {
     padding: 20px;
   }
 
-  /*EDITOR PRODUCTOS*/
-  /* .form-product {
-    margin: 30px;
+  .return {
+      margin-top: 15px;
+      padding: 10px;
   }
 
-  .form-editar input {
-    margin: auto;
-    padding: 10px;
-    width: 70%;
-    max-width: 700px;
-  } */
+
+
+
 
 }

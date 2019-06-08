@@ -32,54 +32,33 @@ Class Validator {
     /*SECCION USUARIOS*/
     public function registerValidate($nombre, $apellido, $email, $contrasenia, $contraseniaConfirmar, $preguntaSeguridad, $respuestaSeguridad) {
         global $baseDatos;
-        $hayErrores = false;
 
         /*Controlar que no este vacio*/
         if($nombre == "") {
             $error['errorNombre'] = $this->errores['completar'];
-            $hayErrores = true;
         }
 
         if($apellido == "") {
             $error['errorApellido'] = $this->errores['completar'];
-            $hayErrores = true;
         }
-
-        if($email == ""){
-            $error['errorEmail'] = $this->errores['completar'];
-            $hayErrores = true;
-        } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            /*que sea un email valido*/
-            $error['errorEmail'] = $this->errores['emailNoValido'];
-            $hayErrores = true;
-        } elseif($baseDatos->checkEmail($email)) {
-            /*Controlamos que no este ya registrado*/
-            $error['errorEmail'] = $this->errores['registrado'];
-            $hayErrores = true;
+        /*Para no repetir codigo, llamo a la funcion dentro de esta clase que Valida Emails*/
+        $validarEmail = $this->validateEmail($email);
+        if($validarEmail){
+            $error['errorEmail'] = $validarEmail;
         }
-
-        if($contrasenia == ""){
-            $hayErrores = true;
-            $error['errorContrasenia'] = $this->errores['completar'];
-        } elseif(strlen($contrasenia) < 6 ) {
-            /*largo de la contraseña*/
-            $hayErrores = true;
-            $error['errorContrasenia'] = $this->errores['corta'];
-        } elseif($contrasenia != $contraseniaConfirmar){
-            /*que coincidan*/
-            $hayErrores = true;
-            $error['errorContrasenia'] = $this->errores['coinciden'];
+        /*Ditto, pero para contrasenia y su confirmacion*/
+        $validarContrasenia = validateNewPassword($contrasenia, $contraseniaConfirmar);
+        if($validarContrasenia){
+            $error['errorContrasenia'] = $validarContrasenia;
         }
 
         if ($preguntaSeguridad == ""){
-            $hayErrores = true;
             $error['errorPregunta'] =  $this->errores['seleccionar'];
         } elseif($respuestaSeguridad == ""){
-            $hayErrores = true;
             $error['errorPregunta'] = $this->errores['completar'];
         }
 
-        if($hayErrores){
+        if(isset($error)){
             return $error;
         } else {
             return false;
@@ -92,13 +71,13 @@ Class Validator {
       $validarEmail = $this->validateEmail($email);
       $validarContrasenia = $baseDatos->verifyPassword($email, $contrasenia);
       if($validarEmail){
-          $errores['errorEmail'] = $validarEmail;
+          $error['errorEmail'] = $validarEmail;
       }
       if($validarContrasenia){
-          $errores['errorContrasenia'] = $validarContrasenia;
+          $error['errorContrasenia'] = $validarContrasenia;
       }
-      if(isset($errores)){
-          return $errores;
+      if(isset($error)){
+          return $error;
       } else {
           return false;
       }
@@ -106,21 +85,17 @@ Class Validator {
 
     public function validateEmail($dato){
         global $baseDatos;
-        $hayErrores = false;
         $email = trim($dato);
 
         if($email == ""){
             $error = $this->errores['completar'];
-            $hayErrores = true;
         } elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $error = $this->errores['emailNoValido'];
-            $hayErrores = true;
         } elseif(!$baseDatos->checkEmail($email)) {
             $error = $this->errores['noRegistrado'];
-            $hayErrores = true;
         }
 
-        if($hayErrores){
+        if(isset($error)){
             return $error;
         } else {
             return false;
@@ -130,20 +105,16 @@ Class Validator {
     public function validateNewPassword($contrasenia, $contraseniaConfirmar){
         $contrasenia = trim($contrasenia);
         $contraseniaConfirmar = trim($contraseniaConfirmar);
-        $hayErrores = false;
 
         if($contrasenia == ""){
-            $hayErrores = true;
             $errorContrasenia = $this->errores['completar'];
         } elseif(strlen($contrasenia) < 6 ) {
-            $hayErrores = true;
             $errorContrasenia = $this->errores['corta'];
         } elseif($contrasenia != $contraseniaConfirmar){
-            $hayErrores = true;
             $errorContrasenia = $this->errores['coinciden'];
         }
 
-        if($hayErrores){
+        if(isset($error)){
             return $errorContrasenia;
         } else {
             return false;
@@ -156,9 +127,11 @@ Class Validator {
             $image_type = $foto[2];
 
             if(in_array($image_type , array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP))) {
-                return true;
+                return false;
             }
-            return false;
+            return $this->errores['imagen'];
+        } else {
+            return '* Se produjo un error';
         }
     }
 
@@ -166,32 +139,13 @@ Class Validator {
     public function validateProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $foto, $descripcion){
         global $baseDatos;
 
-        if($nombre == "") {
-            $error['errorNombre'] = $this->errores['completar'];
-        }
-
-        if($precio == "") {
-            $error['errorPrecio'] = $this->errores['completar'];
-        }
-
-        if($descripcion == "") {
-            $error['errorPrecio'] = $this->errores['completar'];
-        }
-
-        if($categoria == "") {
-            $error['errorCategoria'] = $this->errores['completar'];
-        }
-
-        if($estado == "") {
-            $error['errorEstado'] = $this->errores['completar'];
-        }
-
-        if($tipoProducto == "") {
-            $error['errorTipoProducto'] = $this->errores['completar'];
+        $validar = $this->validateProductoEdicion($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion);
+        if($validar){
+            $error = $validar;
         }
 
         $validarFoto = !$this->imageValidate($foto);
-        if($validarFoto) {
+        if(!$validarFoto) {
             $error['errorFoto'] = $this->errores['imagen'];
         }
 
@@ -200,8 +154,35 @@ Class Validator {
         } else {
             return false;
         }
+    }
 
+    public function validateProductoEdicion($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion){
+      global $baseDatos;
 
+      if($nombre == "") {
+          $error['error_nombre'] = $this->errores['completar'];
+      }
+      if($precio == "") {
+          $error['error_precio'] = $this->errores['completar'];
+      }
+      if($descripcion == "") {
+          $error['error_precio'] = $this->errores['completar'];
+      }
+      if($categoria == "") {
+          $error['error_categoria'] = $this->errores['completar'];
+      }
+      if($estado == "") {
+          $error['error_estado'] = $this->errores['completar'];
+      }
+      if($tipoProducto == "") {
+          $error['error_tipoProducto'] = $this->errores['completar'];
+      }
+
+      if(isset($error)){
+          return $error;
+      } else {
+          return false;
+      }
 
     }
 }

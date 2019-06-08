@@ -1,7 +1,6 @@
 <?php
     require_once('loader.php');
     $auth->usuarioLogueado();
-    require_once('actions/user-check.php');
     require_once('partials/preguntaSeguridad.php');
 
     /*Data vacia*/
@@ -54,7 +53,7 @@
 
             /*Cuarto: check si hubo problemas. Si no hubo, envialos a confirmacion.php, sino, tirar error.*/
             if(!$crear){
-                header('location:confirmacion.php');
+                // header('location:confirmacion.php');
                 echo "<script type='text/javascript'>document.location.href='confirmacion.php';</script>";
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=confirmacion.php">';
                 exit;

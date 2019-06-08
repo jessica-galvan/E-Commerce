@@ -34,17 +34,19 @@
         PRIMERO habria que validar la foto, luego subir el cambio de avatar y preparar lo que se va a subir a las base de datos.
         SEGUNDO, si todo esta bien, subi la foto a su carpeta correspondiente y actualizar la base de datos*/
         if(isset($_FILES["foto"])){
-            // $foto = $_FILES["foto"];
-            // $validarFoto = $validator->imageValidate($foto);
-            // if($validarFoto){
-            //     $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
-            // } else {
-            //     $errores = $validator->getErrores();
-            //     $errorFoto = $errores['imagen'];
-            // }
+            if($_FILES["foto"]['name'] != ""){
+                // $foto = $_FILES["foto"];
+                // $validarFoto = $validator->imageValidate($foto);
+                // if($validarFoto){
+                //     $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+                // } else {
+                //     $errores = $validator->getErrores();
+                //     $errorFoto = $errores['imagen'];
+                // }
 
-            /*Por ahora sulo subi lo que te paso. Esto es temporal y esta mal porque no hay validacion que confirme que recibio todo bien, que el archivo es una imagen y eso*/
-            $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+                /*Por ahora sulo subi lo que te paso. Esto es temporal y esta mal porque no hay validacion que confirme que recibio todo bien, que el archivo es una imagen y eso*/
+                $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+            }
         }
 
         echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";

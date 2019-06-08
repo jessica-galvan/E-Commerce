@@ -1,0 +1,235 @@
+/*PRODUCTS*/
+.productos {
+    background: url("../img/Fondos/FondoSeccionesUno.png");
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+}
+
+.productos .titulo-seccion h2 {
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+    color: black;
+    background: white;
+    padding: 10vw;
+    width: 100vw;
+}
+
+.agregar {
+    padding-top: 3vh;
+    padding-bottom: 5vh;
+    margin: auto;
+    flex-direction: row;
+}
+
+/*CAJA PRODUCTO*/
+.producto {
+    background: white;
+    width: 100vw;
+    padding: 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.producto-texto {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.producto-texto h3 {
+    font-family: 'Bree Serif', serif;
+    color: black;
+    text-transform: capitalize;
+}
+
+.producto-texto, .precio {
+    color: black;
+}
+
+/*Imagen y efecto*/
+.p-imagen {
+    align-self: center;
+    margin-bottom: 3vh;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.producto:hover .p-imagen, .producto:focus .p-imagen, .producto:active .p-imagen{
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+
+.p-imagen img {
+    max-width: 50vw;
+    border: solid, lightgrey, 1vw;
+    text-align: center;
+}
+
+
+/*BOTONES*/
+.producto-boton {
+    text-align: center;
+    margin-top: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*Color Violeta*/
+.editar-button{
+    padding: 5vw;
+    margin-top: 2vh;
+    background: #C4AAD7;
+    box-shadow: 4px 4px 0 #73d2e6;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    margin: auto;
+    margin-top: 2vh;
+    color: black;
+    cursor: pointer;
+}
+
+.editar-button:hover{
+    background: linear-gradient(to left,#C4AAD7 0,#f08ccd 100%);
+}
+
+/*Color Amarillo*/
+.borrar-button {
+    padding: 5vw;
+    margin-top: 2vh;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    margin: auto;
+    margin-top: 2vh;
+    color: black;
+    cursor: pointer;
+    background: #F7EB61;
+    box-shadow: 4px 4px 0 #73d2e6;
+}
+
+.borrar-button:hover{
+    background: linear-gradient(to left,#F7EB61 0,#73d2e6 100%);
+}
+
+/*Color Rosa*/
+.cancelar-button {
+    padding: 5vw;
+    margin-top: 2vh;
+    background: #FFB6BF;
+    box-shadow: 4px 4px 0 #C4AAD7;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    margin: auto;
+    color: black;
+    cursor: pointer;
+}
+.cancelar-button:hover{
+    background: linear-gradient(to left,#FFB6BF 0,#f08ccd 100%);
+}
+
+@media (min-width: 992px) { /*DESKTOP*/
+    .productos {
+        flex-direction: row;
+    }
+
+    .agregar {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .producto {
+        background: white;
+        margin: 20px 50px;
+        width: 25%;
+        max-width: 500px;
+        padding: 2%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        flex: 1;
+    }
+
+    .etiqueta-nuevo {
+        width: 100%;
+        position: relative;
+        top: 10px;
+        left: 0;
+        z-index: 10;
+    }
+
+    .p-imagen {
+        margin: 0;
+        padding: 0;
+    }
+
+    .p-imagen img {
+        height: 150px;
+        margin: 0;
+    }
+
+    .producto-texto {
+        color: black;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .producto-texto h3 {
+        font-family: 'Bree Serif', serif;
+    }
+
+    .producto-boton {
+        margin-top: auto;
+        margin-top: 15px;
+    }
+
+    .precio {
+        margin-bottom: 5px;
+    }
+
+    .productos .titulo-seccion h2 {
+        display: block;
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Bree Serif', serif;
+        color: black;
+        background: white;
+        padding-top: 50px;
+        padding-bottom: 25px;
+    }
+
+    .editar-button {
+        margin-top: 15px;
+        padding: 10px 15px;
+    }
+
+    .borrar-button {
+        margin-top: 15px;
+        padding: 10px;
+    }
+    .cancelar-button {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+}

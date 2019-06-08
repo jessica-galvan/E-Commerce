@@ -1,7 +1,7 @@
 <?php
     require_once('loader.php');
     $auth->usuarioLogueado();
-    require_once('actions/user-check.php');
+    
     $CSS = ['form', 'perfil'];
     require_once("partials/header.php");
 ?>

@@ -19,8 +19,6 @@
     /*Listas de Base de datos*/
     $consultaEstados = $conex->query("SELECT * FROM estados");
     $listaEstados = $consultaEstados->fetchAll(PDO::FETCH_ASSOC);
-    // var_dump($listaEstados);
-    // exit;
     $consultaTipoProductos = $conex->query("SELECT * FROM tipoProductos");
     $listaTiposProductos = $consultaTipoProductos->fetchAll(PDO::FETCH_ASSOC);
     $consultaCategorias = $conex->query("SELECT * FROM categorias");
@@ -30,28 +28,26 @@
         foreach( $_POST as $variable => $valor ){
             $$variable = trim($valor);
         }
-
         $foto = $_FILES['foto'];
-        var_dump($_POST);
-        var_dump($foto);
-        $check = $validator->imageValidate($foto);
-        var_dump($check);
-
-        exit;
 
         /*VALIDAR*/
         $validar = $validator->validateProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $foto, $descripcion);
 
         /*SI NO HAY ERRORES UBIMOS A LA BASE*/
         if(!$validar) {
-            $crear = $baseDatos->createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion);
+            $crear = $baseDatos->createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion, $foto);
 
-            $product_id = $conex->lastInsertId();
-
-            if(!$crear){
-                $mensajePrincipal = "El producto a sido agregado.";
+            if($crear){
+                $mensajePrincipal = $crear;
             } else {
-                $errorPrincial = $crear;
+                $mensajePrincipal = "El producto se ha subido con exito";
+                /*Si salio todo bien, deja en blanco los campos para poder llenar otro producto*/
+                $nombre = "";
+                $precio = "";
+                $descripcion = "";
+                $categoria = "";
+                $estado = "";
+                $tipoProducto = "";
             }
         } else {
             /*Si hay errores, repartime las variables para que se muestren en los campos correctos*/
@@ -69,6 +65,9 @@
       <div class="login-text">
           <h2>Nuevo Producto</h2>
       </div>
+
+      <span class="error-form"><?=$errorPrincipal?></span>
+      <span style="color:blue;" class = "mensajeConfirmar" ><?=$mensajePrincipal?></span>
 
       <form action="nuevoProducto.php" method="post" enctype="multipart/form-data">
           <div class="form-editar">
@@ -92,7 +91,7 @@
 
         <div class="form-editar">
             <label for="nombre">Precio</label>
-            <input id="nombre" type="text" name="precio" value="<?=$precio?>">
+            <input id="nombre" step="0.01" type="number" name="precio" value="<?=$precio?>">
             <span class="error-form"><?=$errorPrecio?></span>
         </div>
 
@@ -157,9 +156,9 @@
             <button type="submit" name="crearProducto">ENVIAR</button>
         </div>
     </form>
-    <span class="error-form"><?=$errorPrincipal?></span>
-    <span class = "confirm-message" ><?=$mensajePrincipal?></span>
-
+    <a href="lista-productos.php">
+        <button class="return" type="button">Volver</button>
+    </a>
 </div>
 </main>
 

@@ -8,7 +8,7 @@
   $usuarioRecuperado = $baseDatos->getUserPerfil($email);
   $nombre = $usuarioRecuperado['nombre'];
   $apellido = $usuarioRecuperado['apellido'];
-  $nombreCompleto = $nombre." ".$apellido;
+  // $nombreCompleto = $nombre." ".$apellido;
 
   /*Si el usuario completo los datos, se van a ver, sino en el array estan vacios. ¿Quizas habria que hacer algo en caso de que este en blanco?*/
   $genero = $usuarioRecuperado['genero'];
@@ -42,9 +42,9 @@
   if($fechaNacimientoOriginal != "") {
     $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
     $edad = calcularEdad($fechaNacimientoOriginal);
-  } else {
-    $fechaNacimiento = "";
-    $edad = "";
+  // } else {
+  //   $fechaNacimiento = "";
+  //   $edad = "";
   }
 
   $CSS = ['perfil'];
@@ -60,7 +60,7 @@
         </div>
 
         <div class="nombreUsuario">
-            <h3 id="nombreUsuario"><?=$nombreCompleto;?></h3>
+            <h3 id="nombreUsuario"><?=$nombre." ".$apellido;?></h3>
         </div>
 
         <div class="datosBasicos">

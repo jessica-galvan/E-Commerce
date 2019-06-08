@@ -2,8 +2,6 @@
     ob_start();
     require_once('loader.php');
     $auth->usuarioLogueado();
-    require_once('actions/user-check.php');
-    // require_once('partials/funciones.php'); /*Solo es necesario para formularios*/
 
     $email = "";
     $contrasenia = "";

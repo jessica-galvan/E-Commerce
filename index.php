@@ -1,6 +1,8 @@
 <?php
     require_once('loader.php');
-    include_once("partials/lista-productos.php");
+    $consultaProductos = $conex->query("SELECT productos.id, productos.nombre, productos.descripcion, productos.foto, productos.precio, tipoProductos.nombre AS 'tipoProducto', categorias.nombre AS 'categoria', estados.nombre AS 'estado'FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN tipoProductos ON productos.tipoProducto_id = tipoProductos.id INNER JOIN estados ON productos.estado_id = estados.id");
+    $listaProductos = $consultaProductos->fetchAll(PDO::FETCH_ASSOC);
+
     $CSS = ['index','producto'];
     require_once("partials/header.php");
 ?>
@@ -28,30 +30,22 @@
         <div class="titulo-seccion">
             <h2>Nuestros productos más populares</h2>
         </div>
-        <?php
 
-        $totalProductos = count($productos);
-        $maxProductosPopulares = 0;
-        $nPopulares = 0; /*$nPopulares es el $i de un for. Como lo hice con while, lo cree.*/
-
-        while($maxProductosPopulares < 5) {
-        if ($productos[$nPopulares]["estado"] === "Best-seller"):?>
-        <article class="producto">
-            <div class="p-imagen">
-                <img src="img/productos/<?=$productos[$nPopulares]["foto"]?>" alt="<?=$productos[$nPopulares]["nombre"]?>">
-            </div>
-            <div class="producto-texto">
-                <h3><?=$productos[$nPopulares]["nombre"]?></h3>
-            </div>
-            <div class="producto-boton">
-                <p class="precio">$<?=$productos[$nPopulares]["precio"]?></p>
-                <button class="comprar" type="button" name="button">Comprar</button>
-            </div>
-        </article>
-        <?php $maxProductosPopulares++;
-            endif;
-            $nPopulares++;
-        };?>
+        <?php foreach ($listaProductos as $producto):
+            if($producto['estado'] == 'Popular'):?>
+            <article class="producto">
+                <div class="p-imagen">
+                    <img src="img/productos/<?=$producto["foto"]?>" alt="<?=$producto["nombre"]?>">
+                </div>
+                <div class="producto-texto">
+                    <h3><?=$producto["nombre"]?></h3>
+                </div>
+                <div class="producto-boton">
+                    <p class="precio">$<?=$producto["precio"]?></p>
+                    <button class="comprar" type="button" name="button">Comprar</button>
+                </div>
+            </article>
+        <?php endif; endforeach;?>
         <div class="mas">
             <button class="ver-mas" type="button" name="button">Ver más</button>
         </div>
@@ -74,30 +68,22 @@
         <div class="titulo-seccion">
             <h2>Lo más nuevo</h2>
         </div>
-        <?php
-        $maxProductosNuevos = 0;
-        $nNuevos = 0;
-        while($maxProductosNuevos < 5) {
-        if ($productos[$nNuevos]["estado"] === "Nuevo"):?>
-        <article class="producto">
-            <img class="etiqueta-nuevo" src="img/new/NewRosa.png" alt="">
-
-            <div class="p-imagen">
-                <img src="img/productos/<?=$productos[$nNuevos]["foto"]?>" alt="<?=$productos[$nNuevos]["nombre"]?>">
-            </div>
-            <div class="producto-texto">
-                <h3><?=$productos[$nNuevos]["nombre"]?></h3>
-            </div>
-            <div class="producto-boton">
-                <p class="precio">$<?=$productos[$nNuevos]["precio"]?></p>
-                <button class="comprar" type="button" name="button">Comprar</button>
-            </div>
-        </article>
-        <?php
-            $maxProductosNuevos++;
-            endif;
-            $nNuevos++;
-        };?>
+        <?php foreach ($listaProductos as $producto):
+            if($producto['estado'] == 'Nuevo'):?>
+            <article class="producto">
+                <img class="etiqueta-nuevo" src="img/new/NewRosa.png" alt="Nuevo">
+                <div class="p-imagen">
+                    <img src="img/productos/<?=$producto["foto"]?>" alt="<?=$producto["nombre"]?>">
+                </div>
+                <div class="producto-texto">
+                    <h3><?=$producto["nombre"]?></h3>
+                </div>
+                <div class="producto-boton">
+                    <p class="precio">$<?=$producto["precio"]?></p>
+                    <button class="comprar" type="button" name="button">Comprar</button>
+                </div>
+            </article>
+        <?php endif; endforeach;?>
         <div class="mas">
             <button class="ver-mas" type="button" name="button">Ver más</button>
         </div>

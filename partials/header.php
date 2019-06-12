@@ -102,7 +102,16 @@
                             <ul>
                                 <li><a href="index.php">INICIO</a></li>
                                 <li>|</li>
-                                <li><a href="#">CATEGORIAS</a></li>
+                                <li class="dropdown">
+                                    <a href="dropbton">CATEGORIAS</a>
+                                    <div class="dropdown-category">
+                                        <?php foreach($categorias as $categoria):?>
+                                        <a href="filtro.php?id=<?=$categoria['id']?>&tabla=categorias">
+                                            <?=$categoria['nombre']?>
+                                        </a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </li>
                                 <li>|</li>
                                 <li><a href="#">CONTACTO</a></li>
                                 <li>|</li>

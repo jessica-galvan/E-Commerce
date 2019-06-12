@@ -59,7 +59,7 @@
             }
 
             if(isset($fotoNueva)) {
-                $subirFoto = $baseDatos->changeProductPicture($product_id, $productoRecuperado['foto'], $fotoNueva);
+                $subirFoto = $baseDatos->updateProductPicture($product_id, $productoRecuperado['foto'], $fotoNueva);
 
                 if($subirFoto){
                     $error['errorFoto'] = $subirFoto;

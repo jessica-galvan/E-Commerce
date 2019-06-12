@@ -1,5 +1,5 @@
 <?php
-/*Esta clase es para obtener y manipular info de la base de Datos, desde obtener info con los gets, cambiar cosas y hasta controlar el login*/
+/*Esta clase es para hacer ABM de la base de datos, recuperar info de la base de datos y veirifcar la contraseña y la respuesta de seguridad. No tiene atributos*/
 Class DB {
 
     /*---------SECCION USUARIOS---------*/
@@ -27,49 +27,40 @@ Class DB {
         global $validator;
         $listaErrores = $validator->getErrores();
         $contrasenia = trim($contrasenia);
-        $hayErrores = false;
 
         if($contrasenia == ""){
             $errores = $listaErrores['completar'];
-            $hayErrores = true;
         } elseif($this->checkEmail($email)){ /*COMPARAR CONTRASEÑAS*/
             $contraseniaOficial = $this->getInfoEspecificaUsuario($email, 'contrasenia');
             if(password_verify($contrasenia, $contraseniaOficial)) {
-                $hayErrores = false;
+                return false;
             } else {
-                $hayErrores = true;
-                $errores = '* Contraseña incorrecta.';
+                $errores = $listaErrores['contraseña'];
             }
         }
-
-        if($hayErrores){
-            return $errores;
-        } else {
-            return false;
-        }
+        return $errores;
     }
 
     public function verifyRespuestaSeguridad($email, $dato){
+        global $validator;
+        $listaErrores = $validator->getErrores();
         $respuestaSeguridad = trim($dato);
-        $hayErrores = false;
         $respuestaOficial = $this->getInfoEspecificaUsuario($email, 'respuestaSeguridad');
 
         if($respuestaSeguridad == "") {
-            $errorPregunta = "* Tu respuesta no puede estar vacia";
-            $hayErrores = true;
+            $errorPregunta = $listaErrores['completar'];
         } elseif(!password_verify($respuestaSeguridad, $respuestaOficial)) {
             $errorPregunta = "Respuesta incorrecta";
-            $hayErrores = true;
         }
 
-        if($hayErrores){
+        if(isset($errorPregunta)){
             return $errorPregunta;
         } else {
             return false;
         }
     }
 
-    /*Cambiar datos*/
+    /*UPDATE*/
     public function updateUsuario($email, $indice, $data){
         global $conex;
         $usuarioID = $this->getInfoEspecificaUsuario($email, 'id');
@@ -85,7 +76,7 @@ Class DB {
         }
     }
 
-    public function changeAvatar($email, $imagen){
+    public function updateAvatar($email, $imagen){
         global $conex;
         $perfil_id = $this->getInfoEspecificaUsuario($email, 'perfil_id');
         $usuario_id = $this->getInfoEspecificaUsuario($email, 'id');
@@ -123,7 +114,7 @@ Class DB {
         }
     }
 
-    /*Controlar si un email esta en la base de datos*/
+    /*Chequear en base de datos si ese email esta registrado*/
     public function checkEmail($email){
           global $conex;
           $consultaUsuarios = $conex->prepare("SELECT * FROM usuarios WHERE email = ?");
@@ -133,8 +124,6 @@ Class DB {
 
           if($usuario){
               return true;
-          } else {
-              return false;
           }
       }
 
@@ -198,20 +187,7 @@ Class DB {
         }
     }
 
-    public function updateProducto($producto_id, $indice, $data){
-        global $conex;
-
-        $update = $conex->prepare("UPDATE productos SET $indice =:$indice WHERE id = $producto_id");
-        $update->bindValue($indice, $data);
-        $update->execute();
-
-        if(!$update) {
-            return "* Oops! Hubo un problema";
-        } else {
-            return false;
-        }
-    }
-
+    /*UPDATE*/
     public function updateProduct($product_id, $nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion){
         global $conex;
         $update = $conex->prepare("UPDATE productos SET categoria_id=:categoria, tipoproducto_id=:tipoproducto, estado_id=:estado, descripcion=:descripcion, nombre=:nombre, precio=:precio WHERE id = $product_id");
@@ -230,21 +206,22 @@ Class DB {
         }
     }
 
-    public function changeProductPicture($product_id, $fotoNombre,$foto){
+    public function updateProductPicture($product_id, $fotoNombre,$foto){
         global $conex;
         move_uploaded_file($foto["tmp_name"],"img/productos/".$fotoNombre);
 
-        $subir = $this->updateProducto($product_id, 'foto', $fotoNombre);
+        $update = $conex->prepare("UPDATE productos SET foto=:foto WHERE id = $product_id");
+        $update->bindValue(':foto', $fotoNombre, PDO::PARAM_STR);
+        $update->execute();
 
-        if(!$subir){
+        if(!$update){
             return "* Oops! Hubo un problema al subir la foto";
         } else {
             return false;
         }
-
-
     }
 
+    /*GET*/
     public function getInfoEspecificaProducto($producto_id, $indice){
         global $conex;
         $consulta = $conex->prepare("SELECT $indice FROM productos WHERE id = ?");
@@ -263,6 +240,7 @@ Class DB {
           return $producto;
     }
 
+    /*BORRAR*/
     public function deleteProduct($producto_id){
         global $conex;
 
@@ -272,6 +250,86 @@ Class DB {
 
         if(!$borrar){
             return 'Hubo un problema, no se pudo completar la operación.';
+        }
+    }
+
+    /*---------SECCION CARRITO---------*/
+    public function crearCarrito($email){
+        if(!$this->getCarrito_id($email)){
+                global $conex;
+                $user_id = $this->getInfoEspecificaUsuario($email, 'id');
+                $crear = $conex->prepare("INSERT INTO carritos(usuario_id) VALUES (?)");
+                $crear->bindValue(1, $user_id, PDO::PARAM_STR);
+                $crear->execute();
+        } else {
+            return false;
+        }
+    }
+
+    public function getCarrito_id($email){
+        global $conex;
+        $consulta = $conex->prepare("SELECT carritos.id FROM carritos INNER JOIN usuarios ON carritos.usuario_id = usuarios.id WHERE usuarios.email=?");
+        $consulta->bindValue(1, $email, PDO::PARAM_STR);
+        $consulta->execute();
+        $dato = $consulta->fetch(PDO::FETCH_ASSOC);
+        return $dato['id'];
+    }
+
+    public function updateCarritoDireccion($email, $dato){
+        global $conex;
+        $carrito_id = $this->getCarrito_id($email);
+        $update = $conex->prepare("UPDATE carritos SET direccionEnvio = ? WHERE id = $carrito_id");
+        $update->bindValue(1, $dato, PDO::PARAM_STR);
+        $update->execute();
+
+        if(!$update) {
+            return "* Oops! Hubo un problema";
+        } else {
+            return false;
+        }
+    }
+
+    /*Es para agregar algo a la tabla carrito_producto*/
+    public function agregarACarrito($producto_id, $cantidad, $email){
+        global $conex;
+        $carrito_id = $this->getCarrito_id($email);
+
+        if($this->checkProductoRepetido($producto_id, $email){
+            $update =
+        } else {
+            $crear = $conex->prepare("INSERT INTO carrito_producto(producto_id, carrito_id, cantidad) VALUES (?, ?, ?)");
+            $crear->bindValue(1, $producto_id, PDO::PARAM_INT);
+            $crear->bindValue(2, $carrito_id, PDO::PARAM_INT);
+            $crear->bindValue(3, $cantidad, PDO::PARAM_INT);
+        }
+
+    }
+
+    /*Es para modificar la cantidad de algo que ya esta en la tabla carrito_producto*/
+    public function updateCantidad($producto_id, $cantidad, $email){
+        global $conex;
+        $carrito_id = $this->getCarrito_id($email);
+        $update = $conex->prepare("UPDATE carrito_producto SET cantidad WHERE carrito_id = $carrito_id AND producto_id = $producto_id");
+        $update->bindValue(1, $cantidad, PDO::PARAM_INT);
+        $update->execute();
+
+        if(!$update) {
+            return "* Oops! Hubo un problema";
+        } else {
+            return false;
+        }
+    }
+
+    /*No se si esta funcion es necesaria o no. En teoria, seria para chequear que si lo que el usuario quiere agregar al carrito, ya esta... de verdadero.*/
+    public function checkProductoRepetido($producto_id, $email){
+        $carrito_id = $this->getCarrito_id($email);
+        $consulta = $conex->query("SELECT * FROM carrito_producto WHERE producto_id = $producto_id AND carrito_id = $carrito_id");
+        $dato = $consulta->fetch(PDO::FETCH_ASSOC);
+
+        if($dato){
+            return true;
+        } else {
+            return false;
         }
     }
 }

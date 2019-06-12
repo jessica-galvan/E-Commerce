@@ -1,7 +1,7 @@
 <?php
     require_once('loader.php');
     $auth->usuarioLogueado();
-    
+
     $CSS = ['form', 'perfil'];
     require_once("partials/header.php");
 ?>
@@ -18,11 +18,6 @@
                 <button type="submit" name="">Volver al Index</button>
             </form>
         </div>
-
-        <?php
-          $usuarios = $consultaUsuarios->fetchAll(PDO::FETCH_ASSOC);
-          var_dump($usuarios);
-        ?>
     </div>
 </main>
 <?php

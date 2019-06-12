@@ -1,5 +1,6 @@
 <?php
     require_once('loader.php');
+    /*Esta parte es para traer de base de datos la info esencial de todos los productos, en conjunto con los nombres de los estados y categorias*/
     $consultaProductos = $conex->query("SELECT productos.id, productos.nombre, productos.descripcion, productos.foto, productos.precio, tipoProductos.nombre AS 'tipoProducto', categorias.nombre AS 'categoria', estados.nombre AS 'estado'FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id INNER JOIN tipoProductos ON productos.tipoProducto_id = tipoProductos.id INNER JOIN estados ON productos.estado_id = estados.id");
     $listaProductos = $consultaProductos->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,12 +35,14 @@
         <?php foreach ($listaProductos as $producto):
             if($producto['estado'] == 'Popular'):?>
             <article class="producto">
-                <div class="p-imagen">
-                    <img src="img/productos/<?=$producto["foto"]?>" alt="<?=$producto["nombre"]?>">
-                </div>
-                <div class="producto-texto">
-                    <h3><?=$producto["nombre"]?></h3>
-                </div>
+                <a style="text-decoration:none;" href="producto.php?id=<?=$producto['id']?>">
+                    <div class="p-imagen">
+                        <img src="img/productos/<?=$producto["foto"]?>" alt="<?=$producto["nombre"]?>">
+                    </div>
+                    <div class="producto-texto">
+                        <h3><?=$producto["nombre"]?></h3>
+                    </div>
+                </a>
                 <div class="producto-boton">
                     <p class="precio">$<?=$producto["precio"]?></p>
                     <button class="comprar" type="button" name="button">Comprar</button>
@@ -71,13 +74,17 @@
         <?php foreach ($listaProductos as $producto):
             if($producto['estado'] == 'Nuevo'):?>
             <article class="producto">
-                <img class="etiqueta-nuevo" src="img/new/NewRosa.png" alt="Nuevo">
-                <div class="p-imagen">
-                    <img src="img/productos/<?=$producto["foto"]?>" alt="<?=$producto["nombre"]?>">
-                </div>
-                <div class="producto-texto">
-                    <h3><?=$producto["nombre"]?></h3>
-                </div>
+                <a  style="text-decoration:none;" href="producto.php?id=<?=$producto['id']?>">
+                    <div class="etiqueta-nuevo">
+                        <img src="img/new/NewRosa.png" alt="Nuevo">
+                    </div>
+                    <div class="p-imagen">
+                        <img src="img/productos/<?=$producto["foto"]?>" alt="<?=$producto["nombre"]?>">
+                    </div>
+                    <div class="producto-texto">
+                        <h3><?=$producto["nombre"]?></h3>
+                    </div>
+                </a>
                 <div class="producto-boton">
                     <p class="precio">$<?=$producto["precio"]?></p>
                     <button class="comprar" type="button" name="button">Comprar</button>

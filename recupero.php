@@ -2,7 +2,6 @@
     require_once('loader.php');
     $auth->usuarioLogueado();
     require_once('partials/preguntaSeguridad.php');
-
     $etapa = 'primera';
     $errorEmail = "";
     $errorContrasenia = "";
@@ -14,7 +13,6 @@
 
     //  PARTE 1
     if(isset($_POST['recupero1'])) {
-        $usuarios = $consultaUsuarios->fetchAll(PDO::FETCH_ASSOC);
         $validar = $validator->validateEmail($_POST['email']);
         if($validar){
             $errorEmail = $validar;
@@ -37,7 +35,7 @@
 
     //PARTE 2
     if(isset($_POST['recupero2'])) {
-        $respuestaSeguridad= trim($_POST['respuestaSeguridad']);
+        $respuestaSeguridad = trim($_POST['respuestaSeguridad']);
         $validar2 = $baseDatos->verifyRespuestaSeguridad($_SESSION['email'], $respuestaSeguridad);
         if($validar2){
             $errorRespuesta = $validar2;
@@ -64,18 +62,6 @@
             if(!$modificarUsuario) {
                 $etapa = 'cuarta';
             }
-
-            // $usuarioID = $_SESSION['usuarioInfo']['id'];
-            //
-            // $modificarUsuario = $conex->prepare("UPDATE usuarios SET contrasenia =:contrasenia WHERE id = $usuarioID");
-            // $modificarUsuario->bindValue(":contrasenia", $nuevaContrasenia, PDO::PARAM_STR);
-            // $modificarUsuario->execute();
-            //
-            // if(!$modificarUsuario) {
-            //     $errorContrasenia = "* Oops! Hubo un problema";
-            // } else {
-            //
-            // }
         }
     }
     //PARTE 4

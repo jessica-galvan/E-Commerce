@@ -45,7 +45,7 @@
                 // }
 
                 /*Por ahora sulo subi lo que te paso. Esto es temporal y esta mal porque no hay validacion que confirme que recibio todo bien, que el archivo es una imagen y eso*/
-                $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+                $baseDatos->updateAvatar($_SESSION['email_usuario'], $_FILES['foto']);
             }
         }
 

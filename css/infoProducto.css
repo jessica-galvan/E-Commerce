@@ -1,0 +1,222 @@
+/*Error*/
+.main-container {
+  background: rgba(196,170,215, 0.8);
+  padding: 5vw;
+}
+.error-caja {
+  background-color: white;
+  background-image: url('../img/Fondos/FondoSeccionesTres.png');
+  padding: 5vw;
+  margin: auto;
+  text-align: center;
+}
+.error-text h2 {
+  color:black;
+  font-family: 'Bree Serif', serif;
+  font-size: 2em;
+}
+/*Producto*/
+.caja-producto {
+    background: white;
+    /* background: url('.../img/Fondos/FondoSeccionesTres.png'); */
+    padding: 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fotoProducto img{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.textoProducto {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nombreProducto h2 {
+    color:black;
+    font-family: 'Bree Serif', serif;
+    font-size: 2em;
+    text-align: center;
+}
+
+.infoProducto p {
+    margin-top: 2vh;
+    text-align: center;
+}
+
+/*Form Cantidad*/
+.formulario-cantidad {
+    margin: auto;
+    margin-top:2vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cantidad{
+    border: 1px solid black;
+	height: 40px;
+	position: relative;
+	width: 122px;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    justify-content: center;
+}
+
+.cantidad i {
+    cursor: pointer;
+    font-family: serif;
+    height: 40px;
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    user-select: none;
+    transition: all 150ms ease-out;
+    width: 33px;
+}
+
+
+.cantidad i:active{
+    background: #F1F1F1;
+    transition: none;
+}
+
+.cantidad input {
+    border: 0px solid;
+    float: left;
+    font-size: 24px;
+    height: 38px;
+    text-align: center;
+    outline: none;
+    width: 54px;
+}
+
+.precio {
+    margin-top: 2vh;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/*Botones*/
+.agregar {
+  padding: 2vw;
+  margin-top: 2vh;
+  background: #8CD0E3; /*Lightblue*/
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+  box-shadow: 4px 4px 0 #f5ea77;
+}
+
+.agregar:hover{
+    background: linear-gradient(to right,#8cd0e3 0,#f08ccd 150%);
+}
+
+.link-button {
+    margin:auto;
+    margin-top: 2vh;
+}
+
+.return {
+    padding: 2vw;
+    margin:auto;
+
+    background: #FFB6BF;
+    box-shadow: 4px 4px 0 #C4AAD7;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Bree Serif', serif;
+    margin: auto;
+    color: black;
+    cursor: pointer;
+}
+.return:hover{
+    background: linear-gradient(to left,#FFB6BF 0,#f08ccd 100%);
+}
+
+@media (min-width: 992px) { /*DESKTOP*/
+    /*Error*/
+    .main-container {
+      padding: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .error-caja {
+      margin-top: 0;
+      width: 50%;
+      padding: 70px;
+    }
+    .error-text {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    /*Producto*/
+    .caja-producto {
+        padding: 20px;
+        width: 70%;
+        flex-direction: row;
+    }
+
+    .fotoProducto {
+        width: 50%;
+    }
+
+    .fotoProducto img{
+        width: 100%;
+        /* margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; */
+    }
+
+    .textoProducto {
+        width: 49%;
+        padding: 50px;
+    }
+
+    .infoProducto p {
+        margin-top: 20px;
+    }
+
+    /*Form Cantidad*/
+    .formulario-cantidad {
+        margin: auto;
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cantidad{
+        margin:auto;
+    }
+
+    .precio {
+        margin-top: 20px;
+        font-size: 1.5em;
+    }
+
+    /*Botones*/
+    .agregar {
+        margin-top: 40px;
+        padding: 10px;
+    }
+    .return {
+        margin-top: 15px;
+        padding: 10px;
+    }

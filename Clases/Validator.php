@@ -15,13 +15,14 @@ Class Validator {
         $this->errores = [
             'completar' => '* Completar el campo',
             'seleccionar' => '* Selecciona una pregunta',
-            'emailNoValido' => '* Email no valido',
             'registrado' => '* Ese email ya esta registrado',
             'noRegistrado' => '* Este mail no esta registrado',
-            'corta' => '* La contraseña debe tener más de 6 caracteres',
-            'coinciden' => '* Las contraseñas no coinciden',
+            'emailNoValido' => '* Email no valido',
             'invalidos' => "* Email o contraseña invalidas",
             'imagen' => '* Imagen no valida',
+            'contraseña' => '* Contraseña incorrecta.',
+            'corta' => '* La contraseña debe tener más de 6 caracteres',
+            'coinciden' => '* Las contraseñas no coinciden',
         ];
     }
 

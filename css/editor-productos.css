@@ -29,7 +29,18 @@ label {
   color: blue;
 }
 
-/*EDITAR PERFIL*/
+/*Imagen*/
+.fotoProducto {
+  margin: 2vh 0;
+}
+
+.fotoProducto img {
+  width: 50vw;
+  border: solid 0px; 
+  border-radius: 25%;
+}
+
+/*EDITAR*/
 .editar-form {
   background-color: white;
   background-image: url('../img/Fondos/FondoSeccionesTres.png');
@@ -140,13 +151,20 @@ label {
     justify-content: space-between;
   }
 
-  /*LOGIN*/
   .login-text {
     width: 100%;
     margin-bottom: 10px;
   }
 
-  /*REGISTRO*/
+  /*imagen*/
+  .fotoProducto {
+    margin: 20px 0;
+  }
+
+  .fotoProducto img {
+    width: 70%;
+  }
+  /*EDITAR*/
   .editar-form {
     margin-top: 0;
     width: 50%;

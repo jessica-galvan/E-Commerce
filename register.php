@@ -40,16 +40,19 @@
 
         /*ARRAY FINAL DEL USUARIO*/
         if(!$validar) {
-            /*Primero creo el perfil, asi obtengo el ID de esa y se lo puedo agregar al perfil_id en la tabla usuario*/
-            $crearPerfil = $conex->query("INSERT INTO perfiles (id) VALUES (null)");
-            $perfil_id = $conex->lastInsertId();
+            $crear = $usuario->create($nombre, $apellido, $email, $contrasenia, $preguntaSeguridad, $respuestaSeguridad);
 
-            /*Segundo: Hasheo*/
-            $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
-            $respuestaSeguridad = password_hash($respuestaSeguridad, PASSWORD_DEFAULT);
+            // /*Primero creo el perfil, asi obtengo el ID de esa y se lo puedo agregar al perfil_id en la tabla usuario*/
+            // $crearPerfil = $conex->query("INSERT INTO perfiles (id) VALUES (null)");
+            // $perfil_id = $conex->lastInsertId();
+            //
+            // /*Segundo: Hasheo*/
+            // $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
+            // $respuestaSeguridad = password_hash($respuestaSeguridad, PASSWORD_DEFAULT);
+            //
+            // /*Tercero: creo el usuario en la base de datos*/
+            // $crear = $baseDatos->createUser($nombre, $apellido, $email, $contrasenia, $preguntaSeguridad, $respuestaSeguridad, $perfil_id);
 
-            /*Tercero: creo el usuario en la base de datos*/
-            $crear = $baseDatos->createUser($nombre, $apellido, $email, $contrasenia, $preguntaSeguridad, $respuestaSeguridad, $perfil_id);
 
             /*Cuarto: check si hubo problemas. Si no hubo, envialos a confirmacion.php, sino, tirar error.*/
             if(!$crear){

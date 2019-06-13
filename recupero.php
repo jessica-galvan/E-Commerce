@@ -2,6 +2,7 @@
     require_once('loader.php');
     $auth->usuarioLogueado();
     require_once('partials/preguntaSeguridad.php');
+
     $etapa = 'primera';
     $errorEmail = "";
     $errorContrasenia = "";
@@ -13,7 +14,7 @@
 
     //  PARTE 1
     if(isset($_POST['recupero1'])) {
-        $validar = $validator->validateEmail($_POST['email']);
+        $validar = $validator->validateEmail($usuario, $_POST['email']);
         if($validar){
             $errorEmail = $validar;
         }
@@ -21,7 +22,7 @@
         if(!$validar) {
             $_SESSION['email'] = trim($_POST['email']);
             $etapa = "segunda";
-            $preguntaSeguridadValor = $baseDatos->getInfoEspecificaUsuario($_SESSION['email'], 'preguntaSeguridad');
+            $preguntaSeguridadValor = $usuario->getInfoEspecifica($_SESSION['email'], 'preguntaSeguridad');
 
 
             /*Recuperamos la pregunta de seguridad*/
@@ -36,7 +37,7 @@
     //PARTE 2
     if(isset($_POST['recupero2'])) {
         $respuestaSeguridad = trim($_POST['respuestaSeguridad']);
-        $validar2 = $baseDatos->verifyRespuestaSeguridad($_SESSION['email'], $respuestaSeguridad);
+        $validar2 = $usuario->verifyRespuestaSeguridad($_SESSION['email'], $respuestaSeguridad);
         if($validar2){
             $errorRespuesta = $validar2;
         }
@@ -56,7 +57,7 @@
         if(!$validar3) {
             /*Una vez que no hay errores, reemplazamos la contraseña anterior por la nueva (pisando el dato).*/
             $nuevaContrasenia = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
-            $modificarUsuario = $baseDatos->updateUsuario($_SESSION['email'], 'contrasenia', $nuevaContrasenia);
+            $modificarUsuario = $usuario->updateUsuario($_SESSION['email'], 'contrasenia', $nuevaContrasenia);
 
             /*Por ultimo, si sale false en el modificar usuario, tirar un error.*/
             if(!$modificarUsuario) {

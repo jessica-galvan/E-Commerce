@@ -39,7 +39,7 @@
                             </div>
                         </nav>
 
-                        <a href="index.php"> <img class="logo" src="img/icons/LogoMobile.png" alt="Logo"> </a>
+                        <a href="index.php"><img class="logo" src="img/icons/LogoMobile.png" alt="Logo"></a>
 
                         <div class="icons">
                             <a id="user-icon" href="<?=$linkUsuario?>">
@@ -103,7 +103,7 @@
                                 <li><a href="index.php">INICIO</a></li>
                                 <li>|</li>
                                 <li class="dropdown">
-                                    <a href="dropbton">CATEGORIAS</a>
+                                    <a href="#">CATEGORIAS</a>
                                     <div class="dropdown-category">
                                         <?php foreach($categorias as $categoria):?>
                                         <a href="filtro.php?id=<?=$categoria['id']?>&tabla=categorias">

@@ -2,11 +2,15 @@
 require_once('Clases/DB.php');
 require_once('Clases/Auth.php');
 require_once('Clases/Validator.php');
+require_once('Clases/Usuario.php');
+require_once('Clases/Producto.php');
 
 $auth = new Auth();
 $validator = new Validator();
-$baseDatos = new DB();
-$conex = new PDO('mysql:host=localhost;dbname=fancybeauty;charset=utf8mb4;port=3306', 'root', '');
+$baseDatos = new DB('fancybeauty', 'root', '');
+$conex = $baseDatos->getConex();
+$usuario = new Usuario();
+$producto = new Producto();
 
 // $consultaUsuarios = $conex->query("SELECT * FROM usuarios");
 /*Es necesario $consultaCategorias y $categorias para que funcione el menú*/

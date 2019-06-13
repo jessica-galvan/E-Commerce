@@ -3,12 +3,12 @@
   require_once('loader.php');
   $auth->usuarioNoLogueado();
   require_once('actions/user-check.php');
+  $usuario = new Usuario();
 
   $email = $_SESSION['email_usuario'];
-  $usuarioRecuperado = $baseDatos->getUserPerfil($email);
+  $usuarioRecuperado = $usuario->getPerfil($email);
   $nombre = $usuarioRecuperado['nombre'];
   $apellido = $usuarioRecuperado['apellido'];
-  // $nombreCompleto = $nombre." ".$apellido;
 
   /*Si el usuario completo los datos, se van a ver, sino en el array estan vacios. ¿Quizas habria que hacer algo en caso de que este en blanco?*/
   $genero = $usuarioRecuperado['genero'];
@@ -42,9 +42,6 @@
   if($fechaNacimientoOriginal != "") {
     $fechaNacimiento = date("d-m-Y", strtotime($fechaNacimientoOriginal));
     $edad = calcularEdad($fechaNacimientoOriginal);
-  // } else {
-  //   $fechaNacimiento = "";
-  //   $edad = "";
   }
 
   $CSS = ['perfil'];

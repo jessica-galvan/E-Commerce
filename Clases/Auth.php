@@ -11,9 +11,9 @@ Class Auth {
 login(), logout(), sessionStart(), check(), guest()*/
 
   public function login($email){
-      global $baseDatos;
+      global $usuario;
       $_SESSION["email_usuario"] = $email;
-        $_SESSION["nombre_usuario"] = $baseDatos->getInfoEspecificaUsuario($_SESSION["email_usuario"], 'nombre');
+        $_SESSION["nombre_usuario"] = $usuario->getInfoEspecifica($_SESSION["email_usuario"], 'nombre');
   }
 
   public function logout(){
@@ -53,7 +53,7 @@ login(), logout(), sessionStart(), check(), guest()*/
   }
 
   public function checkSessionEmail(){
-      global $baseDatos;
+      global $usuario;
       if(isset($_SESSION["email_usuario"])) {
         return true;
       } elseif (isset($_COOKIE["email_usuario"])) {

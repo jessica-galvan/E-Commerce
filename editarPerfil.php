@@ -3,8 +3,10 @@
     require_once('loader.php');
     $auth->usuarioNoLogueado();
     require_once("partials/listas-editar.php");
+    $usuario = new Usuario();
+
     /*Lo primero que necesitamos*/
-    $usuarioRecuperado = $baseDatos->getUserPerfil($_SESSION['email_usuario']);
+    $usuarioRecuperado = $usuario->getPerfil($_SESSION['email_usuario']);
     $generoRespuesta = $usuarioRecuperado['genero'];
     $tonoDePielRespuesta = $usuarioRecuperado['tonoDePiel'];
     $tipoDePielRespuesta = $usuarioRecuperado['tipoDePiel'];
@@ -23,9 +25,9 @@
             if($valor != ""){
                 if($indice != 'fechaNacimiento'){
                     $dato = recuperarDato($indice, $valor);
-                    $baseDatos->updatePerfil($_SESSION['email_usuario'], $indice, $dato);
+                    $usuario->updatePerfil($_SESSION['email_usuario'], $indice, $dato);
                 } else {
-                    $baseDatos->updatePerfil($_SESSION['email_usuario'], $indice, $valor);
+                    $usuario->updatePerfil($_SESSION['email_usuario'], $indice, $valor);
                 }
             }
         }
@@ -33,25 +35,30 @@
         /*Para imagenes
         PRIMERO habria que validar la foto, luego subir el cambio de avatar y preparar lo que se va a subir a las base de datos.
         SEGUNDO, si todo esta bien, subi la foto a su carpeta correspondiente y actualizar la base de datos*/
-        if(isset($_FILES["foto"])){
-            if($_FILES["foto"]['name'] != ""){
-                // $foto = $_FILES["foto"];
-                // $validarFoto = $validator->imageValidate($foto);
-                // if($validarFoto){
-                //     $baseDatos->changeAvatar($_SESSION['email_usuario'], $_FILES['foto']);
-                // } else {
-                //     $errores = $validator->getErrores();
-                //     $errorFoto = $errores['imagen'];
-                // }
+        if($_FILES["foto"]['name'] != ""){
+                $validarFoto = $validator->imageValidate($_FILES["foto"]);
+                if(!$validarFoto){
+                    $subir = $usuario->updateAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+
+                    if($subir){
+                        $errorFoto = $subir;
+                    } else {
+                        echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";
+                        echo '<META HTTP-EQUIV="refresh" content="0;URL=perfilUsuario.php">';
+                        exit;
+                    }
+                } else {
+                    $errores = $validator->getErrores();
+                    $errorFoto = $errores['imagen'];
+                }
 
                 /*Por ahora sulo subi lo que te paso. Esto es temporal y esta mal porque no hay validacion que confirme que recibio todo bien, que el archivo es una imagen y eso*/
-                $baseDatos->updateAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+                // $usuario->updateAvatar($_SESSION['email_usuario'], $_FILES['foto']);
+            } else {
+                echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=perfilUsuario.php">';
+                exit;
             }
-        }
-
-        echo "<script type='text/javascript'>document.location.href='perfilUsuario.php';</script>";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=perfilUsuario.php">';
-        exit;
     }
 
     $CSS = ['form', 'perfil'];

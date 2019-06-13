@@ -2,14 +2,14 @@
     ob_start();
     require_once('loader.php');
     $auth->usuarioNoLogueado();
-
+    $usuario = new Usuario();
     $errorContraseniaVieja = "";
     $errorContrasenia = "";
     // $usuarioRecuperado = $baseDatos->getUser($_SESSION['email_usuario']);
 
     if(isset($_POST['cambiar'])){
         /*Primero chequeamos que la contrasenia vieja sea la correcta*/
-        $verificar = $baseDatos->verifyPassword($_SESSION['email_usuario'], $_POST['contraseniaVieja']);
+        $verificar = $usuario->verifyPassword($_SESSION['email_usuario'], $_POST['contraseniaVieja']);
 
         if($verificar) {
             /* Si sale un error, imprimilo*/
@@ -24,7 +24,7 @@
             } else {
                 /*Sino, cambiala en la base de datos*/
                 $nuevaContrasenia = password_hash($_POST['contraseniaNueva'], PASSWORD_DEFAULT);
-                $modificarUsuario = $baseDatos->updateUsuario($_SESSION['email_usuario'], 'contrasenia', $nuevaContrasenia);
+                $modificarUsuario = $usuario->updateUsuario($_SESSION['email_usuario'], 'contrasenia', $nuevaContrasenia);
 
                 /*Por ultimo, si sale false en el modificar usuario, tirar un error.*/
                 if(!$modificarUsuario) {

@@ -3,6 +3,7 @@
     require_once('loader.php');
     $auth->usuarioLogueado();
 
+
     $email = "";
     $contrasenia = "";
     $recordar = "";
@@ -12,7 +13,7 @@
     if(isset($_POST['login'])) {
         $email = $_POST['email'];
         $contrasenia = $_POST['contrasenia'];
-        $validar = $validator->validateLogin($email, $contrasenia);
+        $validar = $validator->validateLogin($usuario, $email, $contrasenia);
 
         if($validar){
             foreach($validar as $indice => $valor ){

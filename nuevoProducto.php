@@ -1,5 +1,6 @@
 <?php
     require_once('loader.php');
+
     $nombre = "";
     $precio = "";
     $descripcion = "";
@@ -21,8 +22,6 @@
     $listaEstados = $consultaEstados->fetchAll(PDO::FETCH_ASSOC);
     $consultaTipoProductos = $conex->query("SELECT * FROM tipoProductos");
     $listaTiposProductos = $consultaTipoProductos->fetchAll(PDO::FETCH_ASSOC);
-    $consultaCategorias = $conex->query("SELECT * FROM categorias");
-    $listaCategorias = $consultaCategorias->fetchAll(PDO::FETCH_ASSOC);
 
     if($_POST){
         foreach( $_POST as $variable => $valor ){
@@ -35,7 +34,7 @@
 
         /*SI NO HAY ERRORES UBIMOS A LA BASE*/
         if(!$validar) {
-            $crear = $baseDatos->createProducto($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion, $foto);
+            $crear = $producto->create($nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion);
 
             if($crear){
                 $mensajePrincipal = $crear;
@@ -117,14 +116,14 @@
         <section class="form-editar">
             <label for="categoria">Categoria:</label>
             <div class="check-product">
-                <?php foreach ($listaCategorias as $categorias) {
-                    if ($categoria == $categorias['id']):?>
+                <?php foreach ($categorias as $opcion) {
+                    if ($categoria == $opcion['id']):?>
                     <div class="check-box">
-                        <input type="radio" name="categoria" value="<?=$categorias['id']?>" checked><span><?=$categorias['nombre']?></span>
+                        <input type="radio" name="categoria" value="<?=$opcion['id']?>" checked><span><?=$opcion['nombre']?></span>
                     </div>
                 <?php else: ?>
                     <div class="check-box">
-                        <input type="radio" name="categoria" value="<?=$categorias['id']?>"><span><?=$categorias['nombre']?></span>
+                        <input type="radio" name="categoria" value="<?=$opcion['id']?>"><span><?=$opcion['nombre']?></span>
                     </div>
                 <?php endif; }?>
             </div>

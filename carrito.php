@@ -20,4 +20,6 @@
     echo 'direccion';
     $prueba3 = $baseDatos->updateCarritoDireccion('jessica.galvan@hotmail.com', 'Hogwarts 1234');
     var_dump($prueba3);
+
+    $prueba4 = $baseDatos->crearCarrito_Producto('')
  ?>

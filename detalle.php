@@ -3,7 +3,7 @@
 
     if($_GET) {
         $etapa = 'producto';
-        $productoRecuperado = $baseDatos->getProduct($_GET['id']);
+        $productoRecuperado = $producto->getByID($_GET['id']);
 
         /*Llenamos los campos*/
         $nombre = $productoRecuperado['nombre'];

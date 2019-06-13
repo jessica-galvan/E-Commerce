@@ -2,9 +2,10 @@
     require_once('loader.php');
 
     if($_GET) {
+        $producto = new Producto();
         $etapa = 'producto';
         $product_id = $_GET['id'];
-        $productoRecuperado = $baseDatos->getProduct($product_id);
+        $productoRecuperado = $producto->getByID($product_id);
 
         /*Llenamos los campos*/
         $nombre = $productoRecuperado['nombre'];
@@ -31,8 +32,6 @@
         $listaEstados = $consultaEstados->fetchAll(PDO::FETCH_ASSOC);
         $consultaTipoProductos = $conex->query("SELECT * FROM tipoProductos");
         $listaTiposProductos = $consultaTipoProductos->fetchAll(PDO::FETCH_ASSOC);
-        $consultaCategorias = $conex->query("SELECT * FROM categorias");
-        $listaCategorias = $consultaCategorias->fetchAll(PDO::FETCH_ASSOC);
 
         if($_POST){
           foreach( $_POST as $variable => $valor ){
@@ -52,14 +51,14 @@
 
           /*SI NO HAY ERRORES UBIMOS A LA BASE*/
           if(!$validar) {
-            $subirData = $baseDatos->updateProduct($product_id, $nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion);
+            $subirData = $producto->update($product_id, $nombre, $precio, $categoria, $estado, $tipoProducto, $descripcion);
 
             if($subirData){
                 $errorPrincipal = $subirData;
             }
 
             if(isset($fotoNueva)) {
-                $subirFoto = $baseDatos->updateProductPicture($product_id, $productoRecuperado['foto'], $fotoNueva);
+                $subirFoto = $producto->updatePicture($product_id, $productoRecuperado['foto'], $fotoNueva);
 
                 if($subirFoto){
                     $error['errorFoto'] = $subirFoto;
@@ -111,7 +110,7 @@
       <span style="color:blue;" class = "mensajeConfirmar" ><?=$mensajePrincipal?></span>
 
       <form action="" method="post" enctype="multipart/form-data">
-        <div class="fotoPerfil">
+        <div class="fotoProducto">
             <img src="<?=$foto?>" alt="Foto Producto">
         </div>
 
@@ -162,14 +161,14 @@
         <section class="form-editar">
             <label for="categoria">Categoria:</label>
             <div class="check-product">
-                <?php foreach ($listaCategorias as $categorias) {
-                    if ($categoria == $categorias['id']):?>
+                <?php foreach ($categorias as $opcion) {
+                    if ($categoria == $opcion['id']):?>
                     <div class="check-box">
-                        <input type="radio" name="categoria" value="<?=$categorias['id']?>" checked><span><?=$categorias['nombre']?></span>
+                        <input type="radio" name="categoria" value="<?=$opcion['id']?>" checked><span><?=$opcion['nombre']?></span>
                     </div>
                 <?php else: ?>
                     <div class="check-box">
-                        <input type="radio" name="categoria" value="<?=$categorias['id']?>"><span><?=$categorias['nombre']?></span>
+                        <input type="radio" name="categoria" value="<?=$opcion['id']?>"><span><?=$opcion['nombre']?></span>
                     </div>
                 <?php endif; }?>
             </div>
